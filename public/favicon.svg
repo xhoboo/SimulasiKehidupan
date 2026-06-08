@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64">
+  <rect width="64" height="64" rx="12" fill="#1a1a2e"/>
+  <!-- Road/path going to horizon -->
+  <polygon points="32,52 18,58 46,58" fill="#2d4a7a"/>
+  <polygon points="32,20 22,58 42,58" fill="#3d6494"/>
+  <!-- Horizon line -->
+  <line x1="8" y1="38" x2="56" y2="38" stroke="#4a90d9" stroke-width="1.5" opacity="0.6"/>
+  <!-- Sun rising -->
+  <circle cx="32" cy="30" r="8" fill="#f5c542" opacity="0.9"/>
+  <line x1="32" y1="18" x2="32" y2="15" stroke="#f5c542" stroke-width="2" stroke-linecap="round"/>
+  <line x1="41" y1="21" x2="43" y2="19" stroke="#f5c542" stroke-width="2" stroke-linecap="round"/>
+  <line x1="44" y1="30" x2="47" y2="30" stroke="#f5c542" stroke-width="2" stroke-linecap="round"/>
+  <line x1="23" y1="21" x2="21" y2="19" stroke="#f5c542" stroke-width="2" stroke-linecap="round"/>
+  <line x1="20" y1="30" x2="17" y2="30" stroke="#f5c542" stroke-width="2" stroke-linecap="round"/>
+  <!-- Road center dashes -->
+  <line x1="32" y1="44" x2="32" y2="48" stroke="#f5c542" stroke-width="1.5" stroke-linecap="round" opacity="0.8"/>
+  <line x1="32" y1="52" x2="32" y2="55" stroke="#f5c542" stroke-width="1.5" stroke-linecap="round" opacity="0.8"/>
+</svg>
