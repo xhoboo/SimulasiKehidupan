@@ -714,9 +714,6 @@ function ShareDialog({ captureRef, name, shareLink }: { captureRef: React.RefObj
   // Apakah perangkat mendukung berbagi berkas via Web Share API. Diuji dengan
   // berkas dummy karena navigator.canShare memerlukan objek File yang valid.
   const [canNativeShare, setCanNativeShare] = useState(false);
-  // Screenshot hanya diunduh sekali per sesi dialog walau pemain membuka
-  // beberapa platform, agar tidak membanjiri pemain dengan berkas berulang.
-  const downloadedRef = useRef(false);
 
   // Tautan yang dibagikan: URL /api/m berisi data In Memoriam (agar preview
   // sosial personal). Fallback ke origin bila belum tersedia.
@@ -738,7 +735,6 @@ function ShareDialog({ captureRef, name, shareLink }: { captureRef: React.RefObj
   useEffect(() => {
     if (!open) {
       setShot(null);
-      downloadedRef.current = false;
       return;
     }
     const node = captureRef.current;
@@ -759,7 +755,6 @@ function ShareDialog({ captureRef, name, shareLink }: { captureRef: React.RefObj
     a.href = shot;
     a.download = fileName;
     a.click();
-    downloadedRef.current = true;
   };
 
   // Jalur native: berbagi gambar + teks + tautan sekaligus lewat menu share
@@ -782,24 +777,13 @@ function ShareDialog({ captureRef, name, shareLink }: { captureRef: React.RefObj
     }
   };
 
-  // Satu jendela berbagi dibuka per klik. Membuka beberapa jendela dalam satu
-  // gestur klik akan diblokir oleh popup blocker peramban (hanya yang pertama
-  // lolos), jadi tiap platform punya tombolnya sendiri.
+  // Buka satu jendela berbagi per klik. Tautan yang dibagikan (/api/m) sudah
+  // membawa preview In Memoriam personal lewat Open Graph, jadi screenshot TIDAK
+  // perlu diunduh otomatis lagi. Tanpa string fitur (arg ketiga) agar tidak
+  // dianggap popup window yang sering diblokir di mobile; opener diputus manual.
   const shareTo = (platform: SharePlatform) => {
-    if (!shot) return;
-    // Buka jendela berbagi LEBIH DULU — ini aksi utama gestur klik. Di peramban
-    // mobile, memicu unduhan dulu akan "memakai" gestur sehingga window.open
-    // berikutnya dianggap bukan aksi pengguna dan diblokir popup blocker. Selain
-    // itu string fitur (arg ketiga) membuat mobile mencoba membuka popup window
-    // yang juga sering diblokir; cukup buka tab biasa lalu putus opener manual.
     const win = window.open(buildShareUrl(platform, gameLink, shareText), "_blank");
     if (win) win.opener = null;
-    // Web intent platform tidak bisa menerima berkas gambar, jadi screenshot
-    // diunduh sekali agar pemain dapat melampirkannya pada postingan.
-    if (!downloadedRef.current) {
-      downloadShot();
-      toast.success("Screenshot tersimpan — lampirkan ke postinganmu.");
-    }
   };
 
   return (
@@ -856,8 +840,7 @@ function ShareDialog({ captureRef, name, shareLink }: { captureRef: React.RefObj
                 key={id}
                 type="button"
                 onClick={() => shareTo(id)}
-                disabled={!shot}
-                className="flex w-full items-center gap-3 rounded-md border border-border/40 px-3 py-2 text-left transition-colors hover:bg-secondary/40 disabled:cursor-not-allowed disabled:opacity-50"
+                className="flex w-full items-center gap-3 rounded-md border border-border/40 px-3 py-2 text-left transition-colors hover:bg-secondary/40"
               >
                 <Icon className="w-5 h-5 text-foreground/80" />
                 <span className="text-sm">{label}</span>
