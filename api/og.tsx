@@ -21,8 +21,12 @@ function decode(s: string): CardPayload | null {
 }
 
 // Aset font ditelusuri & disertakan Vercel lewat pola new URL(..., import.meta.url).
-async function loadFont(file: string): Promise<ArrayBuffer> {
-  const res = await fetch(new URL(`./_fonts/${file}`, import.meta.url));
+// PENTING: path harus literal statis (tanpa `${var}`) agar penelusur file Vercel
+// dapat mendeteksi & menyertakan aset ke bundel edge. Path dinamis membuat tak ada
+// font yang ikut ter-deploy → fetch gagal → fungsi crash 500 (gambar OG kosong).
+async function loadFont(url: URL): Promise<ArrayBuffer> {
+  const res = await fetch(url);
+  if (!res.ok) throw new Error(`Gagal memuat font: ${url} (${res.status})`);
   return res.arrayBuffer();
 }
 
@@ -39,10 +43,10 @@ export default async function handler(req: Request): Promise<Response> {
   };
 
   const [inter400, inter600, fraunces600, frauncesItalic] = await Promise.all([
-    loadFont("inter-400.woff"),
-    loadFont("inter-600.woff"),
-    loadFont("fraunces-600.woff"),
-    loadFont("fraunces-400-italic.woff"),
+    loadFont(new URL("./_fonts/inter-400.woff", import.meta.url)),
+    loadFont(new URL("./_fonts/inter-600.woff", import.meta.url)),
+    loadFont(new URL("./_fonts/fraunces-600.woff", import.meta.url)),
+    loadFont(new URL("./_fonts/fraunces-400-italic.woff", import.meta.url)),
   ]);
 
   return new ImageResponse(memoriamCard(data), {
