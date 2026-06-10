@@ -365,7 +365,7 @@ export const BRANCH_POOL: LifeEvent[] = [
       { id: "jaringan", label: "Ajak freelancer lain berkolaborasi", outcomes: [
         { weight: 8, text: "Kalian patungan sewa ruangan kecil. Bukan kantor, hanya beberapa meja dan kopi yang sama-sama buruk. Tapi ada yang menyapa saat kamu datang, dan itu cukup mengubah banyak hal.", effects: { social: 6, happiness: 5, wealth: 2 }, mood: "warm",
           addsRelationship: { name: "Rekan Seruangan", role: "friend", closeness: 45, alive: true } },
-        { weight: 8, text: "Beberapa kolaborasi jalan, beberapa berantakan soal uang. Kamu belajar mana orang yang bisa dibawa untuk kerja, mana yang hanya untuk ditemani. Dua kategori yang ternyata jarang berhimpit.", effects: { social: 3, intelligence: 2, mental: 1 } },
+        { weight: 8, text: "Beberapa kolaborasi jalan, beberapa berantakan soal uang. Kamu belajar, mana orang yang bisa dibawa untuk kerja, mana yang hanya untuk ditemani. Dua kategori yang ternyata jarang berhimpit.", effects: { social: 3, intelligence: 2, mental: 1 } },
       ]},
       { id: "sunyi", label: "Nikmati saja sunyinya", outcomes: [
         { weight: 8, text: "Kamu atur sendiri kapan mulai, kapan berhenti, kapan tidak melakukan apa-apa. Sunyi itu kadang berat menjelang malam. Tapi kamu tidak pernah ingin menukarnya.", effects: { mental: 4, happiness: 3, wealth: 2 },
