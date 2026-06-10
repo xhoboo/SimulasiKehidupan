@@ -223,7 +223,7 @@ export const BRANCH_POOL: LifeEvent[] = [
       { id: "coba_lagi", label: "Beranikan diri, kali ini lebih pelan", outcomes: [
         { weight: 8, text: "Kamu hanya bertanya kabar, lalu mendengarkan. Ternyata mendekat tidak harus selalu diteriakkan.", effects: { happiness: 6, social: 4, mental: 3 }, removeTrait: "nihilistic", mood: "warm",
           memory: { text: "Pertama kali kamu mencoba lagi setelah surat itu.", tag: "cinta_pertama", mood: "warm" } },
-        { weight: 8, text: "Kamu mencoba, dan canggung setengah mati. Dia tidak menertawakanmu, hanya tersenyum dan melanjutkan obrolan. Luka lamamu tidak sembuh malam itu, tapi kamu tahu sekarang ia bisa sembuh.", effects: { happiness: 3, mental: 4 }, mood: "melancholy" },
+        { weight: 6, text: "Kamu mencoba, dan canggung setengah mati. Dia tidak menertawakanmu, hanya tersenyum dan melanjutkan obrolan. Luka lamamu tidak sembuh malam itu, tapi kamu tahu sekarang ia bisa sembuh.", effects: { happiness: 3, mental: 4 }, mood: "melancholy" },
       ]},
       { id: "jaga_jarak", label: "Simpan rapat-rapat, seperti yang dulu kamu pelajari", outcomes: [
         { weight: 8, text: "Kamu menyibukkan diri sampai perasaan itu reda sendiri. Aman. Tapi 'aman' punya harga yang baru kamu hitung bertahun kemudian.", effects: { mental: -2, intelligence: 2 }, mood: "melancholy",
@@ -239,11 +239,11 @@ export const BRANCH_POOL: LifeEvent[] = [
     prompt: "Setelah bertahun-tahun memaki diri sendiri di cermin, kamu duduk di kursi empuk seorang terapis. Dia bertanya 'Kapan terakhir kamu berbaik hati pada dirimu sendiri?'",
     choices: [
       { id: "menangis", label: "Menangis tanpa menjawab", outcomes: [
-        { weight: 8, text: "Pertanyaan itu menjawab dirinya sendiri. Sesi pertama dari 47 sesi. Hidupmu pelan-pelan berbelok.", effects: { mental: 12, happiness: 6 }, removeTrait: "nihilistic", flag: "terapi", achievement: "Pulang ke Diri Sendiri" },
-        { weight: 8, text: "Air mata itu mengejutkanmu. Terapis itu hanya mengangguk, seolah tahu ini akan datang. Jalan pulihmu tidak lurus, ada sesi yang terasa sia-sia, tapi arahnya benar.", effects: { mental: 10, happiness: 4 }, removeTrait: "nihilistic", flag: "terapi" },
+        { weight: 8, text: "Pertanyaan itu menjawab dirinya sendiri. Sesi pertama dari 47 sesi. Hidupmu pelan-pelan berubah.", effects: { mental: 12, happiness: 6 }, removeTrait: "nihilistic", flag: "terapi", achievement: "Pulang ke Diri Sendiri" },
+        { weight: 6, text: "Air mata itu mengejutkanmu. Jalan pulihmu tidak lurus, ada sesi yang terasa sia-sia, tapi arahnya benar.", effects: { mental: 10, happiness: 4 }, removeTrait: "nihilistic", flag: "terapi" },
       ]},
       { id: "bohong", label: "'Saya baik-baik saja'", outcomes: [
-        { weight: 8, text: "Kamu pulang dari sesi itu dan tidak pernah kembali. Lima tahun lagi kamu akan menyesalinya.", effects: { mental: -2 } },
+        { weight: 8, text: "Kamu pulang dari sesi itu dan tidak pernah kembali. Lima tahun lagi, mungkin, kamu akan menyesalinya.", effects: { mental: -2 } },
         { weight: 8, text: "Dia menatapmu sebentar, lalu menulis sesuatu. Kalimat itu terus terngiang, dan dua tahun kemudian mungkin kamu akan kembali.", effects: { mental: -1, happiness: -1 }, flag: "terapi_ragu", setAgeFlag: "terapi_bohong_age" },
       ]},
     ],
@@ -252,20 +252,20 @@ export const BRANCH_POOL: LifeEvent[] = [
   e({
     id: "br_teknik_burnout", category: "pekerjaan", pool: "age", rarity: "common",
     ageMin: 27, ageMax: 32, requireFlag: "jurusan_teknik", title: "Standup Meeting",
-    prompt: "Standup ke-740 dalam tiga tahun. Kamu mendengar dirimu berkata 'no blockers' otomatis, padahal segala sesuatu adalah blocker.",
+    prompt: "Standup ke-740 dalam tiga tahun. Kamu mendengar dirimu berkata 'no blockers' secara otomatis, padahal segala sesuatu adalah blocker.",
     choices: [
       { id: "jujur", label: "Untuk pertama kali, bilang jujur kamu tidak baik-baik saja", outcomes: [
         { weight: 7, text: "Hening 4 detik di Zoom. Lalu PM-mu bilang 'mari ngobrol berdua setelah ini.' Itu obrolan terbaik selama bertahun-tahun.", effects: { mental: 6, social: 4 }, flag: "teknik_burnout_pulih" },
-        { weight: 7, text: "Hening, lalu satu rekan menulis di chat: 'aku juga.' Lalu yang lain. Ternyata kalian semua diam-diam tenggelam di kapal yang sama.", effects: { mental: 5, social: 6 }, flag: "teknik_burnout_pulih", mood: "warm" },
-        { weight: 8, text: "Atasanmu mematikan kamera. 'Kalau tidak sanggup, jangan dibawa ke standup.' Ternyata yang dia takuti bukan kamu jatuh, tapi sprint yang meleset. Kamu belajar di tempat yang salah, kejujuran cuma celah lain untuk dinilai.", effects: { mental: -7, social: -3 }, flag: "teknik_burnout", mood: "tragic" },
+        { weight: 7, text: "Hening, lalu satu rekan menulis di chat 'aku juga.' Lalu yang lain juga. Ternyata kalian semua diam-diam tenggelam di kapal yang sama.", effects: { mental: 5, social: 6 }, flag: "teknik_burnout_pulih", mood: "warm" },
+        { weight: 8, text: "Atasanmu mematikan kamera. 'Kalau tidak sanggup, jangan dibawa ke standup.' Kamu belajar di tempat yang salah, kejujuran cuma celah lain untuk dinilai.", effects: { mental: -7, social: -3 }, flag: "teknik_burnout", mood: "tragic" },
       ]},
       { id: "tetap", label: "'No blockers'. Lanjut.", outcomes: [
         { weight: 8, text: "Kamu menua satu tahun dalam dua bulan. Tubuhmu mulai mengirim sinyal halus.", effects: { mental: -6, health: -4 }, flag: "teknik_burnout" },
         { weight: 8, text: "'No blockers.' Otomatis. Tapi malam itu kamu menatap layar laptop yang sudah beberapa saat mati dan tidak ingat kapan terakhir kali kamu menutupnya dengan lega.", effects: { mental: -7, health: -5, discipline: 2 }, flag: "teknik_burnout", mood: "tragic" },
       ]},
       { id: "resign", label: "Resign hari itu juga", outcomes: [
-        { weight: 8, text: "Tidak ada rencana. Hanya tahu: ini bukan tempatnya. Tabungan cukup untuk 4 bulan rasa bingung.", effects: { wealth: -8, mental: 5, happiness: 5 }, flag: "resigner" },
-        { weight: 4, text: "Kamu kosongkan meja dalam sepuluh menit. Di lift, tanganmu gemetar. Bukan takut, tapi lega yang belum kamu percaya. Empat bulan bingung itu ternyata jadi empat bulan paling jujur.", effects: { wealth: -8, mental: 8, happiness: 4 }, flag: "resigner" },
+        { weight: 8, text: "Tidak ada rencana. Hanya tahu, ini bukan tempatnya. Tabungan cukup untuk 4 bulan rasa bingung.", effects: { wealth: -8, mental: 5, happiness: 5 }, flag: "resigner" },
+        { weight: 4, text: "Kamu kosongkan meja dalam sepuluh menit. Di lift, tanganmu gemetar. Bukan takut, tapi lega yang belum kamu percaya. Empat bulan bingung itu ternyata jadi empat bulan yang paling jujur.", effects: { wealth: -8, mental: 8, happiness: 4 }, flag: "resigner" },
       ]},
     ],
   }),
@@ -276,21 +276,21 @@ export const BRANCH_POOL: LifeEvent[] = [
     // agar event ini mustahil muncul sebelum koas dialami.
     ageMin: 27, ageMax: 32, requireFlag: "dokter_jadi", mood: "melancholy",
     title: "Tahun-tahun di Bangsal",
-    prompt: "Beberapa tahun sejak koas. Kamu mengenali bau lorong rumah sakit lebih baik daripada bau rumahmu sendiri. Atasan bilang, dengan nada yang seharusnya menghibur: 'Anggap saja kita ini satu keluarga besar di sini.'",
+    prompt: "Beberapa tahun sejak koas, kamu mengenali bau lorong rumah sakit lebih baik daripada bau rumahmu sendiri. Atasan bilang, dengan nada yang seharusnya menghibur, 'Kita ini satu keluarga besar di sini.'",
     choices: [
       { id: "abdi", label: "Beri semuanya untuk rumah sakit ini", outcomes: [
         { weight: 8, text: "Kamu ambil setiap jaga tambahan, setiap shift yang ditinggalkan orang lain. Pasien terlayani. Tapi sebagian hidupmu pelan-pelan pindah jadi milik bangsal itu.", effects: { wealth: 4, mental: -5, happiness: -3 }, flag: "loyal_pegawai" },
-        { weight: 8, text: "Dedikasimu dilihat. Suatu hari namamu ada di pintu sebuah ruangan sendiri. Kepala bagian termuda yang pernah ada di sana. Gelar itu terasa berat dan ringan pada saat bersamaan.", effects: { wealth: 9, social: 4, mental: -4, health: -3 }, flag: "loyal_pegawai", achievement: "Diberikan pada Bangsal" },
+        { weight: 8, text: "Dedikasimu dilihat. Suatu hari namamu ada di pintu sebuah ruangan. Kepala bagian termuda yang pernah ada di sana. Gelar itu terasa berat dan ringan pada saat bersamaan.", effects: { wealth: 9, social: 4, mental: -4, health: -3 }, flag: "loyal_pegawai", achievement: "Diberikan pada Bangsal" },
         { weight: 8, text: "Tubuhmu menagih lebih awal dari semestinya. Suatu pagi kamu pingsan di lorong yang kamu hafal baunya. Mereka memberimu cuti seminggu, dan melupakan sebabnya.", effects: { wealth: 3, health: -8, mental: -6 }, flag: "loyal_pegawai", mood: "tragic" },
       ]},
       { id: "batas", label: "Tetapkan batas. Pulang saat jadwalmu habis", outcomes: [
         { weight: 8, text: "Beberapa senior memandangmu seolah kamu kurang berdedikasi. Tapi kamu masih ingat wajah keluargamu, dan itu kamu hitung sebagai kemenangan.", effects: { mental: 5, social: -2, health: 2 } },
-        { weight: 8, text: "Awalnya canggung menolak. Lama-lama ada satu-dua rekan muda diam-diam menirumu. Batas itu menular, pelan, seperti kabar baik yang malu-malu.", effects: { mental: 6, social: 3, health: 3 }, mood: "warm" },
+        { weight: 8, text: "Awalnya canggung. Lama-lama ada satu-dua rekan muda yang diam-diam menirumu. Batas itu menular, pelan, seperti kabar baik yang malu-malu.", effects: { mental: 6, social: 3, health: 3 }, mood: "warm" },
       ]},
       { id: "klinik", label: "Keluar, buka praktik kecil sendiri", outcomes: [
         { weight: 8, text: "Ruang tunggu sempit, papan nama sederhana. Penghasilannya tidak pasti di tahun pertama, tapi untuk pertama kalinya kamu memutuskan ritme harimu sendiri.", effects: { wealth: -3, happiness: 5, mental: 3 }, flag: "praktik_sendiri" },
         { weight: 8, text: "Lima tahun kemudian, kliniknya jadi tempat yang dikenal sekelurahan. Orang datang bukan hanya untuk diperiksa, tapi untuk didengar.", effects: { wealth: 8, happiness: 6, social: 4 }, flag: "praktik_sendiri", achievement: "Dokter Kampung" },
-        { weight: 8, text: "Tahun-tahun pertama nyaris menenggelamkanmu. Sewa, listrik, pasien yang membayar dengan telur dan terima kasih. Kamu bertahan karena tidak tahu harus ke mana lagi, dan ternyata itu cukup.", effects: { wealth: -6, mental: 2, happiness: 2 }, flag: "praktik_sendiri" },
+        { weight: 8, text: "Tahun-tahun pertama nyaris menenggelamkanmu. Sewa, listrik, pasien yang membayar dengan telur dan terima kasih. Kamu bertahan karena tidak tahu harus ke mana lagi.", effects: { wealth: -6, mental: 2, happiness: 2 }, flag: "praktik_sendiri" },
       ]},
     ],
   }),
@@ -300,15 +300,15 @@ export const BRANCH_POOL: LifeEvent[] = [
     ageMin: 27, ageMax: 37, requireFlag: "terapi_ragu", guaranteed: true,
     requireFlagAge: { flag: "terapi_bohong_age", min: 2, max: 2 }, mood: "melancholy",
     title: "Kursi yang Sama, Dua Tahun Kemudian",
-    prompt: "Kalimat yang ditulis terapis itu tak pernah benar-benar berhenti terngiang. Suatu pagi kamu mendapati dirimu menekan bel klinik yang sama. Kali ini tanpa lebih dulu menyiapkan 'saya baik-baik saja'.",
+    prompt: "Suatu pagi kamu mendapati dirimu menekan bel klinik yang sama. Kali ini tanpa lebih dulu menyiapkan 'saya baik-baik saja'.",
     choices: [
-      { id: "jujur", label: "Ulang kalimat yang dulu kamu telan", outcomes: [
-        { weight: 8, text: "Kamu ucapkan apa yang dua tahun lalu kamu tukar dengan kebohongan. Kali ini kamu datang lagi minggu depan, dan minggu setelahnya.", effects: { mental: 11, happiness: 5 }, removeTrait: "nihilistic", flag: "terapi", mood: "warm", achievement: "Kembali ke Kursi Itu", memory: { text: "Kursi empuk yang akhirnya kamu datangi lagi, dua tahun terlambat.", tag: "waktu", mood: "warm" } },
+      { id: "jujur", label: "Keluarkan kalimat yang dulu kamu telan", outcomes: [
+        { weight: 8, text: "Kamu ucapkan apa yang dua tahun lalu kamu tukar dengan kebohongan. Kali ini, kamu datang lagi minggu depan, dan minggu setelahnya.", effects: { mental: 11, happiness: 5 }, removeTrait: "nihilistic", flag: "terapi", mood: "warm", achievement: "Kembali ke Kursi Itu", memory: { text: "Kursi empuk yang akhirnya kamu datangi lagi, dua tahun terlambat.", tag: "waktu", mood: "warm" } },
         { weight: 8, text: "Tidak semuanya langsung membaik. Ada minggu-minggu kamu ingin berhenti lagi seperti dulu. Bedanya, sekarang kamu tahu arahnya sudah benar.", effects: { mental: 8, happiness: 3 }, removeTrait: "nihilistic", flag: "terapi" },
       ]},
       { id: "pelan", label: "'Saya... tidak tahu harus mulai dari mana'", outcomes: [
         { weight: 8, text: "Terapis itu mengangguk, seolah itu jawaban paling jujur yang bisa dia harap. Kalian mulai dari diam. Pelan, tapi kali ini kamu tidak pulang lalu menghilang.", effects: { mental: 9, happiness: 3 }, flag: "terapi", mood: "warm" },
-        { weight: 8, text: "Mengaku bahwa kamu tersesat ternyata sudah setengah jalannya. Kamu pulang dengan lelah yang aneh, bukan lelah yang kosong.", effects: { mental: 7, happiness: 2 }, flag: "terapi", mood: "melancholy" },
+        { weight: 8, text: "Mengaku bahwa kamu tersesat ternyata sudah setengah dari progressnya. Kamu pulang dengan lelah yang aneh, bukan lelah yang kosong.", effects: { mental: 7, happiness: 2 }, flag: "terapi", mood: "melancholy" },
       ]},
     ],
   }),
@@ -319,15 +319,15 @@ export const BRANCH_POOL: LifeEvent[] = [
     prompt: "Kotak produk MLM itu masih utuh di pojok kamar. Andi sudah hilang. Utang Rp 5 juta belum lunas.",
     choices: (ctx) => [
       { id: "jual_rugi", label: "Jual rugi di marketplace", outcomes: [
-        { weight: 8, text: `Laku 1.2 juta. Kamu menulis di catatan: 'pelajaran termahal usia ${ctx.state.age}.' Lalu lupakan.`, effects: { wealth: -4, mental: 4 } },
+        { weight: 8, text: "Laku 1.2 juta. Kamu menulis di catatan 'pelajaran termahal di usia ${ctx.state.age}.' Lalu lupa.", effects: { wealth: -4, mental: 4 } },
         { weight: 8, text: "Tidak ada yang beli berbulan-bulan. Akhirnya kamu bagikan cuma-cuma ke tetangga. Rugi total, tapi anehnya beban di dadamu ikut hilang bersama kardus itu.", effects: { wealth: -5, mental: 5 } },
       ]},
       { id: "pakai", label: "Pakai sendiri saja", outcomes: [
         { weight: 8, text: "Vitaminnya kamu minum 3 hari, lalu lupa. Sabunnya kamu pakai sampai habis. Krim wajahnya kamu kasih sepupu.", effects: { mental: 2, happiness: 1 } },
-        { weight: 8, text: "Krim wajahnya ternyata cocok. Selama setahun kamu punya rutinitas kecil yang lumayan. Penipuan yang menyisakan satu hal berguna. Lucu juga.", effects: { happiness: 2, health: 1 } },
+        { weight: 4, text: "Krim wajahnya ternyata cocok. Selama setahun kamu punya rutinitas kecil. Penipuan yang menyisakan satu hal berguna. Lucu juga.", effects: { happiness: 2, health: 1 } },
       ]},
       { id: "balas", label: "Cari Andi, minta tanggung jawab", outcomes: [
-        { weight: 8, text: "Nomornya tidak aktif. Akun sosialnya hilang. Kamu menghela napas, lalu membiarkannya.", effects: { mental: -3 } },
+        { weight: 8, text: "Nomornya tidak aktif. Akun sosialnya hilang. Kamu menghela napas, lalu merelakannya.", effects: { mental: -3 } },
         { weight: 8, text: "Kamu temukan akun barunya. Nama lain, foto lain, janji yang sama persis ke orang-orang baru. Kamu screenshot, report, lalu menutup ponsel. Setidaknya bukan cuma kamu yang akan tahu.", effects: { mental: -1, social: 1 } },
       ]},
     ],
@@ -343,14 +343,14 @@ export const BRANCH_POOL: LifeEvent[] = [
       return [
         { id: "balik_kantor", label: "Cukup. Lamar kerja kantoran lagi", outcomes: [
           { weight: 8, text: "Kamu kembali ke meja, ke gaji yang masuk tiap tanggal yang sama. Lega, dan sedikit kalah. Kebebasan ternyata barang yang gampang dijual saat lapar.", effects: { wealth: 7, mental: 2, happiness: -2 }, flag: "comeback_kerja", mood: "melancholy" as const },
-          { weight: 8, text: "Kamu kirim lamaran ke mana-mana. Yang membalas menanyakan 'kenapa ada jeda di CV-mu' seolah hidup harus selalu berisi. Kamu menyerah melamar.", effects: { mental: 1, wealth: -2 } },
+          { weight: 6, text: "Kamu kirim lamaran ke mana-mana. Yang membalas menanyakan 'kenapa ada jeda di CV-mu' seolah hidup harus selalu berisi. Kamu menyerah melamar.", effects: { mental: 1, wealth: -2 } },
         ]},
         { id: "bertahan", label: "Bertahan. Kebebasan ini mahal, tapi milikmu", outcomes: [
-          { weight: 8, text: "Kamu belajar menyisihkan saat ramai untuk menambal saat sepi. Hidupmu tidak rapi, tapi tidak ada yang menyuruhmu datang pagi. Itu kamu hitung sebagai untung.", effects: { discipline: 5, mental: 3, wealth: 1 }, addTrait: "ambitious",
+          { weight: 8, text: "Kamu belajar menyisihkan saat ramai untuk menambal saat sepi. Hidupmu tidak rapi, tapi tidak ada yang menyuruhmu datang pagi. Kamu hitung itu sebagai untung.", effects: { discipline: 5, mental: 3, wealth: 1 }, addTrait: "ambitious",
             memory: { text: "Tahun-tahun kerja lepas, ramai dan sepi yang silih berganti.", tag: "bebas", mood: "melancholy" as const } },
           { weight: 8, text: ibuHidup
               ? "Satu bulan benar-benar kosong. Kamu makan seadanya, tapi sempat mengantar ibu ke pasar di hari kerja. Hal yang dulu mustahil. Miskin di satu hal, kaya di hal lain."
-              : "Satu bulan benar-benar kosong. Kamu makan seadanya, tapi sempat menengok makam ibu di hari kerja, saat di pemakaman hanya ada kamu. Hal yang dulu tak pernah sempat. Miskin di satu hal, kaya di hal lain.", effects: { wealth: -4, happiness: 4, mental: 2 }, mood: "warm" as const },
+              : "Satu bulan benar-benar kosong. Kamu makan seadanya, tapi sempat menengok makam ibu di hari kerja, saat di pemakaman hanya ada kamu. Miskin di satu hal, kaya di hal lain.", effects: { wealth: -4, happiness: 4, mental: 2 }, mood: "warm" as const },
         ]},
       ];
     },
@@ -360,10 +360,10 @@ export const BRANCH_POOL: LifeEvent[] = [
     id: "br_freelance_jalan", category: "sukses_kosong", pool: "economic", rarity: "uncommon",
     ageMin: 28, ageMax: 44, requireFlag: "freelancer_sukses", deferrable: true, mood: "melancholy",
     title: "Lima Klien, Nol Rekan",
-    prompt: "Lima klien tetap, penghasilan yang dulu kamu ragu bisa kamu capai sendiri. Makan siang selalu di depan layar yang sama. Dan saat satu proyek besar akhirnya kelar, tidak ada yang menoleh untuk ikut senang.",
+    prompt: "Lima klien tetap, penghasilan yang dulu ragu bisa kamu capai sendiri. Makan siang selalu di depan layar yang sama. Dan saat ada proyek yang akhirnya kelar, tidak ada yang menoleh untuk ikut senang.",
     choices: [
       { id: "jaringan", label: "Ajak freelancer lain berkolaborasi", outcomes: [
-        { weight: 8, text: "Kalian patungan sewa satu ruangan kerja kecil. Bukan kantor, hanya beberapa meja dan kopi yang sama-sama buruk. Tapi ada yang menyapa saat kamu datang, dan itu cukup mengubah banyak hal.", effects: { social: 6, happiness: 5, wealth: 2 }, mood: "warm",
+        { weight: 8, text: "Kalian patungan sewa ruangan kecil. Bukan kantor, hanya beberapa meja dan kopi yang sama-sama buruk. Tapi ada yang menyapa saat kamu datang, dan itu cukup mengubah banyak hal.", effects: { social: 6, happiness: 5, wealth: 2 }, mood: "warm",
           addsRelationship: { name: "Rekan Seruangan", role: "friend", closeness: 45, alive: true } },
         { weight: 8, text: "Beberapa kolaborasi jalan, beberapa berantakan soal uang. Kamu belajar mana orang yang bisa dibawa untuk kerja, mana yang hanya untuk ditemani. Dua kategori yang ternyata jarang berhimpit.", effects: { social: 3, intelligence: 2, mental: 1 } },
       ]},

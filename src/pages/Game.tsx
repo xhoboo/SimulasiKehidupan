@@ -3,6 +3,7 @@ import { AnimatePresence, motion } from "framer-motion";
 import { GameState, LifeEvent, Choice, Outcome, Mood } from "@/game/types";
 import { newGame, makeRng, TRAIT_LABELS, deriveTraits, evPrompt, evTitle, evChoices } from "@/game/engine";
 import { computeEnding } from "@/game/pools/ending";
+import { encodeMemoriam } from "@/lib/memoriam-share";
 import { applyOutcome, maybeMemoryCallback, pickEvent, pickDeathEvent, rollOutcome, tickYear, syntheticFiller, pickSecondaryEvent, pickCompanionEvent, resolveScheduledSynthetic, SYNTH_PENDING_FLAG } from "@/game/runtime";
 import { autoSave, clearAutoSave, loadAutoSave } from "@/game/save";
 import { ACHIEVEMENTS, loadUnlockedAchievements, recordAchievements, evaluateLifeEndAchievements, incrementLivesCompleted } from "@/game/achievements";
@@ -565,6 +566,20 @@ function DeathScreen({ state, onRestart }: { state: GameState; onRestart: () => 
   // Area yang ditangkap sebagai screenshot saat dibagikan — meliputi seluruh
   // tampilan In Memoriam kecuali tombol aksi di bawah.
   const captureRef = useRef<HTMLDivElement>(null);
+  // Tautan share membawa data In Memoriam terkode agar crawler (Facebook dkk.)
+  // bisa merender preview personal lewat /api/m (lihat api/m.ts & api/og.tsx).
+  const shareLink = useMemo(() => {
+    if (typeof window === "undefined") return "";
+    const data = encodeMemoriam({
+      n: state.name,
+      a: state.age,
+      c: ending.causeOfDeath,
+      t: ending.title,
+      e: ending.epitaph,
+      tr: deathTraits.slice(0, 4).map((t) => TRAIT_LABELS[t]),
+    });
+    return `${window.location.origin}/api/m?d=${data}`;
+  }, [state.name, state.age, ending, deathTraits]);
   return (
     <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 1.2 }} className="max-w-3xl mx-auto pt-8">
       <div ref={captureRef} className="bg-background">
@@ -633,7 +648,7 @@ function DeathScreen({ state, onRestart }: { state: GameState; onRestart: () => 
       </div>
 
       <div className="flex items-center justify-center gap-3">
-        <ShareDialog captureRef={captureRef} name={state.name} />
+        <ShareDialog captureRef={captureRef} name={state.name} shareLink={shareLink} />
         <Button size="lg" onClick={onRestart} className="font-display">Mulai hidup yang lain</Button>
       </div>
     </motion.div>
@@ -692,7 +707,7 @@ async function dataUrlToFile(dataUrl: string, filename: string): Promise<File> {
   return new File([blob], filename, { type: "image/png" });
 }
 
-function ShareDialog({ captureRef, name }: { captureRef: React.RefObject<HTMLDivElement>; name: string }) {
+function ShareDialog({ captureRef, name, shareLink }: { captureRef: React.RefObject<HTMLDivElement>; name: string; shareLink: string }) {
   const [open, setOpen] = useState(false);
   const [shot, setShot] = useState<string | null>(null);
   const [capturing, setCapturing] = useState(false);
@@ -703,7 +718,9 @@ function ShareDialog({ captureRef, name }: { captureRef: React.RefObject<HTMLDiv
   // beberapa platform, agar tidak membanjiri pemain dengan berkas berulang.
   const downloadedRef = useRef(false);
 
-  const gameLink = typeof window !== "undefined" ? window.location.origin : "";
+  // Tautan yang dibagikan: URL /api/m berisi data In Memoriam (agar preview
+  // sosial personal). Fallback ke origin bila belum tersedia.
+  const gameLink = shareLink || (typeof window !== "undefined" ? window.location.origin : "");
   const shareText = `Aku baru saja menamatkan satu kehidupan sebagai ${name} di Simulasi Kehidupan. Tulis kisah hidupmu sendiri:`;
   const fileName = `in-memoriam-${name.replace(/\s+/g, "-").toLowerCase() || "kehidupan"}.png`;
 
@@ -770,13 +787,19 @@ function ShareDialog({ captureRef, name }: { captureRef: React.RefObject<HTMLDiv
   // lolos), jadi tiap platform punya tombolnya sendiri.
   const shareTo = (platform: SharePlatform) => {
     if (!shot) return;
+    // Buka jendela berbagi LEBIH DULU — ini aksi utama gestur klik. Di peramban
+    // mobile, memicu unduhan dulu akan "memakai" gestur sehingga window.open
+    // berikutnya dianggap bukan aksi pengguna dan diblokir popup blocker. Selain
+    // itu string fitur (arg ketiga) membuat mobile mencoba membuka popup window
+    // yang juga sering diblokir; cukup buka tab biasa lalu putus opener manual.
+    const win = window.open(buildShareUrl(platform, gameLink, shareText), "_blank");
+    if (win) win.opener = null;
     // Web intent platform tidak bisa menerima berkas gambar, jadi screenshot
     // diunduh sekali agar pemain dapat melampirkannya pada postingan.
     if (!downloadedRef.current) {
       downloadShot();
       toast.success("Screenshot tersimpan — lampirkan ke postinganmu.");
     }
-    window.open(buildShareUrl(platform, gameLink, shareText), "_blank", "noopener,noreferrer");
   };
 
   return (
