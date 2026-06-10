@@ -11,7 +11,7 @@ import { e, kerjaCtx } from "./_helpers";
 // Catatan: pernikahan & anak SUDAH ada di relationship.ts dengan urutan kausal
 // (ada_romansa → menikah → punya_anak), jadi tidak diulang di sini.
 export const LIFE_STAGES_POOL: LifeEvent[] = [
-e({
+  e({
     id: "hari_pertama_sd", category: "sekolah", pool: "age", rarity: "common",
     ageMin: 6, ageMax: 7, deferrable: true, mood: "warm",
     title: "Seragam yang Kebesaran",
@@ -28,7 +28,7 @@ e({
     ],
   }),
 
-e({
+  e({
     id: "taman_bermain", category: "pertemanan", pool: "age", rarity: "common",
     ageMin: 6, ageMax: 8, deferrable: true, mood: "warm",
     title: "Pasir dan Ayunan",
@@ -45,7 +45,7 @@ e({
     ],
   }),
 
-e({
+  e({
     id: "naksir_diam_sd", category: "cinta", pool: "age", rarity: "common",
     ageMin: 10, ageMax: 12, deferrable: true, mood: "warm",
     title: "Yang Membuat Pelajaran Jadi Lama",
@@ -63,7 +63,7 @@ e({
     ],
   }),
 
-e({
+  e({
     id: "masuk_smp", category: "sekolah", pool: "age", rarity: "common",
     ageMin: 12, ageMax: 13, deferrable: true, mood: "neutral",
     title: "Seragam Biru, Wajah-wajah Baru",
@@ -84,7 +84,7 @@ e({
     ],
   }),
 
-e({
+  e({
     id: "cinta_monyet_smp", category: "cinta", pool: "age", rarity: "common",
     ageMin: 12, ageMax: 14, deferrable: true, mood: "warm",
     title: "Ditulis di Belakang Buku",
@@ -105,7 +105,7 @@ e({
     ],
   }),
 
-e({
+  e({
     id: "rumah_pertama", category: "pekerjaan", pool: "age", rarity: "common",
     ageMin: 28, ageMax: 42, deferrable: true, mood: "neutral",
     title: "Tanda Tangan di Atas Materai",
@@ -129,7 +129,7 @@ e({
     },
   }),
 
-e({
+  e({
     id: "puncak_karir", category: "pekerjaan", pool: "age", rarity: "common",
     ageMin: 45, ageMax: 57, deferrable: true, mood: "neutral",
     title: "Yang Paling Senior di Ruangan",
@@ -150,7 +150,7 @@ e({
     ],
   }),
 
-e({
+  e({
     id: "generasi_sandwich", category: "keluarga", pool: "age", rarity: "uncommon",
     ageMin: 48, ageMax: 60, requireFlag: "punya_anak", forbidFlag: "anak_meninggal", deferrable: true, mood: "melancholy",
     title: "Terjepit di Tengah",
@@ -167,7 +167,7 @@ e({
     ],
   }),
 
-e({
+  e({
     id: "pasangan_pergi", category: "kehilangan", pool: "age", rarity: "uncommon",
     ageMin: 62, ageMax: 86, requireFlag: "menikah", requireRelationship: "pasangan",
     mood: "tragic",
@@ -185,7 +185,7 @@ e({
     ],
   }),
 
-e({
+  e({
     id: "tubuh_menua", category: "eksistensial", pool: "age", rarity: "common",
     ageMin: 70, ageMax: 88, deferrable: true, mood: "melancholy",
     title: "Tubuh yang Mulai Berunding",
@@ -202,7 +202,7 @@ e({
     ],
   }),
 
-e({
+  e({
     id: "tua_tangan_kancing", category: "eksistensial", pool: "age", rarity: "common",
     ageMin: 80, ageMax: 94, deferrable: true, mood: "melancholy",
     title: "Kancing yang Melawan",
@@ -217,7 +217,7 @@ e({
     ],
   }),
 
-e({
+  e({
     id: "tua_generasi_terakhir", category: "eksistensial", pool: "age", rarity: "common",
     ageMin: 82, ageMax: 95, deferrable: true, mood: "melancholy",
     title: "Yang Terakhir Tersisa",
@@ -234,7 +234,7 @@ e({
     ],
   }),
 
-e({
+  e({
     id: "tua_membagi_barang", category: "eksistensial", pool: "age", rarity: "common",
     ageMin: 82, ageMax: 95, deferrable: true, mood: "melancholy",
     title: "Membagi yang Tersisa",
@@ -251,7 +251,7 @@ e({
     ],
   }),
 
-e({
+  e({
     id: "tua_hari_tanpa_nama", category: "eksistensial", pool: "age", rarity: "common",
     ageMin: 84, ageMax: 95, deferrable: true, mood: "melancholy",
     title: "Hari yang Kehilangan Namanya",
@@ -268,7 +268,7 @@ e({
     ],
   }),
 
-e({
+  e({
     id: "tua_jendela_sore", category: "eksistensial", pool: "age", rarity: "common",
     ageMin: 86, ageMax: 95, deferrable: true, mood: "melancholy",
     title: "Sore di Balik Jendela",

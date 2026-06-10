@@ -51,7 +51,7 @@ function jalurKuliah(s: GameState): boolean {
 }
 
 export const DEATH_POOL: LifeEvent[] = [
-e({
+  e({
     id: "death_muda", category: "tragedi", pool: "trauma", rarity: "uncommon",
     ageMin: 0, ageMax: 12, mood: "tragic", weight: 8,
     ...dyingReq,
@@ -65,7 +65,7 @@ e({
     ],
   }),
 
-e({
+  e({
     id: "death_langit", category: "eksistensial", pool: "rare", rarity: "uncommon",
     ageMin: 0, ageMax: 120, mood: "hope", weight: 8,
     ...dyingReq, requireMemoryTag: "langit",
@@ -79,7 +79,7 @@ e({
     ],
   }),
 
-e({
+  e({
     id: "death_anak_jauh_kembali", category: "keluarga", pool: "quiet", rarity: "uncommon",
     ageMin: 0, ageMax: 120, mood: "melancholy", weight: 8,
     ...dyingReq, requireFlag: "anak_jauh", forbidFlag: "anak_meninggal",
@@ -93,7 +93,7 @@ e({
     ],
   }),
 
-e({
+  e({
     id: "death_teman_khayalan", category: "eksistensial", pool: "rare", rarity: "uncommon",
     ageMin: 0, ageMax: 120, mood: "melancholy", weight: 8,
     ...dyingReq, requireFlag: "teman_khayalan_selesai",
@@ -108,7 +108,7 @@ e({
     ],
   }),
 
-e({
+  e({
     id: "death_sekolah", category: "tragedi", pool: "trauma", rarity: "uncommon",
     ageMin: 13, ageMax: 18, mood: "tragic", weight: 8,
     ...dyingReq,
@@ -136,7 +136,7 @@ e({
     },
   }),
 
-e({
+  e({
     id: "death_kuliah", category: "tragedi", pool: "trauma", rarity: "uncommon",
     ageMin: 19, ageMax: 24, mood: "tragic", weight: 8,
     ...dyingReq,
@@ -176,7 +176,7 @@ e({
     },
   }),
 
-e({
+  e({
     id: "death_paruh_baya", category: "tragedi", pool: "trauma", rarity: "uncommon",
     ageMin: 25, ageMax: 54, mood: "tragic", weight: 8,
     ...dyingReq,
@@ -190,7 +190,7 @@ e({
     ],
   }),
 
-e({
+  e({
     id: "death_paruh_mendadak", category: "tragedi", pool: "trauma", rarity: "uncommon",
     ageMin: 25, ageMax: 54, mood: "tragic", weight: 8,
     ...dyingReq,
@@ -204,7 +204,7 @@ e({
     ],
   }),
 
-e({
+  e({
     id: "death_paruh_lelah", category: "kehilangan", pool: "quiet", rarity: "common",
     ageMin: 25, ageMax: 54, mood: "melancholy", weight: 8,
     ...dyingReq,
@@ -218,7 +218,7 @@ e({
     ],
   }),
 
-e({
+  e({
     id: "death_paruh_sempat", category: "kehilangan", pool: "quiet", rarity: "common",
     ageMin: 25, ageMax: 54, mood: "hope", weight: 8,
     ...dyingReq,
@@ -232,7 +232,7 @@ e({
     ],
   }),
 
-e({
+  e({
     id: "death_terapi", category: "eksistensial", pool: "quiet", rarity: "uncommon",
     ageMin: 30, ageMax: 120, mood: "warm", weight: 8,
     ...dyingReq, requireFlag: "terapi",
@@ -246,7 +246,7 @@ e({
     ],
   }),
 
-e({
+  e({
     id: "death_ibu_regret", category: "kehilangan", pool: "trauma", rarity: "common",
     ageMin: 35, ageMax: 120, mood: "tragic", weight: 8,
     ...dyingReq, requireFlag: "regret_ibu_telepon",
@@ -260,7 +260,7 @@ e({
     ],
   }),
 
-e({
+  e({
     id: "death_bersama_pasangan", category: "keluarga", pool: "quiet", rarity: "common",
     ageMin: 35, ageMax: 120, mood: "warm", weight: 8,
     ...dyingReq, requireFlag: "menikah",
@@ -289,7 +289,7 @@ e({
     },
   }),
 
-e({
+  e({
     id: "death_sahabat_regret", category: "kehilangan", pool: "trauma", rarity: "common",
     ageMin: 40, ageMax: 120, mood: "tragic", weight: 8,
     ...dyingReq, requireFlag: "regret_sahabat",
@@ -303,7 +303,7 @@ e({
     ],
   }),
 
-e({
+  e({
     id: "death_seniman", category: "sukses_kosong", pool: "rare", rarity: "uncommon",
     ageMin: 40, ageMax: 120, mood: "hope", weight: 8,
     ...dyingReq, requireAnyFlag: ["jurusan_seni", "seniman_naik"],
@@ -317,7 +317,7 @@ e({
     ],
   }),
 
-e({
+  e({
     id: "death_loyal_pegawai", category: "pekerjaan", pool: "regret", rarity: "common",
     ageMin: 55, ageMax: 120, mood: "melancholy", weight: 8,
     ...dyingReq, requireFlag: "loyal_pegawai",
@@ -336,7 +336,7 @@ e({
     ],
   }),
 
-e({
+  e({
     id: "death_kaya_sepi", category: "sukses_kosong", pool: "regret", rarity: "common",
     ageMin: 55, ageMax: 120, mood: "melancholy", weight: 8,
     ...dyingReq, requireFlag: "rumah_besar",
@@ -350,7 +350,7 @@ e({
     ],
   }),
 
-e({
+  e({
     id: "death_biasa", category: "kehilangan", pool: "quiet", rarity: "common",
     ageMin: 55, ageMax: 120, mood: "melancholy", weight: 8,
     ...dyingReq,
@@ -364,7 +364,7 @@ e({
     ],
   }),
 
-e({
+  e({
     id: "death_senja", category: "kehilangan", pool: "quiet", rarity: "common",
     ageMin: 55, ageMax: 120, mood: "melancholy", weight: 8,
     ...dyingReq,
@@ -378,7 +378,7 @@ e({
     ],
   }),
 
-e({
+  e({
     id: "death_bersama_anak", category: "keluarga", pool: "quiet", rarity: "common",
     ageMin: 55, ageMax: 120, mood: "warm", weight: 8,
     ...dyingReq, requireFlag: "punya_anak", forbidFlag: "anak_meninggal",
@@ -392,7 +392,7 @@ e({
     ],
   }),
 
-e({
+  e({
     id: "death_abai", category: "penyakit", pool: "trauma", rarity: "common",
     ageMin: 60, ageMax: 120, mood: "melancholy", weight: 8,
     ...dyingReq, requireFlag: "abai_kesehatan",
@@ -406,7 +406,7 @@ e({
     ],
   }),
 
-e({
+  e({
     id: "death_tenang_kenangan", category: "kehilangan", pool: "quiet", rarity: "common",
     ageMin: 65, ageMax: 120, mood: "warm", weight: 8,
     ...dyingReq,

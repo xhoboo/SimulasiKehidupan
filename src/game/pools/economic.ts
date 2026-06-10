@@ -2,7 +2,7 @@ import { LifeEvent } from "../types";
 import { e } from "./_helpers";
 
 export const ECONOMIC_POOL: LifeEvent[] = [
-e({
+  e({
     id: "akhir_bulan_2", category: "pekerjaan", pool: "economic", rarity: "common",
     ageMin: 25, ageMax: 42, requireWealthMax: 20, requireFlag: "akhir_bulan_1", mood: "melancholy",
     title: "Tanggal 25, Lagi",
@@ -27,7 +27,7 @@ e({
     ],
   }),
 
-e({
+  e({
     id: "akhir_bulan_susah", category: "pekerjaan", pool: "economic", rarity: "common",
     ageMin: 24, ageMax: 40, requireWealthMax: 25, deferrable: true, mood: "melancholy",
     title: "Tanggal 27",
@@ -52,7 +52,7 @@ e({
     ],
   }),
 
-e({
+  e({
     id: "akhir_bulan_3", category: "pekerjaan", pool: "economic", rarity: "uncommon",
     ageMin: 26, ageMax: 45, requireWealthMax: 15, requireFlag: "akhir_bulan_2", mood: "melancholy",
     title: "Siklus",
@@ -73,7 +73,7 @@ e({
     ],
   }),
 
-e({
+  e({
     id: "kaya_mendadak", category: "sukses_kosong", pool: "economic", rarity: "rare",
     ageMin: 25, ageMax: 60, title: "Transferan Tidak Terduga",
     prompt: "Saldo bertambah 8 digit. Investasi lama yang kamu lupa, tiba-tiba berbuah.",
@@ -97,7 +97,7 @@ e({
     ],
   }),
 
-e({
+  e({
     id: "promosi", category: "pekerjaan", pool: "economic", rarity: "uncommon",
     ageMin: 26, ageMax: 45, requireWealthMin: 30, title: "Email dari HR",
     prompt: "Subjek: 'Perubahan Posisi'. Hatimu loncat sebentar. Promosi!",

@@ -23,7 +23,7 @@ import { e } from "./_helpers";
 // kenangan (memory), bukan sebagai sosok nyata. (Lihat juga gating di age.ts,
 // branch.ts, trauma.ts, dan forbidFlag di filler_synthetic.ts.)
 export const PARENT_LOSS_POOL: LifeEvent[] = [
-e({
+  e({
     id: "kehilangan_ibu_dini", category: "kehilangan", pool: "trauma", rarity: "rare",
     ageMin: 4, ageMax: 17, forbidFlag: "ibu_meninggal", mood: "tragic",
     lifetimeChance: 0.06,
@@ -53,7 +53,7 @@ e({
     ],
   }),
 
-e({
+  e({
     id: "kehilangan_ayah_dini", category: "kehilangan", pool: "trauma", rarity: "rare",
     ageMin: 4, ageMax: 17, forbidFlag: "ayah_meninggal", mood: "tragic",
     lifetimeChance: 0.06,
@@ -85,7 +85,7 @@ e({
     },
   }),
 
-e({
+  e({
     id: "menjadi_yatim_piatu", category: "kehilangan", pool: "trauma", rarity: "rare",
     ageMin: 5, ageMax: 80, guaranteed: true,
     requireAllFlags: ["ibu_meninggal", "ayah_meninggal"], mood: "melancholy",
@@ -114,7 +114,7 @@ e({
     ],
   }),
 
-e({
+  e({
     id: "kehilangan_ibu_muda", category: "kehilangan", pool: "trauma", rarity: "uncommon",
     ageMin: 18, ageMax: 34, forbidFlag: "ibu_meninggal", mood: "tragic",
     lifetimeChance: 0.08,
@@ -134,7 +134,7 @@ e({
     ],
   }),
 
-e({
+  e({
     id: "kehilangan_ayah_muda", category: "kehilangan", pool: "trauma", rarity: "uncommon",
     ageMin: 18, ageMax: 34, forbidFlag: "ayah_meninggal", mood: "tragic",
     lifetimeChance: 0.08,

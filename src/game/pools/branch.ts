@@ -9,28 +9,38 @@ import { e } from "./_helpers";
 // bisa berbeda (stat, mood, kenangan, sifat). Jadi "jalan yang sama" bisa membuahkan
 // hidup yang berbeda, sampai ke cara kematiannya (health/mental mempengaruhi mortalitas).
 export const BRANCH_POOL: LifeEvent[] = [
-e({
+  e({
     id: "br_gap_pulang", category: "eksistensial", pool: "age", rarity: "uncommon",
-    ageMin: 20, ageMax: 20, requireFlag: "gap_year", guaranteed: true, mood: "melancholy",
+    ageMin: 19, ageMax: 19, requireFlag: "gap_year", guaranteed: true, mood: "melancholy",
     title: "Sehabis Setahun",
     prompt: "Setahun gap berakhir. Kamu masih belum tahu mau jadi apa, tapi sekarang lebih jujur tentang itu.",
-    choices: [
-      { id: "kuliah", label: "Daftar kuliah, jurusan apa saja yang masuk", outcomes: [
-        { weight: 8, text: "Filsafat. Kamu tidak menyangka, tapi kelas pertamamu terasa seperti pulang.", effects: { intelligence: 6, happiness: 5 }, flag: "jurusan_filsafat", addTrait: "curious" },
-        { weight: 8, text: "Psikologi. Kamu mengira akan belajar membaca orang lain, ternyata yang paling sering kamu lakukan di tiap teori justru dirimu sendiri.", effects: { intelligence: 6, mental: 4 }, flag: "jurusan_psikologi", addTrait: "empathetic" },
-      ]},
-      { id: "kerja", label: "Cari kerja apapun, mulai dari nol", outcomes: [
-        { weight: 8, text: "Barista. Tiga bulan pertama berat. Tapi tanganmu belajar sesuatu yang sekolah tidak pernah ajarkan.", effects: { discipline: 5, social: 4 }, flag: "barista" },
-        { weight: 8, text: "Berjualan di pinggir jalan. Gerobak pinjaman, dagangan seadanya. Malu di hari pertama hampir mengalahkanmu.", effects: { discipline: 5, social: 3, wealth: 1 }, flag: "pedagang_kaki_lima" },
-      ]},
-      { id: "lanjut_gap", label: "Lanjutkan gap. Setahun lagi.", outcomes: [
-        { weight: 8, text: "Setahun jadi tiga. Orangtuamu berhenti bertanya. Itu terasa seperti kekalahan dan kebebasan sekaligus.", effects: { mental: -3, happiness: 1 }, flag: "gap_panjang" },
-        { weight: 8, text: "Setahun lagi. Tapi kali ini kamu isi: kerja paruh waktu, kelas online tengah malam, satu proyek yang tak seorang pun memintamu. Gap yang tidak lagi terasa seperti melarikan diri.", effects: { intelligence: 4, discipline: 3, mental: 2 }, flag: "gap_panjang" },
-      ]},
-    ],
+    choices: (ctx) => {
+      // "Orangtuamu berhenti bertanya" hanya masuk akal kalau masih ada orang tua
+      // yang bisa bertanya. Kalau keduanya sudah wafat (mis. lewat parent_loss dini),
+      // alihkan ke versi tanpa orang tua supaya tidak menyebut mereka seolah hidup.
+      const adaOrtu = ctx.state.relationships.some(
+        (r) => (r.id === "ibu" || r.id === "ayah") && r.alive,
+      );
+      return [
+        { id: "kuliah", label: "Daftar kuliah, jurusan apa saja", outcomes: [
+          { weight: 8, text: "Filsafat. Kamu tidak menyangka kelas pertamamu terasa seperti pulang.", effects: { intelligence: 6, happiness: 5 }, flag: "jurusan_filsafat", addTrait: "curious" },
+          { weight: 8, text: "Psikologi. Kamu mengira akan belajar membaca orang lain, ternyata yang paling sering kamu lakukan di tiap teori justru dirimu sendiri.", effects: { intelligence: 6, mental: 4 }, flag: "jurusan_psikologi", addTrait: "empathetic" },
+        ]},
+        { id: "kerja", label: "Cari kerja apapun, mulai dari nol", outcomes: [
+          { weight: 8, text: "Barista. Tiga bulan pertama berat. Tapi tanganmu belajar sesuatu yang sekolah tidak pernah ajarkan.", effects: { discipline: 5, social: 4 }, flag: "barista" },
+          { weight: 8, text: "Berjualan di pinggir jalan. Gerobak pinjaman, dagangan seadanya. Malu di hari pertama hampir mengalahkanmu.", effects: { discipline: 5, social: 3, wealth: 1 }, flag: "pedagang_kaki_lima" },
+        ]},
+        { id: "lanjut_gap", label: "Lanjutkan gap. Setahun lagi.", outcomes: [
+          { weight: 8, text: adaOrtu
+              ? "Orangtuamu berhenti bertanya. Itu terasa seperti kekalahan dan kebebasan sekaligus."
+              : "Tidak ada lagi yang bertanya kamu mau jadi apa. Itu terasa seperti kebebasan dan kekalahan sekaligus.", effects: { mental: -3, happiness: 1 }, flag: "gap_panjang" },
+          { weight: 8, text: "Setahun lagi. Tapi kali ini kamu isi: kerja paruh waktu, kelas online tengah malam, satu proyek yang tak seorang pun memintamu. Gap yang tidak terasa lagi seperti melarikan diri.", effects: { intelligence: 4, discipline: 3, mental: 2 }, flag: "gap_panjang" },
+        ]},
+      ];
+    },
   }),
 
-e({
+  e({
     id: "br_dokter_koas", category: "pekerjaan", pool: "age", rarity: "common",
     // guaranteed + jendela 22-24: koas HARUS muncul sebelum br_dokter_kerja (27+),
     // supaya kalimat "beberapa tahun sejak koas" di sana tidak pernah menggantung.
@@ -40,64 +50,64 @@ e({
     choices: [
       { id: "tegar", label: "Pulang, mandi, tidur 2 jam", outcomes: [
         { weight: 8, text: "Kamu belajar mematikan satu bagian dalam dirimu. Itu yang membuatmu bisa bertahan.", effects: { mental: -4, discipline: 5 }, addTrait: "ambitious", flag: "dokter_jadi", extraFlags: ["sudah_lulus"] },
-        { weight: 8, text: "Mandi tidak menghapus bau lorong itu. Kamu berangkat lagi sebelum sempat merasa apa-apa, dan begitu seterusnya. Kamu jadi pandai melakukannya.", effects: { mental: -7, health: -3, discipline: 6 }, addTrait: "ambitious", flag: "dokter_jadi", extraFlags: ["sudah_lulus"], mood: "tragic" },
+        { weight: 8, text: "Mandi tidak menghapus bau lorong itu. Kamu berangkat lagi sebelum sempat merasakan apa-apa.", effects: { mental: -7, health: -3, discipline: 6 }, addTrait: "ambitious", flag: "dokter_jadi", extraFlags: ["sudah_lulus"], mood: "tragic" },
       ]},
       { id: "menangis", label: "Menangis di tangga rumah sakit", outcomes: [
         { weight: 8, text: "Senior menemukanmu, tidak berkata apa-apa, hanya duduk di sebelah. Sepuluh menit. Lalu kalian kembali kerja.", effects: { mental: -2, social: 3 }, addTrait: "empathetic", flag: "dokter_jadi", extraFlags: ["sudah_lulus"], memory: { text: "Tangga rumah sakit jam 4 pagi.", tag: "koas", mood: "melancholy" } },
-        { weight: 8, text: "Tidak ada yang menemukanmu. Kamu menangis sampai habis, mencuci muka di wastafel, lalu kembali ke bangsal. Ternyata kamu sanggup, dan itu menakutkan.", effects: { mental: 2, discipline: 4 }, addTrait: "empathetic", flag: "dokter_jadi", extraFlags: ["sudah_lulus"], memory: { text: "Menangis sendirian, lalu kembali kerja.", tag: "koas", mood: "melancholy" } },
+        { weight: 8, text: "Kamu menangis 10 menit, mencuci muka di wastafel, lalu kembali ke bangsal. Ternyata kamu sanggup, dan itu menakutkan.", effects: { mental: 2, discipline: 4 }, addTrait: "empathetic", flag: "dokter_jadi", extraFlags: ["sudah_lulus"], memory: { text: "Menangis sendirian, lalu kembali kerja.", tag: "koas", mood: "melancholy" } },
       ]},
       { id: "berhenti", label: "Pikirkan untuk berhenti", outcomes: [
         // flag dokter_jadi: meski sempat ingin berhenti, ia tetap jadi dokter — jadi br_dokter_kerja boleh menyusul.
         { weight: 8, text: "Kamu menulis surat resign tiga kali dan merobeknya tiga kali. Pagi datang. Kamu tetap di sana.", effects: { mental: -5, discipline: 2 }, flag: "dokter_jadi", extraFlags: ["sudah_lulus"] },
-        { weight: 8, text: "Kamu tidak menulis apa-apa. Hanya duduk di parkiran sampai matahari naik, lalu masuk lagi. Pikiran untuk berhenti itu tidak pernah benar-benar pergi, tapi juga tidak pernah menang.", effects: { mental: -3, happiness: -2 }, flag: "dokter_jadi", extraFlags: ["sudah_lulus"] },
+        { weight: 8, text: "Kamu tidak menulis apa-apa. Hanya duduk di parkiran sampai matahari naik, lalu masuk lagi.", effects: { mental: -3, happiness: -2 }, flag: "dokter_jadi", extraFlags: ["sudah_lulus"] },
       ]},
     ],
   }),
 
-e({
+  e({
     id: "br_filsafat_jalan", category: "eksistensial", pool: "age", rarity: "uncommon",
     ageMin: 24, ageMax: 26, requireFlag: "jurusan_filsafat", guaranteed: true, mood: "melancholy",
     title: "Gelar yang Tidak Ada Lowongannya",
     prompt: "Ijazah filsafat di laci. Kolom lowongan tidak pernah menyebut kata itu sekali pun. Yang kamu punya cuma kebiasaan bertanya yang tidak bisa dimatikan, di dunia yang membayar orang untuk berhenti bertanya.",
     choices: [
       { id: "ajar", label: "Mengajar. Bagikan pertanyaannya ke yang lebih muda", outcomes: [
-        { weight: 8, flag: "sudah_lulus", text: "Gaji guru honorer tidak cukup, tapi ada satu murid yang matanya menyala saat kamu bilang 'belum tentu'. Itu yang membuatmu kembali tiap pagi.", effects: { happiness: 5, social: 4, wealth: -2 }, addTrait: "curious",
+        { weight: 8, flag: "sudah_lulus", text: "Gaji guru honorer tidak cukup, tapi ada satu murid yang matanya menyala saat kamu bilang 'belum tentu'.", effects: { happiness: 5, social: 4, wealth: -2 }, addTrait: "curious",
           memory: { text: "Murid yang matanya menyala saat kamu bilang 'belum tentu'.", tag: "waktu", mood: "warm" } },
-        { weight: 8, flag: "sudah_lulus", text: "Kamu mengajar, dan menyadari sebagian besar muridmu cuma ingin nilai, bukan pertanyaan. Kamu tetap menyelipkannya, diam-diam, seperti menanam pohon yang teduhnya untuk orang lain.", effects: { mental: 4, social: 2, wealth: -2 }, mood: "melancholy" },
+        { weight: 8, flag: "sudah_lulus", text: "Kamu menyadari sebagian besar murid cuma ingin nilai. Kamu tetap menyelipkan pertanyaan, diam-diam, seperti menanam pohon yang teduhnya untuk orang lain.", effects: { mental: 4, social: 2, wealth: -2 }, mood: "melancholy" },
       ]},
       { id: "kantor", label: "Ambil kerja apa saja", outcomes: [
-        { weight: 8, flag: "sudah_lulus", text: "Siang kamu jadi orang yang berguna di sebuah kantor. Malam kamu baca Camus sampai larut. Dua orang dalam satu tubuh, dan keduanya belajar berdamai.", effects: { wealth: 4, mental: 2, intelligence: 3 },
+        { weight: 8, flag: "sudah_lulus", text: "Siang kamu jadi orang yang berguna di kantor. Malam kamu baca Camus sampai larut. Dua orang dalam satu tubuh, dan keduanya belajar berdamai.", effects: { wealth: 4, mental: 2, intelligence: 3 },
           memory: { text: "Malam-malam membaca Camus setelah hari yang tidak ada hubungannya dengan filsafat.", tag: "bebas", mood: "melancholy" } },
       ]},
       { id: "tulis", label: "Menulis, meski belum tentu ada yang membaca", outcomes: [
-        { weight: 8, flag: "sudah_lulus", text: "Tulisanmu dibaca segelintir orang di internet. Tidak menghasilkan uang, tapi sekali waktu ada pesan: 'tulisanmu menahanku malam itu.'", effects: { intelligence: 4, mental: 4, happiness: 2 }, addTrait: "creative", mood: "warm" },
-        { weight: 8, flag: "sudah_lulus", text: "Kamu menulis bertahun-tahun di ruang yang sebagian besar sunyi. Tidak ada yang datang, tapi kamu tetap menulis. Ternyata sebagian tulisan tidak harus dibaca, hanya agar tidak menumpuk di kepala saja.", effects: { intelligence: 3, mental: 3, wealth: -2 }, mood: "melancholy" },
+        { weight: 8, flag: "sudah_lulus", text: "Tulisanmu dibaca segelintir orang di internet. Tidak menghasilkan uang, tapi sekali waktu ada pesan 'tulisanmu menahanku malam itu.'", effects: { intelligence: 4, mental: 4, happiness: 2 }, addTrait: "creative", mood: "warm" },
+        { weight: 4, flag: "sudah_lulus", text: "Bertahun-tahun kamu menulis di tempat yang sunyi. Jarang ada yang membacanya, tapi kamu tetap menulis. Ternyata sebagian tulisan tidak harus dibaca, cukup agar tidak menumpuk di kepala saja.", effects: { intelligence: 3, mental: 3, wealth: -2 }, mood: "melancholy" },
       ]},
     ],
   }),
 
-e({
+  e({
     id: "br_psikologi_jalan", category: "pekerjaan", pool: "age", rarity: "uncommon",
     ageMin: 24, ageMax: 26, requireFlag: "jurusan_psikologi", guaranteed: true, mood: "melancholy",
     title: "Kursi di Seberang",
-    prompt: "Gelar psikologi di tangan. Orang mengira kamu bisa membaca pikiran. Yang sebenarnya kamu pelajari hanya cara duduk diam, sementara seseorang merangkai ulang dirinya yang berantakan. Tinggal satu hal, di kursi mana kamu mau duduk.",
+    prompt: "Gelar psikologi. Orang mengira kamu bisa membaca pikiran. Yang sebenarnya kamu pelajari hanya cara duduk diam, sementara seseorang merangkai ulang dirinya yang berantakan. Tinggal satu hal, di kursi mana kamu mau duduk.",
     choices: [
-      { id: "klinis", label: "Praktik. Dengarkan orang yang sedang hancur", outcomes: [
-        { weight: 8, text: "Kamu jadi tempat orang menumpahkan hal yang tak bisa mereka katakan ke siapa pun. Kamu sering pulang dengan dada yang berat, tapi sekali waktu ada yang berkata 'saya bertahan karena Anda mendengar.'", effects: { mental: -2, social: 5, happiness: 4 }, addTrait: "empathetic", flag: "psikolog_praktik", extraFlags: ["sudah_lulus"],
+      { id: "klinis", label: "Praktik.", outcomes: [
+        { weight: 6, text: "Kamu jadi tempat orang-orang menumpahkan semua yang tak bisa mereka katakan ke siapa pun. Kamu sering pulang dengan dada yang berat, tapi sekali waktu ada yang berkata 'saya bertahan karena Anda mendengar.'", effects: { mental: -2, social: 5, happiness: 4 }, addTrait: "empathetic", flag: "psikolog_praktik", extraFlags: ["sudah_lulus"],
           memory: { text: "'Saya bertahan karena Anda mendengar.'", tag: "kerja", mood: "warm" } },
-        { weight: 8, text: "Tiap hari kamu menampung luka orang lain, dan menyadari kamu tak pernah punya tempat menumpahkan milikmu. Kamu pandai menambal orang, lukamu sendiri kamu rapikan belakangan. Kalau sempat.", effects: { mental: -5, social: 4 }, flag: "psikolog_praktik", extraFlags: ["sudah_lulus"], mood: "tragic" },
+        { weight: 8, text: "Kamu pandai menampung luka orang lain. Lukamu sendiri kamu rapikan belakangan. Kalau sempat.", effects: { mental: -5, social: 4 }, flag: "psikolog_praktik", extraFlags: ["sudah_lulus"], mood: "tragic" },
       ]},
-      { id: "korporat", label: "Masuk korporat. Pakai ilmunya untuk hal yang lebih aman", outcomes: [
-        { weight: 8, flag: "sudah_lulus", text: "Kamu kelola manusia di sebuah kantor. Tes, wawancara, angka keluar-masuk karyawan. Gajinya nyaman, ilmunya terpakai separuh. Sesekali kamu rindu pertanyaan yang lebih dalam dari 'kandidat ini cocok atau tidak'.", effects: { wealth: 5, intelligence: 2, mental: -1 }, mood: "melancholy" },
+      { id: "korporat", label: "Masuk korporat.", outcomes: [
+        { weight: 8, flag: "sudah_lulus", text: "Tes, wawancara, angka keluar-masuk karyawan. Gajinya nyaman, ilmunya terpakai separuh. Sesekali kamu rindu pertanyaan yang lebih dalam dari 'kandidat ini cocok atau tidak'.", effects: { wealth: 5, intelligence: 2, mental: -1 }, mood: "melancholy" },
       ]},
-      { id: "riset", label: "Riset. Cari pola di balik kenapa manusia begini", outcomes: [
-        { weight: 8, text: "Kamu masuk ke angka, kuesioner, dan jurnal yang dibaca segelintir orang. Tak ada yang sembuh langsung oleh tanganmu, tapi kamu menambah satu paragraf kecil pada cara manusia memahami dirinya. Itu pun warisan.", effects: { intelligence: 5, mental: 2, wealth: -1 }, addTrait: "curious", flag: "psikolog_riset", extraFlags: ["sudah_lulus"], mood: "melancholy" },
+      { id: "riset", label: "Riset.", outcomes: [
+        { weight: 8, text: "Jurnalmu hanya dibaca segelintir orang. Tak ada yang sembuh langsung oleh tanganmu, tapi kamu menambah satu paragraf kecil pada cara manusia memahami dirinya. Itu yang kamu warisankan kelak.", effects: { intelligence: 5, mental: 2, wealth: -1 }, addTrait: "curious", flag: "psikolog_riset", extraFlags: ["sudah_lulus"], mood: "melancholy" },
         { weight: 8, text: "Bertahun-tahun meneliti, dan kamu makin yakin sebagian manusia tak bisa benar-benar dirumuskan. Kamu belajar berdamai dengan ilmu yang lebih banyak bertanya daripada menjawab.", effects: { intelligence: 4, mental: 3 }, flag: "psikolog_riset", extraFlags: ["sudah_lulus"], mood: "melancholy" },
       ]},
     ],
   }),
 
-e({
+  e({
     id: "br_seni_pameran", category: "sukses_kosong", pool: "age", rarity: "uncommon",
     ageMin: 24, ageMax: 30, requireFlag: "jurusan_seni", mood: "warm",
     title: "Pameran Pertama",
@@ -106,41 +116,41 @@ e({
       const ayahHidup = ctx.state.relationships.some((r) => r.id === "ayah" && r.alive);
       const hadir = ibuHidup ? "ibumu" : ayahHidup ? "ayahmu" : null;
       if (hadir)
-        return `Karyamu dipajang di galeri kecil di gang sempit. Yang datang: ${hadir}, dua teman, dan satu orang asing yang lama berdiri di depan satu lukisan.`;
-      return "Karyamu dipajang di galeri kecil di gang sempit. Yang datang: dua teman dan satu orang asing yang lama berdiri di depan satu lukisan. Kursi yang dulu kamu bayangkan untuk orang tuamu, tetap kosong.";
+        return `Karyamu dipajang di galeri kecil di gang sempit. Yang datang ada ${hadir}, dua teman, dan satu orang asing yang lama berdiri di depan satu lukisan.`;
+      return "Karyamu dipajang di galeri kecil di gang sempit. Yang datang ada dua teman dan satu orang asing yang lama berdiri di depan satu lukisan. Kursi yang dulu kamu bayangkan untuk orang tuamu, tetap kosong.";
     },
     choices: (ctx) => {
       const ibuHidup = ctx.state.relationships.some((r) => r.id === "ibu" && r.alive);
       const ayahHidup = ctx.state.relationships.some((r) => r.id === "ayah" && r.alive);
       const sapa = { id: "sapa", label: "Sapa orang asing itu", outcomes: [
-        { weight: 8, text: "Dia kolektor. Membeli lukisan itu cash. Bukan banyak, tapi cukup untuk menyewa studio sebulan.", effects: { wealth: 8, happiness: 8 }, achievement: "Pertama Kali Dibayar", flag: "seniman_naik" },
-        { weight: 8, text: "Dia bilang lukisanmu mengingatkannya pada istrinya yang sudah meninggal. Dia tidak membeli. Tapi kamu tidak akan lupa wajahnya.", effects: { mental: 6, happiness: 4 }, memory: { text: "Orang asing yang lama berdiri di depan lukisanmu.", tag: "pameran", mood: "warm" as const } },
+        { weight: 6, text: "Dia kolektor. Membeli lukisan itu cash. Bukan banyak, tapi cukup untuk menyewa studio sebulan.", effects: { wealth: 8, happiness: 8 }, achievement: "Pertama Kali Dibayar", flag: "seniman_naik" },
+        { weight: 8, text: "Dia bilang lukisanmu mengingatkannya pada istrinya yang sudah meninggal. Dia tidak membeli, tapi kamu tidak akan lupa kisahnya.", effects: { mental: 6, happiness: 4 }, memory: { text: "Orang asing yang lama berdiri di depan lukisanmu.", tag: "pameran", mood: "warm" as const } },
       ]};
 
       if (ibuHidup)
         return [sapa, { id: "ibu", label: "Peluk ibu", outcomes: [
-          { weight: 8, text: "Ibumu, yang dulu diam tiga hari saat kamu pilih jurusan ini, berkata pelan: 'Mama bangga.' Sisanya tidak penting.", effects: { mental: 8, happiness: 8 }, mood: "warm" as const, memory: { text: "'Mama bangga' di pameran pertamamu.", tag: "ibu", mood: "warm" as const } },
-          { weight: 8, text: "Ibumu tidak bilang apa-apa. Hanya menggenggam tanganmu terlalu lama di depan satu lukisan, yang kebetulan kamu buat tentang dapur rumah kalian. Kamu mengerti tanpa perlu kata.", effects: { mental: 9, happiness: 6 }, mood: "warm" as const, memory: { text: "Ibumu lama menatap lukisan dapur rumah kalian.", tag: "ibu", mood: "warm" as const } },
+          { weight: 8, text: "Ibumu, yang dulu diam tiga hari saat kamu pilih jurusan ini, berkata pelan 'Mama bangga.' Sisanya tidak penting.", effects: { mental: 8, happiness: 8 }, mood: "warm" as const, memory: { text: "'Mama bangga' di pameran pertamamu.", tag: "ibu", mood: "warm" as const } },
+          { weight: 6, text: "Ibu tidak bilang apa-apa. Hanya menggenggam tanganmu di depan satu lukisan, yang kebetulan kamu buat tentang dapur rumah kalian. Kamu mengerti tanpa perlu kata.", effects: { mental: 9, happiness: 6 }, mood: "warm" as const, memory: { text: "Ibu menatap lukisan dapur rumah kalian.", tag: "ibu", mood: "warm" as const } },
         ]}];
 
       if (ayahHidup)
         return [sapa, { id: "ayah", label: "Peluk ayah", outcomes: [
-          { weight: 8, text: "Ayahmu, yang dulu marah saat kamu pilih jurusan ini, berkata pelan: 'Bapak bangga.' Sisanya tidak penting.", effects: { mental: 8, happiness: 8 }, mood: "warm" as const, memory: { text: "'Bapak bangga' di pameran pertamamu.", tag: "ayah", mood: "warm" as const } },
-          { weight: 8, text: "Ayahmu tidak bilang apa-apa. Hanya berdiri terlalu lama di depan satu lukisan, yang kebetulan kamu buat tentang teras tempat dia biasa duduk sendiri. Kamu mengerti tanpa perlu kata.", effects: { mental: 9, happiness: 6 }, mood: "warm" as const, memory: { text: "Ayahmu lama menatap lukisan teras tempat dia biasa duduk.", tag: "ayah", mood: "warm" as const } },
+          { weight: 6, text: "Ayahmu, yang dulu marah saat kamu pilih jurusan ini, berkata pelan 'Bapak bangga.' Sisanya tidak penting.", effects: { mental: 8, happiness: 8 }, mood: "warm" as const, memory: { text: "'Bapak bangga' di pameran pertamamu.", tag: "ayah", mood: "warm" as const } },
+          { weight: 8, text: "Ayahmu tidak bilang apa-apa. Hanya berdiri di depan satu lukisan, yang kebetulan kamu buat tentang teras tempat dia biasa duduk sendiri. Kamu mengerti tanpa perlu kata.", effects: { mental: 9, happiness: 6 }, mood: "warm" as const, memory: { text: "Ayah menatap lukisan teras tempat dia biasa duduk.", tag: "ayah", mood: "warm" as const } },
         ]}];
 
       return [sapa, { id: "kenang", label: "Tatap kursi kosong di depan lukisanmu", outcomes: [
-        { weight: 8, text: "Di depan lukisanmu sendiri, mereka berdua tiba-tiba hadir di kepalamu. Bukan sebagai hantu, tapi sebagai orang yang dulu diam tiga hari, lalu pelan-pelan luluh. Pameran ini untuk dua kursi yang tidak akan pernah terisi lagi.", effects: { mental: 6, happiness: -3 }, mood: "melancholy" as const, memory: { text: "Pameran pertama yang kamu persembahkan untuk dua kursi yang kosong.", tag: "pameran", mood: "melancholy" as const } },
-        { weight: 8, text: "Salah satu lukisan itu kamu buat tentang rumah kalian dulu. Kamu berdiri lama di depannya, dan untuk sekejap kamu hampir mendengar suara mereka di dapur. Lalu galeri sepi lagi.", effects: { mental: 5, happiness: -2 }, mood: "melancholy" as const, memory: { text: "Lukisan rumah lama, tempat kamu hampir mendengar suara mereka lagi.", tag: "pameran", mood: "melancholy" as const } },
+        { weight: 6, text: "Di depan lukisanmu sendiri, mereka berdua tiba-tiba hadir di kepalamu. Bukan sebagai hantu, tapi sebagai orang yang dulu diam tiga hari, lalu pelan-pelan luluh. Pameran ini untuk dua kursi yang tidak akan pernah terisi lagi.", effects: { mental: 6, happiness: -3 }, mood: "melancholy" as const, memory: { text: "Pameran pertama yang kamu persembahkan untuk dua kursi yang kosong.", tag: "pameran", mood: "melancholy" as const } },
+        { weight: 8, text: "Salah satu lukisan itu kamu buat tentang rumah kalian. Kamu berdiri lama di depannya, dan untuk sekejap kamu hampir mendengar suara mereka di dapur. Lalu galeri sepi lagi.", effects: { mental: 5, happiness: -2 }, mood: "melancholy" as const, memory: { text: "Lukisan rumah, tempat kamu hampir mendengar suara mereka lagi.", tag: "pameran", mood: "melancholy" as const } },
       ]}];
     },
   }),
 
-e({
+  e({
     id: "br_setelah_phk", category: "pekerjaan", pool: "economic", rarity: "common",
     ageMin: 24, ageMax: 35, requireFlag: "phk", companionOnly: true,
     title: "Tiga Bulan Setelahnya",
-    prompt: "Tiga bulan setelah PHK. Tabungan menipis. Semua wawancara berakhir di 'kami akan kabari.'",
+    prompt: "Tiga bulan setelah PHK. Tabungan menipis. Semua wawancara berakhir di 'akan kami kabari.'",
     choices: (ctx) => {
       const ibuHidup = ctx.state.relationships.some((r) => r.id === "ibu" && r.alive);
       const ayahHidup = ctx.state.relationships.some((r) => r.id === "ayah" && r.alive);
@@ -148,25 +158,31 @@ e({
       let wirausaha: Choice;
       if (ctx.state.flags.tinggal_kos && !ctx.state.flags.punya_rumah) {
         wirausaha = { id: "wirausaha", label: "Mulai jualan online dari kamar kos", outcomes: [
-          { weight: 8, text: "Kardus stok menumpuk di kamar kos yang sudah sempit. Kamu tidur berdesakan dengan barang dagangan. Tiga bulan sepi. Bulan keempat satu pembeli setia. Bulan keenam jadi lima. Kamu tidak kaya, tapi kamu hidup.", effects: { wealth: 6, happiness: 5, discipline: 4 }, flag: "wirausaha" },
-          { weight: 8, text: "Setahun coba, gagal. Modal habis, dan ibu kos menagih sewa yang telat dua bulan. Tapi kamu belajar lebih banyak tentang dirimu daripada 5 tahun di kantor itu.", effects: { wealth: -10, mental: 3 } },
+          { weight: 8, text: "Kamu tidur berdesakan dengan barang dagangan. Tiga bulan sepi. Bulan keempat satu pelanggan tetap. Bulan keenam jadi lima. Kamu tidak kaya, tapi kamu hidup.", effects: { wealth: 6, happiness: 5, discipline: 4 }, flag: "wirausaha" },
+          { weight: 6, text: "Gagal di tahun pertama. Modal habis, dan ibu kos menagih sewa yang telat dua bulan. Tapi kamu belajar lebih banyak tentang dirimu daripada 5 tahun di kantor itu.", effects: { wealth: -10, mental: 3 } },
         ]};
       } else if (ctx.state.flags.punya_rumah) {
         wirausaha = { id: "wirausaha", label: "Mulai jualan online dari rumah", outcomes: [
-          { weight: 8, text: "Satu sudut rumahmu berubah jadi gudang kecil. Tiga bulan sepi. Bulan keempat satu pembeli setia. Bulan keenam jadi lima. Kamu tidak kaya, tapi untuk pertama kalinya rumah yang kamu cicil itu ikut menafkahimu.", effects: { wealth: 6, happiness: 5, discipline: 4 }, flag: "wirausaha" },
-          { weight: 8, text: "Setahun coba, gagal. Modal habis, satu kamar penuh stok yang tak laku. Tapi kamu belajar lebih banyak tentang dirimu daripada 5 tahun di kantor itu.", effects: { wealth: -10, mental: 3 } },
+          { weight: 8, text: "Satu sudut rumahmu berubah jadi gudang kecil. Tiga bulan sepi. Bulan keempat satu pelanggan tetap. Bulan keenam jadi lima. Untuk pertama kalinya, rumah yang kamu cicil itu ikut menafkahimu.", effects: { wealth: 6, happiness: 5, discipline: 4 }, flag: "wirausaha" },
+          { weight: 6, text: "Gagal di tahun pertama. Modal habis, satu kamar penuh stok yang tak laku. Tapi kamu belajar lebih banyak tentang dirimu daripada 5 tahun di kantor itu.", effects: { wealth: -10, mental: 3 } },
         ]};
       } else {
         wirausaha = { id: "wirausaha", label: "Mulai jualan online dari rumah", outcomes: [
-          { weight: 8, text: "Tiga bulan sepi. Bulan keempat satu pembeli setia. Bulan keenam jadi lima. Kamu tidak kaya, tapi kamu hidup.", effects: { wealth: 6, happiness: 5, discipline: 4 }, flag: "wirausaha" },
-          { weight: 8, text: "Setahun coba, gagal. Modal habis. Tapi kamu belajar lebih banyak tentang dirimu daripada 5 tahun di kantor itu.", effects: { wealth: -10, mental: 3 } },
+          { weight: 8, text: "Tiga bulan sepi. Bulan keempat satu pelanggan tetap. Bulan keenam jadi lima. Kamu tidak kaya, tapi kamu hidup.", effects: { wealth: 6, happiness: 5, discipline: 4 }, flag: "wirausaha" },
+          { weight: 6, text: "Gagal di tahun pertama. Modal habis. Tapi kamu belajar lebih banyak tentang dirimu daripada 5 tahun di kantor itu.", effects: { wealth: -10, mental: 3 } },
         ]};
       }
 
-      let pulang;
-      if (ibuHidup && ayahHidup) {
+      // "Pulang ke rumah orangtua" hanya masuk akal kalau pemain saat ini tinggal
+      // terpisah dari orangtua (ngekos, punya rumah sendiri, atau sudah menikah).
+      // Kalau pemain masih tinggal di rumah orangtua, opsi ini tidak ditawarkan.
+      const tinggalTerpisah = ctx.state.flags.tinggal_kos || ctx.state.flags.punya_rumah || ctx.state.flags.menikah;
+      let pulang: Choice | undefined;
+      if (!tinggalTerpisah) {
+        pulang = undefined;
+      } else if (ibuHidup && ayahHidup) {
         pulang = { id: "pulang", label: "Pulang ke rumah orangtua", outcomes: [
-          { weight: 8, text: "Di rumah, masakan favoritmu tersaji setiap malam selama dua minggu. Tanpa ada yang bertanya kapan kamu kerja lagi.", effects: { mental: 6, wealth: 2, happiness: 4 }, mood: "warm" as const, memory: { text: "Dua minggu masakan rumah yang tidak menanyakan apa-apa.", tag: "keluarga", mood: "warm" as const } },
+          { weight: 8, text: "Di rumah, masakan favoritmu tersaji setiap malam selama dua minggu, tanpa ada yang bertanya kapan kamu kerja lagi.", effects: { mental: 6, wealth: 2, happiness: 4 }, mood: "warm" as const, memory: { text: "Dua minggu makan di rumah yang tidak menanyakan apa-apa.", tag: "keluarga", mood: "warm" as const } },
           { weight: 6, text: "Kamar lamamu masih persis sama, lengkap dengan poster yang sudah memudar. Tidur di sana terasa seperti kekalahan. Tapi juga seperti diampuni.", effects: { mental: 5, happiness: 3 }, mood: "melancholy" as const },
         ]};
       } else if (ibuHidup) {
@@ -176,7 +192,7 @@ e({
         ]};
       } else if (ayahHidup) {
         pulang = { id: "pulang", label: "Pulang ke rumah orangtua", outcomes: [
-          { weight: 8, text: "Ayah tidak pandai memasak, jadi kalian makan seadanya berdua di meja yang dulu selalu penuh. Dia tidak bertanya kapan kamu kerja lagi, mungkin karena dia pun masih belajar menata hari tanpa ibumu.", effects: { mental: 4, wealth: 2, happiness: 2 }, mood: "melancholy" as const, memory: { text: "Makan seadanya berdua ayah, di rumah yang kehilangan juru masaknya.", tag: "ayah", mood: "melancholy" as const } },
+          { weight: 8, text: "Ayah tidak pandai memasak, jadi kalian makan seadanya berdua di meja yang dulu selalu penuh. Dia tidak bertanya kapan kamu kerja lagi, mungkin karena dia pun masih belajar menata hari tanpa ibumu.", effects: { mental: 4, wealth: 2, happiness: 2 }, mood: "melancholy" as const, memory: { text: "Makan seadanya berdua, di rumah yang kehilangan juru masaknya.", tag: "ayah", mood: "melancholy" as const } },
           { weight: 8, text: "Kamar lamamu masih persis sama, lengkap dengan poster yang memudar. Tapi dapur sudah lama tak berbau masakan ibu. Tidur di rumah ini terasa seperti kekalahan, juga seperti diampuni.", effects: { mental: 5, happiness: 3 }, mood: "melancholy" as const },
         ]};
       } else {
@@ -187,26 +203,26 @@ e({
       }
 
       return [
-      { id: "turun_gaji", label: "Terima tawaran gaji 40% lebih rendah", outcomes: [
+      { id: "turun_gaji", label: "Terima tawaran gaji yang 40% lebih rendah", outcomes: [
         { weight: 8, text: "Kamu mulai dari bawah lagi. Egomu remuk perlahan. Tapi kamu masih di sini, dan belum kalah.", effects: { wealth: 5, mental: -3, discipline: 3 }, flag: "comeback_kerja" },
-        { weight: 8, text: "Jabatan yang dulu kamu lewati, gaji yang dulu kamu tertawakan. Yang mengejutkan: bos barumu sepuluh tahun lebih muda dan ternyata lebih baik. Egomu sembuh lebih dulu dari dompetmu.", effects: { wealth: 5, mental: 1, social: 3 }, flag: "comeback_kerja" },
+        { weight: 5, text: "Jabatan yang dulu kamu lewati, dan gaji yang dulu kamu tertawakan. Yang mengejutkan, bos barumu sepuluh tahun lebih muda dan ternyata lebih baik. Egomu sembuh lebih dulu dari dompetmu.", effects: { wealth: 5, mental: 1, social: 3 }, flag: "comeback_kerja" },
       ]},
       wirausaha,
-      pulang,
+      ...(pulang ? [pulang] : []),
       ];
     },
   }),
 
-e({
+  e({
     id: "br_patah_hati_echo", category: "cinta", pool: "relationship", rarity: "uncommon",
     ageMin: 25, ageMax: 30, requireFlag: "patah_hati_pertama", deferrable: true, mood: "melancholy",
     forceCallbackTag: "cinta_pertama",
     title: "Refleks Lama",
-    prompt: "Ada lagi seseorang yang membuat dadamu berdebar. Tapi sebelum kamu sempat senang, tubuhmu sudah waspada lebih dulu. Bertahun lalu sepucuk surat pernah dibacakan keras-keras di depan kelas, dan sebagian dari dirimu tidak pernah ikhlas.",
+    prompt: "Datang lagi seseorang yang membuat dadamu berdebar. Tapi sebelum kamu sempat senang, tubuhmu sudah waspada lebih dulu. Bertahun lalu sepucuk surat pernah dibacakan keras-keras di depan kelas, dan sebagian dari dirimu tidak pernah ikhlas.",
     choices: [
-      { id: "coba_lagi", label: "Beranikan diri, kali ini dengan lebih pelan", outcomes: [
+      { id: "coba_lagi", label: "Beranikan diri, kali ini lebih pelan", outcomes: [
         { weight: 8, text: "Kamu hanya bertanya kabar, lalu mendengarkan. Ternyata mendekat tidak harus selalu diteriakkan.", effects: { happiness: 6, social: 4, mental: 3 }, removeTrait: "nihilistic", mood: "warm",
-          memory: { text: "Pertama kali kamu mendekat lagi setelah surat itu.", tag: "cinta_pertama", mood: "warm" } },
+          memory: { text: "Pertama kali kamu mencoba lagi setelah surat itu.", tag: "cinta_pertama", mood: "warm" } },
         { weight: 8, text: "Kamu mencoba, dan canggung setengah mati. Dia tidak menertawakanmu, hanya tersenyum dan melanjutkan obrolan. Luka lamamu tidak sembuh malam itu, tapi kamu tahu sekarang ia bisa sembuh.", effects: { happiness: 3, mental: 4 }, mood: "melancholy" },
       ]},
       { id: "jaga_jarak", label: "Simpan rapat-rapat, seperti yang dulu kamu pelajari", outcomes: [
@@ -216,11 +232,11 @@ e({
     ],
   }),
 
-e({
+  e({
     id: "br_terapi", category: "eksistensial", pool: "age", rarity: "uncommon",
     ageMin: 25, ageMax: 35, requireFlag: "self_loathing", mood: "warm",
     title: "Kursi Empuk, Pertama Kali",
-    prompt: "Setelah bertahun-tahun memaki diri sendiri di cermin, kamu duduk di kursi empuk seorang terapis. Dia bertanya: 'Kapan terakhir kamu berbaik hati pada dirimu sendiri?'",
+    prompt: "Setelah bertahun-tahun memaki diri sendiri di cermin, kamu duduk di kursi empuk seorang terapis. Dia bertanya 'Kapan terakhir kamu berbaik hati pada dirimu sendiri?'",
     choices: [
       { id: "menangis", label: "Menangis tanpa menjawab", outcomes: [
         { weight: 8, text: "Pertanyaan itu menjawab dirinya sendiri. Sesi pertama dari 47 sesi. Hidupmu pelan-pelan berbelok.", effects: { mental: 12, happiness: 6 }, removeTrait: "nihilistic", flag: "terapi", achievement: "Pulang ke Diri Sendiri" },
@@ -233,7 +249,7 @@ e({
     ],
   }),
 
-e({
+  e({
     id: "br_teknik_burnout", category: "pekerjaan", pool: "age", rarity: "common",
     ageMin: 27, ageMax: 32, requireFlag: "jurusan_teknik", title: "Standup Meeting",
     prompt: "Standup ke-740 dalam tiga tahun. Kamu mendengar dirimu berkata 'no blockers' otomatis, padahal segala sesuatu adalah blocker.",
@@ -254,7 +270,7 @@ e({
     ],
   }),
 
-e({
+  e({
     id: "br_dokter_kerja", category: "pekerjaan", pool: "age", rarity: "common",
     // requireFlag dokter_jadi (di-set oleh br_dokter_koas), bukan sekadar jurusan_kedokteran,
     // agar event ini mustahil muncul sebelum koas dialami.
@@ -279,7 +295,7 @@ e({
     ],
   }),
 
-e({
+  e({
     id: "br_terapi_kembali", category: "eksistensial", pool: "age", rarity: "uncommon",
     ageMin: 27, ageMax: 37, requireFlag: "terapi_ragu", guaranteed: true,
     requireFlagAge: { flag: "terapi_bohong_age", min: 2, max: 2 }, mood: "melancholy",
@@ -297,7 +313,7 @@ e({
     ],
   }),
 
-e({
+  e({
     id: "br_mlm_lanjutan", category: "pekerjaan", pool: "economic", rarity: "uncommon",
     ageMin: 27, ageMax: 42, requireFlag: "korban_mlm", title: "Kit Produk di Pojok Kamar",
     prompt: "Kotak produk MLM itu masih utuh di pojok kamar. Andi sudah hilang. Utang Rp 5 juta belum lunas.",
@@ -317,7 +333,7 @@ e({
     ],
   }),
 
-e({
+  e({
     id: "br_freelance_sepi", category: "pekerjaan", pool: "economic", rarity: "uncommon",
     ageMin: 28, ageMax: 35, requireFlag: "freelancer", deferrable: true, mood: "melancholy",
     title: "Bulan yang Tidak Pernah Sama",
@@ -340,7 +356,7 @@ e({
     },
   }),
 
-e({
+  e({
     id: "br_freelance_jalan", category: "sukses_kosong", pool: "economic", rarity: "uncommon",
     ageMin: 28, ageMax: 44, requireFlag: "freelancer_sukses", deferrable: true, mood: "melancholy",
     title: "Lima Klien, Nol Rekan",
@@ -358,7 +374,7 @@ e({
     ],
   }),
 
-e({
+  e({
     id: "br_pkl_kerajinan", category: "pekerjaan", pool: "economic", rarity: "uncommon",
     ageMin: 29, ageMax: 35, requireFlag: "pedagang_kaki_lima", deferrable: true, mood: "melancholy",
     title: "Trotoar yang Hafal Namamu",
@@ -379,7 +395,7 @@ e({
     ],
   }),
 
-e({
+  e({
     id: "br_barista_kerajinan", category: "pekerjaan", pool: "economic", rarity: "uncommon",
     ageMin: 30, ageMax: 34, requireFlag: "barista", deferrable: true, mood: "melancholy",
     title: "Pekerjaan yang Katanya Sementara",
@@ -400,7 +416,7 @@ e({
     ],
   }),
 
-e({
+  e({
     id: "br_sahabat_bolos_dewasa", category: "pertemanan", pool: "callback", rarity: "uncommon",
     ageMin: 32, ageMax: 45, requireRelationship: "sahabat_bolos", mood: "warm",
     forceCallbackTag: "sahabat_bolos",
@@ -418,7 +434,7 @@ e({
     ],
   }),
 
-e({
+  e({
     id: "br_psikologi_praktik", category: "pekerjaan", pool: "age", rarity: "uncommon",
     ageMin: 34, ageMax: 50, requireFlag: "psikolog_praktik", deferrable: true, mood: "melancholy",
     title: "Ruang yang Tak Pernah Lama Sepi",
@@ -440,7 +456,7 @@ e({
     ],
   }),
 
-e({
+  e({
     id: "br_psikologi_riset", category: "pekerjaan", pool: "age", rarity: "uncommon",
     ageMin: 34, ageMax: 50, requireFlag: "psikolog_riset", deferrable: true, mood: "melancholy",
     title: "Di Balik Angka, Manusia",
@@ -462,7 +478,7 @@ e({
     ],
   }),
 
-e({
+  e({
     id: "br_robot_anakmu", category: "keluarga", pool: "callback", rarity: "uncommon",
     ageMin: 35, ageMax: 50, requireFlag: "robot_kecil", requireRelationship: "anak1", mood: "warm",
     forceCallbackTag: "robot_kecil",
@@ -480,7 +496,7 @@ e({
     ],
   }),
 
-e({
+  e({
     id: "br_barista_warisan", category: "pekerjaan", pool: "economic", rarity: "uncommon",
     ageMin: 54, ageMax: 74, requireFlag: "barista_jalan", deferrable: true, mood: "melancholy",
     title: "Pelanggan yang Ikut Menua",
@@ -498,7 +514,7 @@ e({
     ],
   }),
 
-e({
+  e({
     id: "br_pkl_warisan", category: "pekerjaan", pool: "economic", rarity: "uncommon",
     ageMin: 54, ageMax: 75, requireFlag: "pkl_jalan", deferrable: true, mood: "melancholy",
     title: "Tangan yang Mulai Gemetar di Atas Wajan",
@@ -531,7 +547,7 @@ e({
     },
   }),
 
-e({
+  e({
     id: "br_pkl_toko", category: "pekerjaan", pool: "economic", rarity: "uncommon",
     ageMin: 54, ageMax: 75, requireFlag: "pkl_toko", deferrable: true, mood: "melancholy",
     title: "Dapur yang Tak Pernah Dingin",
@@ -580,7 +596,7 @@ e({
     },
   }),
 
-e({
+  e({
     id: "br_psikologi_tua", category: "eksistensial", pool: "age", rarity: "uncommon",
     ageMin: 54, ageMax: 76, requireFlag: "jurusan_psikologi", deferrable: true, mood: "melancholy",
     title: (ctx) => ctx.state.flags.psikolog_riset ? "Seumur Hidup Bertanya" : "Penampung yang Lupa Dikosongkan",
@@ -610,7 +626,7 @@ e({
         ],
   }),
 
-e({
+  e({
     id: "br_filsafat_tua", category: "eksistensial", pool: "age", rarity: "uncommon",
     ageMin: 60, ageMax: 74, requireFlag: "jurusan_filsafat", deferrable: true, mood: "melancholy",
     title: "Pertanyaan yang Tidak Pernah Lulus",

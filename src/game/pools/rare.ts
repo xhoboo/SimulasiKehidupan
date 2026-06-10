@@ -3,7 +3,7 @@ import { e } from "./_helpers";
 
 // Pool langka & absurd. Rarity sangat rendah.
 export const RARE_POOL: LifeEvent[] = [
-e({
+  e({
     id: "salah_kirim_vn", category: "absurd", pool: "rare", rarity: "rare",
     ageMin: 16, ageMax: 70,
     title: "Voice Note Salah Sasaran",
@@ -24,7 +24,7 @@ e({
     ],
   }),
 
-e({
+  e({
     id: "viral_bakso", category: "absurd", pool: "rare", rarity: "veryRare",
     ageMin: 18, ageMax: 50, title: "Video 14 Detik",
     prompt: "Video kamu makan bakso dengan ekspresi aneh viral. 4 juta views dalam 24 jam.",
@@ -40,7 +40,7 @@ e({
     ],
   }),
 
-e({
+  e({
     id: "existensial_bintang", category: "eksistensial", pool: "rare", rarity: "existential",
     ageMin: 18, ageMax: 90, deferrable: true, mood: "hope",
     title: "Langit Tanpa Lampu Kota",
@@ -53,7 +53,7 @@ e({
     ],
   }),
 
-e({
+  e({
     id: "nft_pantun", category: "absurd", pool: "rare", rarity: "veryRare",
     ageMin: 22, ageMax: 45,
     title: "Diajak Join Startup",
@@ -70,7 +70,7 @@ e({
     ],
   }),
 
-e({
+  e({
     id: "p_dari_mantan", category: "absurd", pool: "rare", rarity: "rare",
     ageMin: 25, ageMax: 50,
     title: "Notifikasi Pukul 23:47",
@@ -91,7 +91,7 @@ e({
     ],
   }),
 
-e({
+  e({
     id: "admin_rt", category: "absurd", pool: "rare", rarity: "rare",
     ageMin: 30, ageMax: 65, deferrable: true,
     title: "Diangkat Tanpa Diminta",

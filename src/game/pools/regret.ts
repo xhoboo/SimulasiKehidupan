@@ -2,7 +2,7 @@ import { LifeEvent } from "../types";
 import { e, karirOf } from "./_helpers";
 
 export const REGRET_POOL: LifeEvent[] = [
-e({
+  e({
     id: "regret_kerja", category: "regret", pool: "regret", rarity: "uncommon",
     ageMin: 60, ageMax: 75, requireFlag: "loyal_pegawai", mood: "melancholy",
     title: "Pensiun",
@@ -25,7 +25,7 @@ e({
     ],
   }),
 
-e({
+  e({
     id: "regret_menggambar", category: "regret", pool: "regret", rarity: "uncommon",
     ageMin: 60, ageMax: 80, requireTrait: "creative", deferrable: true, mood: "melancholy",
     title: "Pensil yang Berhenti",
@@ -42,7 +42,7 @@ e({
     ],
   }),
 
-e({
+  e({
     id: "regret_meminta_maaf", category: "regret", pool: "regret", rarity: "rare",
     ageMin: 60, ageMax: 85, requireFlag: "ada_kehilangan", deferrable: true, mood: "tragic",
     title: "Maaf yang Tertunda",
@@ -63,7 +63,7 @@ e({
     ],
   }),
 
-e({
+  e({
     id: "regret_telepon_malam_itu", category: "regret", pool: "regret", rarity: "rare",
     ageMin: 60, ageMax: 85, requireFlag: "ada_kehilangan", deferrable: true, mood: "tragic",
     title: "Telepon yang Tidak Jadi",

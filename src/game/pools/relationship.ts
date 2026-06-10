@@ -2,7 +2,7 @@ import { Choice, LifeEvent } from "../types";
 import { e, kerjaCtx } from "./_helpers";
 
 export const RELATIONSHIP_POOL: LifeEvent[] = [
-e({
+  e({
     id: "bertemu_sahabat", category: "pertemanan", pool: "relationship", rarity: "common",
     ageMin: 8, ageMax: 11, deferrable: true, mood: "warm",
     title: "Teman yang Kamu Pilih Sendiri",
@@ -20,7 +20,7 @@ e({
     ],
   }),
 
-e({
+  e({
     id: "sahabat_rahasia", category: "pertemanan", pool: "relationship", rarity: "common",
     ageMin: 13, ageMax: 17, requireRelationship: "sahabat", forbidFlag: "sahabat_meninggal",
     deferrable: true, mood: "warm",
@@ -37,7 +37,7 @@ e({
     ],
   }),
 
-e({
+  e({
     id: "cinta_pertama", category: "cinta", pool: "relationship", rarity: "common",
     ageMin: 14, ageMax: 18, deferrable: true, mood: "warm",
     title: "Cinta yang Tidak Tahu Namanya",
@@ -62,7 +62,7 @@ e({
     ],
   }),
 
-e({
+  e({
     id: "pura_pura_tidur", category: "keluarga", pool: "relationship", rarity: "uncommon",
     ageMin: 15, ageMax: 18, forbidFlag: "ayah_meninggal", title: "Pura-pura Tidur",
     prompt: "Kamu pulang lewat jam malam. Kamu mendengar langkah ayahmu di lorong.",
@@ -86,7 +86,7 @@ e({
     ],
   }),
 
-e({
+  e({
     id: "kawan_seperjalanan", category: "pertemanan", pool: "relationship", rarity: "uncommon",
     ageMin: 20, ageMax: 45, mood: "warm",
     title: "Sebelah Kursi di Perjalanan Jauh",
@@ -107,7 +107,7 @@ e({
     ],
   }),
 
-e({
+  e({
     id: "cinta_dewasa", category: "cinta", pool: "relationship", rarity: "common", weight: 8,
     ageMin: 21, ageMax: 28, mood: "warm",
     title: "Bukan Seperti yang Kamu Bayangkan",
@@ -128,7 +128,7 @@ e({
     ],
   }),
 
-e({
+  e({
     id: "sahabat_menjaga", category: "pertemanan", pool: "relationship", rarity: "uncommon",
     ageMin: 21, ageMax: 34, requireRelationship: "sahabat", forbidFlag: "sahabat_meninggal",
     mood: "melancholy",
@@ -145,7 +145,7 @@ e({
     ],
   }),
 
-e({
+  e({
     id: "hubungan_retak", category: "cinta", pool: "relationship", rarity: "uncommon",
     ageMin: 23, ageMax: 32, requireFlag: "ada_romansa", forbidFlag: "menikah", mood: "melancholy",
     title: "Percakapan yang Tidak Bisa Ditarik Kembali",
@@ -166,7 +166,7 @@ e({
     ],
   }),
 
-e({
+  e({
     id: "cinta_setelah_putus", category: "cinta", pool: "relationship", rarity: "uncommon",
     ageMin: 28, ageMax: 40, requireFlag: "pernah_putus", forbidFlag: "menikah",
     deferrable: true, mood: "warm",
@@ -184,7 +184,7 @@ e({
     ],
   }),
 
-e({
+  e({
     id: "rekan_sebelah_meja", category: "pekerjaan", pool: "relationship", rarity: "common",
     ageMin: 24, ageMax: 34, deferrable: true,
     title: "Orang di Meja Sebelah",
@@ -208,7 +208,7 @@ e({
     ],
   }),
 
-e({
+  e({
     id: "sahabat_jauh", category: "pertemanan", pool: "relationship", rarity: "uncommon",
     ageMin: 25, ageMax: 60, deferrable: true,
     title: "Jarang Balas",
@@ -229,7 +229,7 @@ e({
     ],
   }),
 
-e({
+  e({
     id: "menikah_atau_tidak", category: "cinta", pool: "relationship", rarity: "common", weight: 8,
     ageMin: 26, ageMax: 35, title: "Pertanyaan dari Tante",
     prompt: "Kumpul keluarga. Tante bertanya untuk ke-tujuh-belas kalinya: 'Kapan nikah?'",
@@ -272,7 +272,7 @@ e({
     },
   }),
 
-e({
+  e({
     id: "punya_anak", category: "keluarga", pool: "relationship", rarity: "common",
     ageMin: 27, ageMax: 42, requireFlag: "menikah", mood: "warm",
     title: "Dua Garis",
@@ -289,7 +289,7 @@ e({
     ],
   }),
 
-e({
+  e({
     id: "kehilangan_anak_bayi", category: "kehilangan", pool: "trauma", rarity: "veryRare",
     ageMin: 27, ageMax: 60, requireFlag: "punya_anak", forbidFlag: "anak_meninggal",
     requireChildAgeMin: 0, requireChildAgeMax: 2,
@@ -310,7 +310,7 @@ e({
     ],
   }),
 
-e({
+  e({
     id: "anak_malam_pertama", category: "keluarga", pool: "relationship", rarity: "common",
     ageMin: 28, ageMax: 42, requireFlag: "punya_anak", forbidFlag: "anak_meninggal",
     requireChildAgeMin: 0, requireChildAgeMax: 1,
@@ -331,7 +331,7 @@ e({
     ],
   }),
 
-e({
+  e({
     id: "anak_kata_pertama_kita", category: "keluarga", pool: "relationship", rarity: "common",
     ageMin: 29, ageMax: 44, requireFlag: "punya_anak", forbidFlag: "anak_meninggal",
     requireChildAgeMin: 1, requireChildAgeMax: 2,
@@ -348,7 +348,7 @@ e({
     ],
   }),
 
-e({
+  e({
     id: "kehilangan_anak_balita", category: "kehilangan", pool: "trauma", rarity: "veryRare",
     ageMin: 30, ageMax: 65, requireFlag: "punya_anak", forbidFlag: "anak_meninggal",
     requireChildAgeMin: 3, requireChildAgeMax: 5,
@@ -369,7 +369,7 @@ e({
     ],
   }),
 
-e({
+  e({
     id: "anak_celetuk", category: "keluarga", pool: "relationship", rarity: "common",
     ageMin: 31, ageMax: 46, requireFlag: "punya_anak", forbidFlag: "anak_meninggal",
     requireChildAgeMin: 3, requireChildAgeMax: 6,
@@ -389,7 +389,7 @@ e({
     ],
   }),
 
-e({
+  e({
     id: "anak_sakit_demam", category: "keluarga", pool: "relationship", rarity: "uncommon",
     ageMin: 31, ageMax: 50, requireFlag: "punya_anak", forbidFlag: "anak_meninggal",
     requireChildAgeMin: 6, requireChildAgeMax: 10,
@@ -410,7 +410,7 @@ e({
     ],
   }),
 
-e({
+  e({
     id: "anak_pertanyaan_susah", category: "keluarga", pool: "relationship", rarity: "uncommon",
     ageMin: 32, ageMax: 48, requireFlag: "punya_anak", forbidFlag: "anak_meninggal",
     requireChildAgeMin: 5, requireChildAgeMax: 5,
@@ -430,7 +430,7 @@ e({
     ],
   }),
 
-e({
+  e({
     id: "kehilangan_anak_sekolah", category: "kehilangan", pool: "trauma", rarity: "veryRare",
     ageMin: 33, ageMax: 62, requireFlag: "punya_anak", forbidFlag: "anak_meninggal",
     requireChildAgeMin: 6, requireChildAgeMax: 12,
@@ -451,7 +451,7 @@ e({
     ],
   }),
 
-e({
+  e({
     id: "anak_hari_sekolah", category: "keluarga", pool: "relationship", rarity: "common",
     ageMin: 34, ageMax: 50, requireFlag: "punya_anak", forbidFlag: "anak_meninggal",
     requireChildAgeMin: 6, requireChildAgeMax: 6,
@@ -471,7 +471,7 @@ e({
     ],
   }),
 
-e({
+  e({
     id: "anak_raport", category: "sekolah", pool: "relationship", rarity: "common",
     ageMin: 36, ageMax: 53, requireFlag: "punya_anak", forbidFlag: "anak_meninggal",
     requireChildAgeMin: 8, requireChildAgeMax: 12,
@@ -493,7 +493,7 @@ e({
     ],
   }),
 
-e({
+  e({
     id: "anak_berbohong_pertama", category: "keluarga", pool: "relationship", rarity: "uncommon",
     ageMin: 37, ageMax: 52, requireFlag: "punya_anak", forbidFlag: "anak_meninggal",
     requireChildAgeMin: 9, requireChildAgeMax: 13,
@@ -516,7 +516,7 @@ e({
     ],
   }),
 
-e({
+  e({
     id: "anak_hp", category: "internet", pool: "relationship", rarity: "common",
     ageMin: 40, ageMax: 56, requireFlag: "punya_anak", forbidFlag: "anak_meninggal",
     requireChildAgeMin: 12, requireChildAgeMax: 15,
@@ -538,7 +538,7 @@ e({
     ],
   }),
 
-e({
+  e({
     id: "anak_menjauh", category: "keluarga", pool: "relationship", rarity: "uncommon",
     ageMin: 40, ageMax: 58, requireFlag: "punya_anak", forbidFlag: "anak_meninggal",
     requireChildAgeMin: 13, requireChildAgeMax: 17,
@@ -565,7 +565,7 @@ e({
     ],
   }),
 
-e({
+  e({
     id: "kehilangan_anak_remaja", category: "kehilangan", pool: "trauma", rarity: "veryRare",
     ageMin: 40, ageMax: 75, requireFlag: "punya_anak", forbidFlag: "anak_meninggal",
     requireChildAgeMin: 13, requireChildAgeMax: 17,
@@ -586,7 +586,7 @@ e({
     ],
   }),
 
-e({
+  e({
     id: "anak_pacaran", category: "cinta", pool: "relationship", rarity: "uncommon",
     ageMin: 43, ageMax: 58, requireFlag: "punya_anak", forbidFlag: "anak_meninggal",
     requireChildAgeMin: 15, requireChildAgeMax: 17,
@@ -609,7 +609,7 @@ e({
     ],
   }),
 
-e({
+  e({
     id: "kehilangan_anak_kuliah", category: "kehilangan", pool: "trauma", rarity: "veryRare",
     ageMin: 45, ageMax: 70, requireFlag: "punya_anak", forbidFlag: "anak_meninggal",
     requireChildAgeMin: 18, requireChildAgeMax: 23,
@@ -630,7 +630,7 @@ e({
     ],
   }),
 
-e({
+  e({
     id: "anak_pergi_kuliah_momen", category: "keluarga", pool: "relationship", rarity: "common",
     ageMin: 46, ageMax: 61, requireFlag: "punya_anak", forbidFlag: "anak_meninggal",
     requireChildAgeMin: 18, requireChildAgeMax: 19,
@@ -652,7 +652,7 @@ e({
     ],
   }),
 
-e({
+  e({
     id: "kehilangan_anak_dewasa", category: "kehilangan", pool: "trauma", rarity: "veryRare",
     ageMin: 50, ageMax: 90, requireFlag: "punya_anak", forbidFlag: "anak_meninggal",
     requireChildAgeMin: 25,

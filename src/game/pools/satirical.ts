@@ -3,7 +3,7 @@ import { e, karirOf } from "./_helpers";
 
 // Pool sindiran sosial: humor satir, kadang menyakitkan.
 export const SATIRICAL_POOL: LifeEvent[] = [
-e({
+  e({
     id: "toxic_positivity", category: "internet", pool: "satirical", rarity: "common",
     ageMin: 20, ageMax: 35, title: "Postingan Teman",
     prompt: "Teman lama posting 'Kalau kamu masih sedih, berarti kamu kurang bersyukur. Stay positive!' dengan 1.2k likes.",
@@ -23,7 +23,7 @@ e({
     ],
   }),
 
-e({
+  e({
     id: "bangun_jam4", category: "internet", pool: "satirical", rarity: "uncommon",
     ageMin: 22, ageMax: 34, requireWealthMax: 35, title: "Seminar Daring",
     prompt: "Iklan 'Bangun jam 4 pagi untuk sukses.' Kamu klik karena penasaran, atau karena putus asa?",
@@ -43,7 +43,7 @@ e({
     ],
   }),
 
-e({
+  e({
     id: "phk_keluarga", category: "pekerjaan", pool: "satirical", rarity: "uncommon",
     ageMin: 24, ageMax: 35, requireFlag: "loyal_pegawai", mood: "tragic",
     companionEvent: { id: "br_setelah_phk", chance: 0.5 },
@@ -71,7 +71,7 @@ e({
     ],
   }),
 
-e({
+  e({
     id: "email_urgent_santai", category: "pekerjaan", pool: "satirical", rarity: "uncommon",
     ageMin: 24, ageMax: 42, title: "Email Pukul 23:58",
     prompt: "Subjek: 'urgent santai aja'. Body: 'Tolong dikerjakan ya. Besok pagi sudah ada di meja.'",
@@ -91,7 +91,7 @@ e({
     ],
   }),
 
-e({
+  e({
     id: "mlm_teman_lama", category: "absurd", pool: "satirical", rarity: "uncommon",
     ageMin: 27, ageMax: 40, deferrable: true,
     title: "Pesan dari Teman SMP",
@@ -116,7 +116,7 @@ e({
     ],
   }),
 
-e({
+  e({
     id: "mantan_motivator", category: "internet", pool: "satirical", rarity: "uncommon",
     ageMin: 28, ageMax: 38, deferrable: true,
     title: "Beranda Pagi",
@@ -141,7 +141,7 @@ e({
     ],
   }),
 
-e({
+  e({
     id: "grup_wa_pagi", category: "internet", pool: "satirical", rarity: "common",
     ageMin: 60, ageMax: 88, deferrable: true,
     title: "Selamat Pagi dengan Gambar Bunga",
@@ -162,7 +162,7 @@ e({
     ],
   }),
 
-e({
+  e({
     id: "iklan_obat_tv", category: "absurd", pool: "satirical", rarity: "uncommon",
     ageMin: 62, ageMax: 90, deferrable: true, mood: "melancholy",
     title: "Penonton yang Dituju",

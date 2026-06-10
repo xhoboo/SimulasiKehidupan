@@ -3,7 +3,7 @@ import { e } from "./_helpers";
 
 // Pool callback: peristiwa lama yang muncul kembali bertahun kemudian.
 export const CALLBACK_POOL: LifeEvent[] = [
-e({
+  e({
     id: "teman_khayalan_pergi", category: "pertemanan", pool: "callback", rarity: "uncommon",
     ageMin: 8, ageMax: 11, requireRelationship: "teman_khayalan", deferrable: true, mood: "melancholy",
     forceCallbackTag: "teman_khayalan",
@@ -23,7 +23,7 @@ e({
     ],
   }),
 
-e({
+  e({
     id: "robot_kembali", category: "nostalgia", pool: "callback", rarity: "rare",
     ageMin: 25, ageMax: 34, requireFlag: "robot_kecil",
     requireAnyFlag: ["punya_rumah", "tinggal_kos", "menikah"],
@@ -43,7 +43,7 @@ e({
     ],
   }),
 
-e({
+  e({
     id: "warung_lama", category: "nostalgia", pool: "callback", rarity: "uncommon",
     ageMin: 30, ageMax: 70, requireFlag: "warung_bu_tini", mood: "melancholy",
     title: "Warung Bu Tini",
@@ -60,7 +60,7 @@ e({
     ],
   }),
 
-e({
+  e({
     id: "chat_terakhir", category: "nostalgia", pool: "callback", rarity: "rare",
     ageMin: 30, ageMax: 70, mood: "melancholy",
     title: "Scroll ke Bawah Lagi",
@@ -84,7 +84,7 @@ e({
     ],
   }),
 
-e({
+  e({
     id: "kenangan_pensil", category: "nostalgia", pool: "callback", rarity: "rare",
     ageMin: 35, ageMax: 60, requireFlag: "pensil_biru_disimpan", mood: "melancholy",
     forceCallbackTag: "pensil_biru",
@@ -106,7 +106,7 @@ e({
     ],
   }),
 
-e({
+  e({
     id: "teman_khayalan_pamit_dewasa", category: "pertemanan", pool: "callback", rarity: "uncommon",
     ageMin: 35, ageMax: 75, requireRelationship: "teman_khayalan", forbidFlag: "teman_khayalan_selesai",
     deferrable: true, mood: "melancholy",
@@ -127,7 +127,7 @@ e({
     ],
   }),
 
-e({
+  e({
     id: "callback_surat_kapsul", category: "nostalgia", pool: "callback", rarity: "uncommon",
     ageMin: 60, ageMax: 88, requireFlag: "surat_masa_depan", deferrable: true, mood: "melancholy",
     forceCallbackTag: "surat_kapsul",

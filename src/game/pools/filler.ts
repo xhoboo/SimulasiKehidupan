@@ -4,7 +4,7 @@ import { e } from "./_helpers";
 // Pool filler: peristiwa kecil unik untuk mengisi tahun-tahun yang kosong.
 // Semua muncul sekali per hidup (default). Rarity common, weight rendah.
 export const FILLER_POOL: LifeEvent[] = [
-e({
+  e({
     id: "f_lutut_lecet", category: "random", pool: "age", rarity: "common",
     ageMin: 6, ageMax: 9, deferrable: true, weight: 8,
     prompt: "Kamu jatuh dari sepeda. Lututmu berdarah. Ibu mengoleskan obat merah yang perih.",
@@ -25,7 +25,7 @@ e({
     ],
   }),
 
-e({
+  e({
     id: "f_bekal_ibu", category: "keluarga", pool: "age", rarity: "common",
     ageMin: 6, ageMax: 11, deferrable: true, weight: 8,
     prompt: "Kamu membuka kotak bekal. Ibu menyelipkan kertas kecil bertuliskan 'semangat ya'.",
@@ -45,7 +45,7 @@ e({
     ],
   }),
 
-e({
+  e({
     id: "f_main_hujan", category: "pertemanan", pool: "age", rarity: "common",
     ageMin: 7, ageMax: 11, deferrable: true, weight: 8,
     prompt: "Hujan deras saat istirahat. Beberapa anak berlari ke lapangan, basah-basahan.",
@@ -63,7 +63,7 @@ e({
     ],
   }),
 
-e({
+  e({
     id: "f_buku_terbaik", category: "sekolah", pool: "age", rarity: "common",
     ageMin: 13, ageMax: 18, deferrable: true, weight: 8,
     prompt: "Kamu menemukan satu buku di perpustakaan sekolah yang seakan ditulis khusus untukmu.",
@@ -81,7 +81,7 @@ e({
     ],
   }),
 
-e({
+  e({
     id: "f_makan_warung", category: "pertemanan", pool: "age", rarity: "common",
     ageMin: 15, ageMax: 18, deferrable: true, weight: 8,
     prompt: "Pulang sekolah, temanmu mengajak makan di warung pinggir jalan. Uangnya kalian patungan.",
@@ -104,7 +104,7 @@ e({
     ],
   }),
 
-e({
+  e({
     id: "f_kos_pertama", category: "random", pool: "filler", rarity: "common",
     ageMin: 18, ageMax: 23, deferrable: true, weight: 8,
     prompt: "Malam pertama di kos. Lampu kuning. Kasur tipis. Bau kamar orang lain yang belum jadi baumu.",
@@ -124,7 +124,7 @@ e({
     ],
   }),
 
-e({
+  e({
     id: "f_skripsi_macet", category: "sekolah", pool: "age", rarity: "common",
     ageMin: 22, ageMax: 24, deferrable: true, weight: 8,
     requireAnyFlag: ["jurusan_kedokteran", "jurusan_seni", "jurusan_teknik", "jurusan_filsafat", "jurusan_psikologi"],
@@ -146,7 +146,7 @@ e({
     ],
   }),
 
-e({
+  e({
     id: "f_undangan_nikah", category: "pertemanan", pool: "age", rarity: "common",
     ageMin: 26, ageMax: 35, deferrable: true, weight: 8,
     prompt: "Undangan pernikahan datang dari teman SMA-mu yang dulu bilang 'aku tidak ingin menikah'.",
@@ -164,7 +164,7 @@ e({
     ],
   }),
 
-e({
+  e({
     id: "f_reunian", category: "pertemanan", pool: "age", rarity: "common",
     ageMin: 30, ageMax: 40, deferrable: true, weight: 8,
     prompt: "Grup reuni SMA tiba-tiba aktif. Mereka mengajak kumpul akhir pekan ini.",
@@ -183,7 +183,7 @@ e({
     ],
   }),
 
-e({
+  e({
     id: "f_resep_ibu", category: "keluarga", pool: "age", rarity: "common",
     ageMin: 30, ageMax: 60, deferrable: true, weight: 8, mood: "warm",
     requireFlag: "ibu_meninggal",
@@ -204,7 +204,7 @@ e({
     ],
   }),
 
-e({
+  e({
     id: "f_kacamata", category: "random", pool: "age", rarity: "common",
     ageMin: 38, ageMax: 48, deferrable: true, weight: 8,
     prompt: "Kamu sadar harus menjauhkan ponsel agar bisa membaca. Optik di mall menunggumu.",
@@ -222,7 +222,7 @@ e({
     ],
   }),
 
-e({
+  e({
     id: "f_check_up", category: "penyakit", pool: "age", rarity: "common",
     ageMin: 42, ageMax: 55, deferrable: true, weight: 8, mood: "melancholy",
     title: "Hasil Lab",
@@ -243,7 +243,7 @@ e({
     ],
   }),
 
-e({
+  e({
     id: "f_baca_obituari", category: "kehilangan", pool: "age", rarity: "common",
     ageMin: 50, ageMax: 80, deferrable: true, weight: 8, mood: "melancholy",
     title: "Halaman Obituari",
@@ -263,7 +263,7 @@ e({
     ],
   }),
 
-e({
+  e({
     id: "f_kursi_taman", category: "quiet", pool: "age", rarity: "common",
     ageMin: 55, ageMax: 70, deferrable: true, weight: 8, mood: "warm",
     title: "Bangku Taman",

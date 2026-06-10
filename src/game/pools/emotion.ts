@@ -2,7 +2,7 @@ import { LifeEvent } from "../types";
 import { e, kerjaCtx } from "./_helpers";
 
 export const EMOTION_POOL: LifeEvent[] = [
-e({
+  e({
     id: "semua_hari_sama", category: "eksistensial", pool: "emotion", rarity: "uncommon",
     ageMin: 25, ageMax: 45, title: "Senin, Lagi",
     mood: "melancholy",
@@ -27,7 +27,7 @@ e({
     ],
   }),
 
-e({
+  e({
     id: "burnout", category: "eksistensial", pool: "emotion", rarity: "uncommon",
     ageMin: 25, ageMax: 50, requireMentalMax: 35, title: "Tubuh yang Memberontak",
     mood: "melancholy",
@@ -48,7 +48,7 @@ e({
     ],
   }),
 
-e({
+  e({
     id: "tawa_tanpa_alasan", category: "eksistensial", pool: "emotion", rarity: "rare",
     ageMin: 25, ageMax: 60, mood: "hope",
     title: "Tertawa Sendiri",
@@ -65,7 +65,7 @@ e({
     ],
   }),
 
-e({
+  e({
     id: "burnout_2", category: "eksistensial", pool: "emotion", rarity: "uncommon",
     ageMin: 27, ageMax: 52, requireFlag: "burnout_1_done", requireMentalMax: 30, title: "Ini Lagi",
     mood: "melancholy",
@@ -86,7 +86,7 @@ e({
     ],
   }),
 
-e({
+  e({
     id: "krisis_30", category: "eksistensial", pool: "emotion", rarity: "uncommon",
     ageMin: 28, ageMax: 33, mood: "melancholy",
     title: "Jam 3 Pagi",
@@ -111,7 +111,7 @@ e({
     ],
   }),
 
-e({
+  e({
     id: "burnout_3", category: "eksistensial", pool: "emotion", rarity: "rare",
     ageMin: 30, ageMax: 55, requireFlag: "burnout_2_done", requireMentalMax: 25, title: "Sudah Tidak Mengejutkan",
     mood: "tragic",

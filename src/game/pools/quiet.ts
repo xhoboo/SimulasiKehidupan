@@ -34,7 +34,7 @@ function parkiranPulang(state: GameState): string {
 
 // Pool momen tenang — setiap beat punya pilihan unik dan muncul sekali per hidup (default).
 export const QUIET_POOL: LifeEvent[] = [
-e({
+  e({
     id: "quiet_sinetron", category: "quiet", pool: "quiet", rarity: "common",
     ageMin: 6, ageMax: 9, deferrable: true, mood: "warm",
     title: "Sofa dan Sinetron",
@@ -59,7 +59,7 @@ e({
     ],
   }),
 
-e({
+  e({
     id: "quiet_hujan", category: "quiet", pool: "quiet", rarity: "common",
     ageMin: 16, ageMax: 32, deferrable: true, mood: "melancholy",
     title: "Hujan yang Terlalu Lama",
@@ -81,7 +81,7 @@ e({
     ],
   }),
 
-e({
+  e({
     id: "quiet_lampu", category: "quiet", pool: "quiet", rarity: "common",
     ageMin: 18, ageMax: 30, requireFlag: "tinggal_kos", forbidFlag: "punya_rumah", deferrable: true, mood: "melancholy",
     title: "Lampu Kos yang Berkedip",
@@ -101,7 +101,7 @@ e({
     ],
   }),
 
-e({
+  e({
     id: "quiet_tetangga", category: "quiet", pool: "quiet", rarity: "common",
     ageMin: 22, ageMax: 38, deferrable: true,
     title: "Tawa dari Balik Dinding",
@@ -124,7 +124,7 @@ e({
     ],
   }),
 
-e({
+  e({
     id: "quiet_makan", category: "quiet", pool: "quiet", rarity: "common",
     ageMin: 23, ageMax: 42, mood: "melancholy",
     title: "Video Lama Saat Makan",
@@ -143,7 +143,7 @@ e({
     ],
   }),
 
-e({
+  e({
     id: "quiet_parkiran", category: "quiet", pool: "quiet", rarity: "uncommon",
     ageMin: 24, ageMax: 36, mood: "melancholy",
     title: "Roti Dingin di Parkiran",
@@ -165,7 +165,7 @@ e({
     ],
   }),
 
-e({
+  e({
     id: "quiet_kipas", category: "quiet", pool: "quiet", rarity: "common",
     ageMin: 25, ageMax: 40, title: "Kipas Angin Tua",
     prompt: "Kipas angin di kamarmu berbunyi 'tek-tek' setiap putaran. Sudah bertahun-tahun. Kamu tidak ingat kapan mulainya.",
@@ -186,7 +186,7 @@ e({
     ],
   }),
 
-e({
+  e({
     id: "quiet_kopi", category: "quiet", pool: "quiet", rarity: "common",
     ageMin: 26, ageMax: 48, deferrable: true, mood: "warm",
     title: "Pagi, Sebelum Notifikasi",
@@ -208,7 +208,7 @@ e({
     ],
   }),
 
-e({
+  e({
     id: "quiet_lagu_lama", category: "quiet", pool: "quiet", rarity: "common",
     ageMin: 30, ageMax: 55, deferrable: true, mood: "melancholy",
     title: "Lagu Lama di Radio",
@@ -228,7 +228,7 @@ e({
     ],
   }),
 
-e({
+  e({
     id: "quiet_foto_laci", category: "nostalgia", pool: "quiet", rarity: "uncommon",
     ageMin: 60, ageMax: 85, deferrable: true, mood: "melancholy",
     title: "Album di Laci Bawah",
@@ -255,7 +255,7 @@ e({
     ],
   }),
 
-e({
+  e({
     id: "quiet_pagi_tua", category: "quiet", pool: "quiet", rarity: "common",
     ageMin: 62, ageMax: 90, deferrable: true, mood: "warm",
     title: "Pagi yang Tidak Terburu-buru",
@@ -277,7 +277,7 @@ e({
     ],
   }),
 
-e({
+  e({
     id: "kawan_jalan_pagi", category: "pertemanan", pool: "quiet", rarity: "uncommon",
     ageMin: 63, ageMax: 86, deferrable: true, mood: "melancholy",
     title: "Teman Jalan Pagi",
@@ -300,7 +300,7 @@ e({
     ],
   }),
 
-e({
+  e({
     id: "tua_daftar_orang", category: "nostalgia", pool: "quiet", rarity: "uncommon",
     ageMin: 63, ageMax: 92, deferrable: true, mood: "melancholy",
     title: "Orang-orang yang Pernah Singgah",
@@ -318,7 +318,7 @@ e({
     ],
   }),
 
-e({
+  e({
     id: "tua_lagu_kembali", category: "nostalgia", pool: "quiet", rarity: "rare",
     ageMin: 64, ageMax: 90, requireMemoryTag: "lagu_lama", deferrable: true, mood: "melancholy",
     title: "Lagu Itu, Sekali Lagi",
@@ -337,7 +337,7 @@ e({
     ],
   }),
 
-e({
+  e({
     id: "tua_langit_langit", category: "nostalgia", pool: "quiet", rarity: "uncommon",
     ageMin: 64, ageMax: 92, deferrable: true, mood: "melancholy",
     title: "Setiap Langit-langit yang Pernah Kamu Tatap",

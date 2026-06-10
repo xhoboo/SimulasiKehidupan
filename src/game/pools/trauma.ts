@@ -2,7 +2,7 @@ import { LifeEvent } from "../types";
 import { e } from "./_helpers";
 
 export const TRAUMA_POOL: LifeEvent[] = [
-e({
+  e({
     id: "bullying", category: "sekolah", pool: "trauma", rarity: "common",
     ageMin: 10, ageMax: 14, deferrable: true,
     prompt: "Seorang anak yang lebih besar mendorongmu di koridor.",
@@ -28,7 +28,7 @@ e({
     ],
   }),
 
-e({
+  e({
     id: "kehilangan_sahabat", category: "kehilangan", pool: "trauma", rarity: "rare",
     ageMin: 22, ageMax: 60, mood: "tragic",
     requireRelationship: "sahabat",
@@ -46,7 +46,7 @@ e({
     ],
   }),
 
-e({
+  e({
     id: "ortu_sakit", category: "keluarga", pool: "trauma", rarity: "uncommon",
     ageMin: 35, ageMax: 55, forbidFlag: "ibu_meninggal", mood: "tragic",
     title: "Suara yang Berbeda di Pagi Hari",
@@ -107,7 +107,7 @@ e({
     },
   }),
 
-e({
+  e({
     id: "ayah_pergi", category: "kehilangan", pool: "trauma", rarity: "uncommon",
     ageMin: 42, ageMax: 68, forbidFlag: "ayah_meninggal", deferrable: true, mood: "tragic",
     title: "Hal yang Tidak Pernah Kalian Ucapkan",
@@ -152,7 +152,7 @@ e({
     ],
   }),
 
-e({
+  e({
     id: "lupa_suara_ayah", category: "kehilangan", pool: "trauma", rarity: "rare",
     ageMin: 50, ageMax: 65, requireFlag: "ayah_meninggal", deferrable: true, mood: "tragic",
     title: "Yang Hilang Pelan-pelan",

@@ -16,7 +16,6 @@ import { Card } from "@/components/ui/card";
 import { Tabs, TabsList, TabsTrigger, TabsContent } from "@/components/ui/tabs";
 import { Dialog, DialogContent, DialogTrigger, DialogTitle, DialogHeader, DialogDescription } from "@/components/ui/dialog";
 import { Input } from "@/components/ui/input";
-import { Checkbox } from "@/components/ui/checkbox";
 import {
   AlertDialog, AlertDialogAction, AlertDialogCancel, AlertDialogContent,
   AlertDialogDescription, AlertDialogFooter, AlertDialogHeader, AlertDialogTitle, AlertDialogTrigger,
@@ -284,15 +283,15 @@ const Game = () => {
   const hasFollowupPending = pendingFollowups.length > 0;
 
   return (
-    <div className="min-h-screen relative overflow-hidden">
+    <div className="min-h-screen relative overflow-x-clip">
       <div className={`fixed inset-0 -z-10 bg-gradient-to-b ${moodBg[mood]} to-transparent transition-all duration-[1500ms]`} />
       <div className="vignette-layer" aria-hidden />
       <div className="grain-layer" aria-hidden />
 
-      <header className="relative z-10 border-b border-border/50 backdrop-blur-sm">
-        <div className="container max-w-6xl flex items-center justify-between py-4">
+      <header className="sticky top-0 z-20 border-b border-border/50 bg-background/80 backdrop-blur-sm">
+        <div className="container max-w-6xl flex items-center justify-between py-1.5 sm:py-4">
           <div>
-            <h1 className="font-display text-xl tracking-tight">Simulasi Kehidupan</h1>
+            <h1 className="font-display text-base sm:text-xl tracking-tight">Simulasi Kehidupan</h1>
           </div>
           <div className="flex items-center gap-2 sm:gap-3">
             {(phase === "playing" || phase === "result") && (
@@ -312,10 +311,10 @@ const Game = () => {
       <main className="relative z-10 container max-w-6xl py-8 md:py-12">
         <AnimatePresence mode="wait">
           {phase === "menu" && (
-            <motion.div key="menu" initial={{ opacity: 0, y: 12 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0 }} className="max-w-xl mx-auto text-center pt-12 md:pt-20">
-              <Sparkles className="w-8 h-8 mx-auto text-primary mb-6 animate-breathe" />
-              <h2 className="font-display text-5xl md:text-6xl mb-4 tracking-tight">Hiduplah,<br/><span className="italic text-primary">satu kali saja.</span></h2>
-              <p className="text-muted-foreground leading-relaxed mb-8">Setiap pilihan akan memupukmu menjadi orang yang akan kamu kenang sebelum mati. Atau tidak.</p>
+            <motion.div key="menu" initial={{ opacity: 0, y: 12 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0 }} className="max-w-xl mx-auto text-center flex flex-col justify-center min-h-[calc(100svh-10rem)]">
+              <Sparkles className="w-8 h-8 mx-auto text-primary mb-4 md:mb-6 animate-breathe" />
+              <h2 className="font-display text-4xl sm:text-5xl md:text-6xl mb-3 md:mb-4 tracking-tight">Hiduplah,<br/><span className="italic text-primary">satu kali saja.</span></h2>
+              <p className="text-sm sm:text-base text-muted-foreground leading-relaxed mb-6 md:mb-8">Setiap pilihan akan memupukmu menjadi orang yang akan kamu kenang sebelum mati. Atau tidak.</p>
               <div className="flex flex-col gap-3 max-w-sm mx-auto">
                 <Input
                   placeholder="Siapa namamu?"
@@ -330,7 +329,7 @@ const Game = () => {
                 )}
                 <AchievementsDialog unlocked={unlockedAchievements} />
               </div>
-              <p className="text-[11px] text-muted-foreground/60 mt-12 italic">"Hidup bisa dipahami dengan menengok ke belakang, tapi harus dijalani dengan melangkah ke depan."</p>
+              <p className="text-[11px] text-muted-foreground/60 mt-8 md:mt-12 italic">"Hidup bisa dipahami dengan menengok ke belakang, tapi harus dijalani dengan melangkah ke depan."</p>
             </motion.div>
           )}
 
@@ -398,16 +397,14 @@ const Game = () => {
                           transition={{ delay: 0.3 + i * 0.08 }}
                           whileHover={{ y: -2 }}
                           onClick={() => choose(c)}
-                          className="text-left p-4 rounded-lg bg-card/80 border border-border hover:border-primary/60 hover:bg-card transition-all group"
+                          className="text-left px-4 py-3 rounded-lg bg-card/80 border border-border hover:border-primary/60 hover:bg-card transition-all group"
                         >
-                          <div className="text-[10px] font-mono text-muted-foreground mb-1 group-hover:text-primary transition-colors">PILIHAN {i + 1}</div>
                           <div className="font-display text-base leading-snug">{c.label}</div>
                         </motion.button>
                       ))}
                     </div>
                   ) : outcome && (
                     <motion.div initial={{ opacity: 0, y: 8 }} animate={{ opacity: 1, y: 0 }}>
-                      <div className="text-[10px] font-mono uppercase tracking-widest text-muted-foreground mb-2">Maka...</div>
                       <Card className="p-6 bg-secondary/40 border-primary/30">
                         <p className="font-display text-lg leading-relaxed text-foreground/95">
                           <Typewriter text={outcome.outcome.text} speed={16} />
@@ -438,7 +435,7 @@ const Game = () => {
                   )}
                 </div>
 
-                <div className="lg:hidden mt-6">
+                <div className="lg:hidden sticky bottom-0 z-20 -mx-6 mt-6 px-6 py-3 bg-background/85 backdrop-blur-sm border-t border-border/50">
                   <MobileStatsDialog state={state} />
                 </div>
               </div>
@@ -699,14 +696,12 @@ function ShareDialog({ captureRef, name }: { captureRef: React.RefObject<HTMLDiv
   const [open, setOpen] = useState(false);
   const [shot, setShot] = useState<string | null>(null);
   const [capturing, setCapturing] = useState(false);
-  const [selected, setSelected] = useState<Record<SharePlatform, boolean>>({
-    facebook: true,
-    x: true,
-    threads: true,
-  });
   // Apakah perangkat mendukung berbagi berkas via Web Share API. Diuji dengan
   // berkas dummy karena navigator.canShare memerlukan objek File yang valid.
   const [canNativeShare, setCanNativeShare] = useState(false);
+  // Screenshot hanya diunduh sekali per sesi dialog walau pemain membuka
+  // beberapa platform, agar tidak membanjiri pemain dengan berkas berulang.
+  const downloadedRef = useRef(false);
 
   const gameLink = typeof window !== "undefined" ? window.location.origin : "";
   const shareText = `Aku baru saja menamatkan satu kehidupan sebagai ${name} di Simulasi Kehidupan. Tulis kisah hidupmu sendiri:`;
@@ -726,6 +721,7 @@ function ShareDialog({ captureRef, name }: { captureRef: React.RefObject<HTMLDiv
   useEffect(() => {
     if (!open) {
       setShot(null);
+      downloadedRef.current = false;
       return;
     }
     const node = captureRef.current;
@@ -740,15 +736,13 @@ function ShareDialog({ captureRef, name }: { captureRef: React.RefObject<HTMLDiv
     return () => cancelAnimationFrame(id);
   }, [open, captureRef]);
 
-  const toggle = (id: SharePlatform) =>
-    setSelected((s) => ({ ...s, [id]: !s[id] }));
-
   const downloadShot = () => {
     if (!shot) return;
     const a = document.createElement("a");
     a.href = shot;
     a.download = fileName;
     a.click();
+    downloadedRef.current = true;
   };
 
   // Jalur native: berbagi gambar + teks + tautan sekaligus lewat menu share
@@ -771,20 +765,18 @@ function ShareDialog({ captureRef, name }: { captureRef: React.RefObject<HTMLDiv
     }
   };
 
-  const handleShare = async () => {
-    const targets = SHARE_PLATFORMS.filter((p) => selected[p.id]);
-    if (targets.length === 0) {
-      toast.error("Pilih setidaknya satu platform.");
-      return;
-    }
+  // Satu jendela berbagi dibuka per klik. Membuka beberapa jendela dalam satu
+  // gestur klik akan diblokir oleh popup blocker peramban (hanya yang pertama
+  // lolos), jadi tiap platform punya tombolnya sendiri.
+  const shareTo = (platform: SharePlatform) => {
+    if (!shot) return;
     // Web intent platform tidak bisa menerima berkas gambar, jadi screenshot
-    // diunduh agar pemain dapat melampirkannya pada postingan.
-    downloadShot();
-    targets.forEach((p) => {
-      window.open(buildShareUrl(p.id, gameLink, shareText), "_blank", "noopener,noreferrer");
-    });
-    toast.success("Screenshot tersimpan — lampirkan ke postinganmu.");
-    setOpen(false);
+    // diunduh sekali agar pemain dapat melampirkannya pada postingan.
+    if (!downloadedRef.current) {
+      downloadShot();
+      toast.success("Screenshot tersimpan — lampirkan ke postinganmu.");
+    }
+    window.open(buildShareUrl(platform, gameLink, shareText), "_blank", "noopener,noreferrer");
   };
 
   return (
@@ -837,27 +829,25 @@ function ShareDialog({ captureRef, name }: { captureRef: React.RefObject<HTMLDiv
           <div className="space-y-2">
             <p className="text-xs uppercase tracking-wider text-muted-foreground">Bagikan ke</p>
             {SHARE_PLATFORMS.map(({ id, label, Icon }) => (
-              <label
+              <button
                 key={id}
-                htmlFor={`share-${id}`}
-                className="flex items-center gap-3 rounded-md border border-border/40 px-3 py-2 cursor-pointer hover:bg-secondary/40 transition-colors"
+                type="button"
+                onClick={() => shareTo(id)}
+                disabled={!shot}
+                className="flex w-full items-center gap-3 rounded-md border border-border/40 px-3 py-2 text-left transition-colors hover:bg-secondary/40 disabled:cursor-not-allowed disabled:opacity-50"
               >
-                <Checkbox id={`share-${id}`} checked={selected[id]} onCheckedChange={() => toggle(id)} />
                 <Icon className="w-5 h-5 text-foreground/80" />
                 <span className="text-sm">{label}</span>
-              </label>
+                <Share2 className="ml-auto w-4 h-4 text-muted-foreground" />
+              </button>
             ))}
           </div>
         </div>
 
         <div className="flex items-center gap-2 px-6 py-4 border-t border-border/40">
-          <Button variant="outline" className="gap-2" onClick={downloadShot} disabled={!shot}>
+          <Button variant="outline" className="w-full gap-2" onClick={downloadShot} disabled={!shot}>
             <Download className="w-4 h-4" />
-            Unduh
-          </Button>
-          <Button className="flex-1 gap-2 font-display" onClick={handleShare} disabled={!shot}>
-            <Share2 className="w-4 h-4" />
-            Bagikan
+            Unduh screenshot
           </Button>
         </div>
       </DialogContent>
