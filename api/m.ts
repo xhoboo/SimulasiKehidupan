@@ -1,8 +1,9 @@
 // Halaman "jembatan" share. Crawler (Facebook, WhatsApp, Twitter, dst.) membaca
 // tag Open Graph dari HTML ini dan menampilkan preview In Memoriam personal
-// (gambar dirender oleh /api/og). Pengunjung manusia langsung dialihkan ke
-// aplikasi lewat meta-refresh + script. SPA tidak bisa melakukan ini karena
-// crawler tak menjalankan JavaScript.
+// (gambar dirender oleh /api/og). Pengunjung manusia dialihkan ke aplikasi lewat
+// script JS — sengaja TANPA <meta http-equiv="refresh"> karena sebagian crawler
+// mengikuti refresh dan mendarat di "/" (kehilangan tag OG personal). Crawler tak
+// menjalankan JS, jadi mereka tetap membaca tag di sini; SPA tak bisa melakukannya.
 export const config = { runtime: "edge" };
 
 interface Payload {
@@ -72,10 +73,10 @@ export default function handler(req: Request): Response {
 <meta name="twitter:title" content="${esc(title)}" />
 <meta name="twitter:description" content="${esc(description)}" />
 <meta name="twitter:image" content="${esc(image)}" />
-<meta http-equiv="refresh" content="0; url=/" />
 <link rel="canonical" href="${esc(origin)}/" />
 </head>
 <body style="margin:0;background:#0e0e11;color:#F1EDE5;font-family:system-ui,sans-serif">
+<noscript><p style="padding:24px"><a href="/" style="color:#E8BB7D">Buka Simulasi Kehidupan</a></p></noscript>
 <p style="padding:24px">Mengalihkan ke Simulasi Kehidupan… <a href="/" style="color:#E8BB7D">Klik di sini bila tidak otomatis.</a></p>
 <script>location.replace("/");</script>
 </body>
