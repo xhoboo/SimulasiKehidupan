@@ -99,7 +99,7 @@ export const SYNTH_VARIANTS: Variant[] = [
     prompt: "Gigi depanmu yang sudah goyang berhari-hari akhirnya lepas. Berdarah sedikit, tapi kamu lebih takjub daripada sakit. Seseorang bilang taruh di bawah bantal.",
     choices: [
       { id: "bantal", label: "Taruh di bawah bantal, tunggu semalaman", text: "Pagi-pagi ada uang receh di sana. Kamu tidak pernah tanya dari mana. Beberapa keajaiban kecil memang lebih baik tidak diselidiki.", effects: { happiness: 4, mental: 2 } },
-      { id: "simpan", label: "Simpan di kotak korek api", text: "Gigi kecil itu ada di lacimu bertahun-tahun, sampai suatu hari kamu lupa di mana laci itu. Begitu juga dengan sebagian besar barang yang dulu terasa penting.", effects: { mental: 1 }, mood: "melancholy" },
+      { id: "simpan", label: "Simpan di kotak korek api", text: "Gigi kecil itu ada di lacimu bertahun-tahun, sampai suatu hari kamu lupa di mana kotak korek api itu. Begitu juga dengan sebagian besar barang yang dulu terasa penting.", effects: { mental: 1 }, mood: "melancholy" },
     ],
   },
 
@@ -164,7 +164,7 @@ export const SYNTH_VARIANTS: Variant[] = [
     choices: [
       { id: "cemas", label: "Cemas, takut namamu disebut terlalu awal",
         outcomes: [
-          { weight: 8, text: "Namamu baru terdengar di urutan paling akhir. Peringkat atas. Senang, tapi juga sadar mulai sekarang kamu harus mempertahankannya. Beban kecil pertama yang menyamar jadi prestasi.", effects: { happiness: 3, discipline: 2 } },
+          { weight: 8, text: "Namamu disebut paling akhir, peringkat atas. Senang, tapi mulai sekarang kamu harus mempertahankannya. Beban pertama yang menyamar jadi prestasi.", effects: { happiness: 3, discipline: 2 } },
           { weight: 8, text: "Namamu disebut di pertengahan daftar. Jantung yang sempat berdebar itu pelan-pelan turun. Tidak istimewa, tidak buruk, dan kecemasanmu tadi terasa sia-sia.", effects: { mental: 1 } },
           { weight: 8, text: "Namamu disebut lebih awal dari yang kamu harap. Peringkat bawah. Wajahmu panas, dan kamu menghabiskan sisa pembacaan dengan menunduk, berharap tidak ada yang menoleh.", effects: { mental: -2, discipline: 1 }, mood: "melancholy" },
         ],

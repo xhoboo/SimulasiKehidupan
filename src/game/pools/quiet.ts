@@ -177,7 +177,7 @@ export const QUIET_POOL: LifeEvent[] = [
       { id: "biarkan", label: "Biarkan. Bunyinya sudah jadi bagian rumah.", outcomes: [
         { weight: 8, text: "Suatu hari, kipas itu mati. Kamu tidur tidak nyenyak. Bukan karena panas, tapi karena hening.", effects: { mental: 2 }, mood: "melancholy",
           memory: { text: "Bunyi tek-tek kipas tua di kamar.", tag: "kipas_tua", mood: "warm" } },
-        { weight: 8, text: "Suatu hari kamu pindah, dan kipas itu tidak ikut. 'Terlalu tua.' Kata yang bantu angkut. Kamu mengangguk setuju, lalu diam-diam menyesalinya. Bunyi tek-tek itu tidak pernah kamu dengar lagi.", effects: { mental: 1 }, mood: "melancholy",
+        { weight: 8, text: "Suatu hari kamu pindah, dan kipas itu tidak ikut. 'Terlalu tua,' kata yang bantu angkut, dan kamu mengangguk lalu diam-diam menyesal. Bunyi tek-tek itu tidak pernah kamu dengar lagi.", effects: { mental: 1 }, mood: "melancholy",
           memory: { text: "Bunyi tek-tek kipas tua yang kamu tinggalkan saat pindah.", tag: "kipas_tua", mood: "melancholy" } },
       ]},
       { id: "ganti", label: "Beli kipas baru", outcomes: [
@@ -237,7 +237,7 @@ export const QUIET_POOL: LifeEvent[] = [
       { id: "buka_semua", label: "Lihat satu per satu, sampai selesai", outcomes: [
         { weight: 8, text: "Dua jam berlalu. Beberapa wajah tidak kamu kenali lagi, mungkin termasuk dirimu sendiri. Ada yang menekan pelan di dadamu.", effects: { mental: -4, happiness: 3 }, mood: "melancholy",
           memory: { text: "Foto-foto lama dengan wajah yang tidak lagi kamu kenali.", tag: "waktu", mood: "melancholy" } },
-        { weight: 8, text: "Di halaman terakhir, foto yang tidak kamu ingat. Kamu, muda, tertawa pada sesuatu di luar bingkai. Kamu coba mengingat apa yang begitu lucu, tidak berhasil. Tapi senyum itu menular melintasi puluhan tahun.", effects: { mental: -2, happiness: 4 }, mood: "melancholy",
+        { weight: 8, text: "Di halaman terakhir, foto yang tidak kamu ingat. Kamu, muda, tertawa pada sesuatu di luar bingkai. Kamu coba ingat apa yang begitu lucu, gagal — tapi senyum itu menular melintasi puluhan tahun.", effects: { mental: -2, happiness: 4 }, mood: "melancholy",
           memory: { text: "Foto dirimu muda, tertawa pada sesuatu di luar bingkai yang tak lagi kamu ingat.", tag: "waktu", mood: "melancholy" } },
       ]},
       { id: "tutup_lagi", label: "Tutup, simpan kembali ke laci", outcomes: [
@@ -294,7 +294,7 @@ export const QUIET_POOL: LifeEvent[] = [
       { id: "kenalan", label: "Akhirnya tanyakan namanya", outcomes: [
         { weight: 8, text: "Dia menyebut namanya, kamu menyebut namamu. Anehnya, sesuatu yang tadinya ringan jadi punya bobot setelah itu. Tapi kalian jadi benar-benar berteman, dan itu sepadan.", effects: { social: 5, happiness: 4 },
           addsRelationship: { id: "kawan_pagi", name: "Teman Jalan Pagi", role: "friend", closeness: 50, alive: true } },
-        { weight: 8, text: "Kamu tanyakan namanya, dan dia tersenyum: 'Sudah lima bulan jalan bareng, baru sekarang nanya.' Kalian tertawa, lalu saling tahu kabar, saling cemas kalau satu tidak muncul. Persahabatan tua yang datang justru saat kamu kira sudah terlalu tua untuk kawan baru.", effects: { social: 6, happiness: 5 },
+        { weight: 8, text: "Kamu tanyakan namanya, dia tersenyum: 'Lima bulan jalan bareng, baru sekarang nanya.' Kalian tertawa, lalu saling cemas kalau satu tidak muncul. Persahabatan yang datang justru saat kamu kira sudah terlalu tua untuk kawan baru.", effects: { social: 6, happiness: 5 },
           addsRelationship: { id: "kawan_pagi", name: "Teman Jalan Pagi", role: "friend", closeness: 52, alive: true } },
       ]},
     ],
@@ -313,7 +313,7 @@ export const QUIET_POOL: LifeEvent[] = [
           memory: { text: "Mencoba menghitung semua orang, dan kehilangan hitungan di masa muda.", tag: "waktu", mood: "melancholy" } },
       ]},
       { id: "cari", label: "Coba cari kabar satu-dua nama", outcomes: [
-        { weight: 8, text: "Beberapa sudah pergi mendahului. Satu masih hidup, membalas pesanmu dengan tanda tanya, tidak ingat siapa kamu. Kamu tertawa pelan. Tidak apa-apa diingat oleh hanya satu pihak.", effects: { mental: -2, social: 2 }, mood: "melancholy" },
+        { weight: 8, text: "Beberapa sudah pergi mendahului. Satu masih hidup, membalas dengan tanda tanya, tidak ingat siapa kamu. Kamu tertawa pelan — tidak apa-apa diingat oleh hanya satu pihak.", effects: { mental: -2, social: 2 }, mood: "melancholy" },
       ]},
     ],
   }),

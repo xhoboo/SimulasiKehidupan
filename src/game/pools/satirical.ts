@@ -58,7 +58,7 @@ export const SATIRICAL_POOL: LifeEvent[] = [
       ]},
       { id: "diam", label: "Tutup laptop. Tatap langit-langit.", outcomes: [
         { weight: 8, text: "Tiga jam berlalu seperti tiga menit. Atau sebaliknya?", effects: { mental: -8, happiness: -6 }, mood: "tragic", flag: "phk", memory: { text: "Hari kamu di-PHK lewat WhatsApp.", tag: "phk", mood: "tragic" } },
-        { weight: 8, text: "Kamu tutup laptop pelan, seolah menutupnya keras-keras membuat ini lebih nyata. Kucing tetangga lewat di jendela. Dunia tidak tahu, tidak peduli, tetap berjalan persis seperti kemarin. Itu bagian yang paling aneh.", effects: { mental: -8, happiness: -5 }, mood: "tragic", flag: "phk", memory: { text: "Sore kamu menutup laptop pelan, hari namamu dieliminasi.", tag: "phk", mood: "tragic" } },
+        { weight: 8, text: "Kamu tutup laptop pelan, seolah menutupnya keras membuat ini lebih nyata. Kucing tetangga lewat di jendela; dunia tidak tahu, tidak peduli, tetap berjalan seperti kemarin. Itu bagian yang paling aneh.", effects: { mental: -8, happiness: -5 }, mood: "tragic", flag: "phk", memory: { text: "Sore kamu menutup laptop pelan, hari namamu dieliminasi.", tag: "phk", mood: "tragic" } },
       ]},
       { id: "tuntut", label: "Konsultasi pengacara", outcomes: [
         { weight: 8, text: "Pesangon cair. Tidak ada kata maaf, hanya angka.", effects: { wealth: 8, mental: 2 }, flag: "phk" },
@@ -86,7 +86,7 @@ export const SATIRICAL_POOL: LifeEvent[] = [
       ]},
       { id: "abaikan", label: "Tidak balas, tidur", outcomes: [
         { weight: 8, text: "Bos kecewa secara pasif-agresif selama seminggu.", effects: { social: -3, mental: 2 } },
-        { weight: 8, text: "Kamu tidak balas, tidur, dan bangun tanpa rasa bersalah. Bos tidak menegur langsung. Hanya, selama seminggu, semua pesannya padamu berakhir dengan titik. Perang dingin lewat tanda baca.", effects: { social: -3, mental: 2 } },
+        { weight: 8, text: "Kamu tidak balas, tidur, bangun tanpa rasa bersalah. Bos tidak menegur langsung; hanya, selama seminggu, semua pesannya berakhir dengan titik. Perang dingin lewat tanda baca.", effects: { social: -3, mental: 2 } },
       ]},
     ],
   }),
@@ -136,7 +136,7 @@ export const SATIRICAL_POOL: LifeEvent[] = [
       ]},
       { id: "course", label: "Beli course motivasinya", outcomes: [
         { weight: 8, text: "Course-nya 70% template Canva yang dijual ulang. Kamu sudah curiga sejak menit kelima, dan tetap menontonnya sampai habis.", effects: { wealth: -4, mental: -4 } },
-        { weight: 8, text: "Modul 1 dan 2 adalah 'Percaya Diri' dan 'Percaya Diri (Lanjutan)'. Modul 3 tak pernah rilis 'karena permintaan tinggi'. Kamu tetap bayar penuh. Itu yang paling kamu sesali, bukan uangnya.", effects: { wealth: -4, mental: -3 } },
+        { weight: 8, text: "Modul 1 dan 2: 'Percaya Diri' dan 'Percaya Diri (Lanjutan)'. Modul 3 tak pernah rilis, 'karena permintaan tinggi'. Kamu tetap bayar penuh — itu yang paling kamu sesali, bukan uangnya.", effects: { wealth: -4, mental: -3 } },
       ]},
     ],
   }),
@@ -170,11 +170,11 @@ export const SATIRICAL_POOL: LifeEvent[] = [
     choices: [
       { id: "catat", label: "Catat nomor telepon di layar", outcomes: [
         { weight: 8, text: "Kamu menuliskannya di kertas yang sama tempat tersimpan nomor-nomor lain yang tidak pernah kamu telepon. Daftar itu sudah dua halaman.", effects: { health: 1 } },
-        { weight: 8, text: "Kamu tulis nomornya, lalu sadar tanganmu sendiri gemetar saat menulis. Gejala yang persis disebut iklan tadi. Kamu tertawa pelan pada lelucon yang tidak ada pembuatnya. Daftar itu bertambah lagi satu nomor yang tidak akan kamu telepon.", effects: { health: 1, mental: -1 }, mood: "melancholy" },
+        { weight: 8, text: "Kamu tulis nomornya, lalu sadar tanganmu gemetar — gejala yang persis disebut iklan tadi. Kamu tertawa pelan pada lelucon yang tidak ada pembuatnya. Daftar itu bertambah satu nomor yang tidak akan kamu telepon.", effects: { health: 1, mental: -1 }, mood: "melancholy" },
       ]},
       { id: "ganti", label: "Ganti channel", outcomes: [
         { weight: 8, text: "Channel berikutnya, iklan asuransi untuk 'masa pensiun yang tenang'. Dunia sudah memutuskan kamu masuk kategori mana, dan ia tidak menanyakan pendapatmu.", effects: { mental: 1 } },
-        { weight: 8, text: "Kamu ganti channel berkali-kali dan tiap channel seolah tahu usiamu. Obat, asuransi, vitamin, lalu sinetron tentang orang tua yang ditinggal anak-anaknya. Kamu matikan TV. Hening kadang lebih ramah.", effects: { mental: 1 } },
+        { weight: 8, text: "Kamu ganti channel berkali-kali, tiap channel seolah tahu usiamu: obat, asuransi, vitamin, sinetron orang tua yang ditinggal anak. Kamu matikan TV. Hening kadang lebih ramah.", effects: { mental: 1 } },
       ]},
       { id: "tonton", label: "Tonton saja, tanpa beban", outcomes: [
         { weight: 8, text: "Modelnya tertawa terlalu lebar sambil memegang lutut yang katanya sudah sembuh. Kamu ikut tertawa, bukan karena percaya, hanya karena lucu betapa keras mereka berusaha.", effects: { happiness: 2, mental: 1 } },

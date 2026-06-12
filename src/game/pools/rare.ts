@@ -82,11 +82,11 @@ export const RARE_POOL: LifeEvent[] = [
       ]},
       { id: "abaikan", label: "Diamkan", outcomes: [
         { weight: 8, text: "Pagi datang. Kamu menghapus chat-nya tanpa membuka.", effects: { mental: 4 } },
-        { weight: 8, text: "Kamu lihat notifikasinya, lalu menaruh ponsel terbalik dan kembali tidur. Paginya kamu sadar kamu tidak penasaran sama sekali. Bukan marah, bukan rindu, hanya tidak penasaran. Itu tanda kamu benar-benar sudah selesai.", effects: { mental: 5 } },
+        { weight: 8, text: "Kamu balik ponsel itu dan kembali tidur. Paginya kamu sadar tidak penasaran sama sekali — bukan marah, bukan rindu, hanya tidak penasaran. Itu tanda kamu benar-benar sudah selesai.", effects: { mental: 5 } },
       ]},
       { id: "block", label: "Block", outcomes: [
         { weight: 8, text: "Selesai sebelum dimulai. Pilihan terdewasa yang pernah kamu buat.", effects: { mental: 6 } },
-        { weight: 8, text: "Jarimu sempat ragu di tombol itu. Bukan karena masih sayang, tapi karena memblokir terasa terlalu dramatis untuk sesuatu yang sudah tidak berarti. Kamu tekan juga. Drama kecil demi ketenangan besar.", effects: { mental: 5 } },
+        { weight: 8, text: "Jarimu sempat ragu — bukan karena masih sayang, tapi karena memblokir terasa terlalu dramatis untuk sesuatu yang sudah tak berarti. Kamu tekan juga. Drama kecil demi ketenangan besar.", effects: { mental: 5 } },
       ]},
     ],
   }),
@@ -103,7 +103,7 @@ export const RARE_POOL: LifeEvent[] = [
       ]},
       { id: "diamkan", label: "Mute grup, pura-pura tidak baca", outcomes: [
         { weight: 8, text: "Tetangga tetap memanggilmu 'pak/bu admin'. Kamu pasrah.", effects: { mental: 1 } },
-        { weight: 8, text: "Grup itu berkembang biak. Grup RT, grup ibu-ibu, grup bapak-bapak, grup khusus galang dana. Kamu admin di semuanya, tidak aktif di satu pun. Mute, ternyata, juga sejenis jabatan publik.", effects: { mental: 1, social: 1 } },
+        { weight: 8, text: "Grup itu berkembang biak: grup RT, ibu-ibu, bapak-bapak, galang dana. Kamu admin di semuanya, tidak aktif di satu pun. Mute, ternyata, juga sejenis jabatan publik.", effects: { mental: 1, social: 1 } },
       ]},
       { id: "mundur", label: "Mengundurkan diri secara resmi", outcomes: [
         { weight: 8, text: "Tidak ada yang menerima pengunduranmu. Demokrasi gagal.", effects: { mental: -2 } },

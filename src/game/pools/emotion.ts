@@ -35,15 +35,15 @@ export const EMOTION_POOL: LifeEvent[] = [
     choices: (ctx) => [
       { id: "izin", label: "Izin sehari", outcomes: [
         { weight: 8, text: "Sehari menjadi seminggu. Seminggu menjadi pertanyaan baru tentang segalanya.", effects: { mental: 4, happiness: 2 }, flag: "burnout_1_done" },
-        { weight: 4, text: "Kamu izin sehari, tapi menghabiskannya dengan rasa bersalah. Mengecek email tiap jam, takut dianggap lemah. Tubuhmu di kasur, kepalamu di tempat kerja. Tapi setidaknya kamu mulai mengaku ada yang salah.", effects: { mental: 2, health: 1 }, flag: "burnout_1_done" },
+        { weight: 4, text: "Tubuhmu di kasur, kepalamu di email kantor. Tapi setidaknya kamu mulai mengaku ada yang salah.", effects: { mental: 2, health: 1 }, flag: "burnout_1_done" },
       ]},
       { id: "paksakan", label: "Paksakan", outcomes: [
         { weight: 8, text: `Kamu sampai ${kerjaCtx(ctx.state).diTempat}. Tidak ada yang ingat namamu hari itu.`, effects: { mental: -8, health: -4 }, mood: "tragic", flag: "burnout_1_done" },
-        { weight: 4, text: "Kamu paksakan, dan anehnya hari itu lewat seperti biasa, tidak ada yang runtuh. Justru itu yang menakutkan. Betapa mudah kamu menyembunyikannya. Betapa tak seorang pun akan tahu sampai semuanya terlambat.", effects: { mental: -7, health: -3 }, flag: "burnout_1_done", mood: "tragic" },
+        { weight: 4, text: "Hari itu lewat seperti biasa, tidak ada yang runtuh. Justru itu yang menakutkan, betapa mudah kamu menyembunyikannya.", effects: { mental: -7, health: -3 }, flag: "burnout_1_done", mood: "tragic" },
       ]},
       { id: "resign", label: "Tulis surat resign", outcomes: [
         { weight: 8, text: "Tombol kirim ditekan. Beban menguap. Tabungan juga, sebentar lagi.", effects: { mental: 10, wealth: -8, happiness: 6 }, flag: "burnout_1_done" },
-        { weight: 4, text: "Lega datang lebih dulu. Panik menyusul seminggu kemudian, saat tagihan-tagihan ternyata tidak ikut resign. Tapi untuk pertama kalinya dalam waktu lama, malam-malammu kembali jadi milikmu.", effects: { mental: 8, wealth: -9, happiness: 4 }, flag: "burnout_1_done" },
+        { weight: 4, text: "Lega datang dulu. Panik menyusul saat tagihan ternyata tidak ikut resign. Tapi malam-malammu kembali jadi milikmu.", effects: { mental: 8, wealth: -9, happiness: 4 }, flag: "burnout_1_done" },
       ]},
     ],
   }),
@@ -60,7 +60,7 @@ export const EMOTION_POOL: LifeEvent[] = [
       ]},
       { id: "tahan", label: "Tahan, takut dianggap aneh", outcomes: [
         { weight: 8, text: "Tawa itu padam. Kamu kembali ke wajah dewasa yang serius itu.", effects: { mental: 1 } },
-        { weight: 4, text: "Kamu tahan, pasang lagi wajah serius. Tapi sepanjang hari sudut bibirmu sesekali naik sendiri, mengkhianati usahamu. Ternyata sulit sekali menahan sesuatu yang murni.", effects: { mental: 2, happiness: 1 } },
+        { weight: 4, text: "Wajah serius terpasang lagi. Tapi sudut bibirmu naik sendiri sepanjang hari. Sulit menahan sesuatu yang murni.", effects: { mental: 2, happiness: 1 } },
       ]},
     ],
   }),
@@ -73,11 +73,11 @@ export const EMOTION_POOL: LifeEvent[] = [
     choices: [
       { id: "akui", label: "Akui pada diri sendiri 'ini serius!'", outcomes: [
         { weight: 4, text: "Terapi, atau jeda. Kali ini kamu tidak boleh berpura-pura bisa melewatinya sendirian.", effects: { mental: 6, happiness: 3 }, flag: "burnout_2_done" },
-        { weight: 8, text: "Mengakuinya keras-keras pada diri sendiri ternyata bagian tersulit. Setelah itu, langkah-langkah kecil jadi mudah. Satu janji terapi, satu percakapan jujur, satu malam tidur penuh. Belum sembuh, tapi mulai.", effects: { mental: 7, happiness: 2 }, flag: "burnout_2_done" },
+        { weight: 8, text: "Mengakuinya keras-keras ternyata bagian tersulit. Setelah itu: satu janji terapi, satu malam tidur penuh. Belum sembuh, tapi mulai.", effects: { mental: 7, happiness: 2 }, flag: "burnout_2_done" },
       ]},
       { id: "tahan_lagi", label: "Tahan saja. Dulu juga lewat.", outcomes: [
         { weight: 8, text: "Lewat memang, tapi meninggalkan sesuatu setiap kali muncul. Seperti rem yang dipakai terlalu keras dan terlalu sering.", effects: { mental: -6, health: -5 }, mood: "tragic", flag: "burnout_2_done" },
-        { weight: 8, text: "Kamu tahan lagi, dan lewat lagi. Tapi kali ini kamu lihat polanya. Bertahan, retak, bertahan lagi. Seperti tulang yang selalu patah di tempat yang sama dan makin bengkok ketika sembuh.", effects: { mental: -6, health: -6 }, flag: "burnout_2_done", mood: "tragic" },
+        { weight: 8, text: "Lewat lagi. Tapi kali ini kamu lihat polanya. Seperti tulang yang patah di tempat yang sama, makin bengkok tiap sembuh.", effects: { mental: -6, health: -6 }, flag: "burnout_2_done", mood: "tragic" },
       ]},
       { id: "cerita", label: "Ceritakan ke seseorang yang dipercaya", outcomes: [
         { weight: 8, text: "Dia tidak menyela sedikitpun. Tidak memberikan solusi. Hanya hadir. Itu sudah lebih dari yang kamu butuhkan malam itu.", effects: { mental: 8, social: 4 }, flag: "burnout_2_done" },
@@ -94,11 +94,11 @@ export const EMOTION_POOL: LifeEvent[] = [
     choices: [
       { id: "terapi", label: "Cari psikolog besok pagi", outcomes: [
         { weight: 8, text: "Butuh waktu. Tapi sesuatu di dalam dirimu mulai mereda.", effects: { mental: 10, wealth: -3 }, achievement: "Cukup Berani Bertanya" },
-        { weight: 8, text: "Psikolog pertama tidak cocok. Yang kedua membuatmu menangis di sesi ketiga, entah kenapa. Mahal, melelahkan, kadang terasa sia-sia. Tapi pelan-pelan ada yang mencair.", effects: { mental: 8, wealth: -4, happiness: 2 } },
+        { weight: 8, text: "Yang pertama tidak cocok. Yang kedua membuatmu menangis di sesi ketiga, entah kenapa. Pelan-pelan ada yang mencair.", effects: { mental: 8, wealth: -4, happiness: 2 } },
       ]},
       { id: "alkohol", label: "Buka botol di kulkas", outcomes: [
         { weight: 8, text: "Tidur lagi. Besok tetap datang, seperti biasa.", effects: { health: -4, mental: -3 } },
-        { weight: 8, text: "Pagi datang dengan kepala yang lebih berat dan pertanyaan yang sama, ditambah sedikit malu. Kamu berjanji ini yang terakhir. Dan kamu tidak pernah menepati janji itu.", effects: { health: -5, mental: -4 }, mood: "melancholy" },
+        { weight: 8, text: "Pagi datang dengan kepala lebih berat dan pertanyaan yang sama. Kamu berjanji ini yang terakhir, seperti kemarin.", effects: { health: -5, mental: -4 }, mood: "melancholy" },
       ]},
       { id: "ubah", label: "Resign, pergi ke gunung", outcomes: [
         { weight: 8, text: "Pemandangan indah. Insightnya: tidak ada insight.", effects: { happiness: 4, wealth: -5, mental: 3 } },
@@ -106,7 +106,7 @@ export const EMOTION_POOL: LifeEvent[] = [
       ]},
       { id: "scroll", label: "Scroll Instagram sampai pagi", outcomes: [
         { weight: 8, text: "Semua orang lebih sukses. Atau hanya lebih pandai berpura-pura?", effects: { mental: -5, happiness: -3 } },
-        { weight: 8, text: "Jam empat pagi, baterai 6%. Kamu sudah lupa apa yang kamu cari. Layar mati sendiri, dan dalam gelap mendadak itu wajahmu memantul di kaca, terlihat lebih tua dari yang kamu rasa.", effects: { mental: -4, health: -2, happiness: -2 }, mood: "melancholy" },
+        { weight: 8, text: "Jam empat pagi, baterai 6%. Layar mati sendiri. Di gelap itu wajahmu memantul di kaca, lebih tua dari yang kamu rasa.", effects: { mental: -4, health: -2, happiness: -2 }, mood: "melancholy" },
       ]},
     ],
   }),
@@ -119,15 +119,15 @@ export const EMOTION_POOL: LifeEvent[] = [
     choices: [
       { id: "bantuan", label: "Cari bantuan profesional, serius kali ini", outcomes: [
         { weight: 8, text: "Butuh beberapa bulan untuk mulai terasa berbeda. Pelan, tidak dramatis, tapi nyata.", effects: { mental: 12, wealth: -5, happiness: 5 }, mood: "hope", achievement: "Bertahan Lebih dari yang Kamu Kira", flag: "burnout_3_done" },
-        { weight: 8, text: "Kali ini kamu benar-benar datang, dan terus datang, bahkan di minggu-minggu yang terasa percuma. Pemulihan ternyata bukan garis lurus, tapi spiral. Kamu melewati titik yang sama berulang kali, hanya sedikit lebih tinggi tiap putaran.", effects: { mental: 11, wealth: -5, happiness: 4 }, flag: "burnout_3_done", mood: "hope" },
+        { weight: 8, text: "Kali ini kamu terus datang, bahkan di minggu yang terasa percuma. Pemulihan ternyata spiral, titik yang sama berulang, sedikit lebih tinggi tiap putaran.", effects: { mental: 11, wealth: -5, happiness: 4 }, flag: "burnout_3_done", mood: "hope" },
       ]},
       { id: "pasrah", label: "Biarkan berlalu sendiri. Seperti biasanya.", outcomes: [
         { weight: 8, text: "Berlalu memang. Tapi 'seperti biasanya' ini mulai terasa lebih gelap dari sebelumnya.", effects: { mental: -10, health: -6 }, flag: "burnout_3_done", mood: "tragic" },
         { weight: 8, text: "Kamu biarkan berlalu, seperti biasa. Tapi 'biasa' itu sekarang punya dasar yang lebih rendah dari sebelumnya. Dan terus lebih rendah.", effects: { mental: -9, health: -6 }, flag: "burnout_3_done", mood: "tragic" },
       ]},
       { id: "ubah_hidup", label: "Ubah sesuatu yang fundamental. Pekerjaan, rutinitas, semuanya", outcomes: [
-        { weight: 8, text: "Kamu berhenti dari hal yang selama ini menghabisimu. Rutinitas baru, ritme baru, orang-orang baru. Tubuhmu butuh waktu untuk percaya kamu tidak sedang melarikan diri.", effects: { mental: 7, wealth: -10, happiness: 4 }, flag: "burnout_3_done" },
-        { weight: 8, text: "Kamu ubah satu hal besar. Itu tidak menyembuhkan apa-apa secara langsung. Tapi melepas beban yang selama ini menahanmu ternyata melegakan dengan caranya sendiri.", effects: { mental: 6, wealth: -8, happiness: 3 }, flag: "burnout_3_done" },
+        { weight: 8, text: "Kamu berhenti dari hal yang menghabisimu. Rutinitas baru, orang-orang baru. Tubuhmu butuh waktu untuk percaya kamu tidak sedang lari.", effects: { mental: 7, wealth: -10, happiness: 4 }, flag: "burnout_3_done" },
+        { weight: 8, text: "Satu hal besar berubah. Tidak menyembuhkan apa-apa langsung. Tapi melepas beban itu melegakan dengan caranya sendiri.", effects: { mental: 6, wealth: -8, happiness: 3 }, flag: "burnout_3_done" },
       ]},
     ],
   }),

@@ -37,7 +37,7 @@ export const REGRET_POOL: LifeEvent[] = [
       ]},
       { id: "biarkan", label: "Biarkan. Mungkin memang sudah waktunya.", outcomes: [
         { weight: 8, text: "Mimpi itu menua tanpa drama, hanya pelan-pelan menghilang seperti warna di kertas lama.", effects: { mental: -4 }, mood: "melancholy" },
-        { weight: 8, text: "Kamu biarkan, dan suatu hari menemukan satu sketsa lama terselip di buku. Garis tangan yang dulu milikmu. Kamu tutup buku itu pelan. Sebagian mimpi cukup pernah ada, katamu pada diri sendiri, mencoba percaya.", effects: { mental: -3, happiness: 1 }, mood: "melancholy", memory: { text: "Satu sketsa lama yang terselip, dari tangan yang dulu yakin.", tag: "regret", mood: "melancholy" } },
+        { weight: 8, text: "Suatu hari kamu temukan satu sketsa lama terselip di buku, garis tangan yang dulu milikmu. Kamu tutup buku itu pelan. Sebagian mimpi cukup pernah ada, katamu pada diri sendiri, mencoba percaya.", effects: { mental: -3, happiness: 1 }, mood: "melancholy", memory: { text: "Satu sketsa lama yang terselip, dari tangan yang dulu yakin.", tag: "regret", mood: "melancholy" } },
       ]},
     ],
   }),
@@ -79,11 +79,11 @@ export const REGRET_POOL: LifeEvent[] = [
       ]},
       { id: "hubungi_sekarang", label: "Ambil HP, hubungi seseorang yang masih bisa dihubungi malam ini", outcomes: [
         { weight: 8, text: "Kamu mengetik nama-nama di kontak, beberapa dicoret, dua dipilih. Pesanmu singkat tapi sungguh-sungguh, dan besok paginya keduanya membalas. Tidak memperbaiki masa lalu, tapi mengubah malam ini.", effects: { mental: 4, happiness: 3, social: 3 }, mood: "warm" },
-        { weight: 8, text: "Kamu telepon satu orang yang masih hidup, jam segini. Dia mengangkat kaget 'Kenapa? Ada apa?'. 'Nggak ada, cuma kepingin dengar suaramu.' Kalian mengobrol sampai kantuk menang.", effects: { mental: 5, happiness: 4, social: 3 }, mood: "warm" },
+        { weight: 8, text: "Kamu telepon satu orang yang masih hidup, jam segini. Dia mengangkat kaget, 'Kenapa? Ada apa?' — 'Nggak ada, cuma kepingin dengar suaramu.' Kalian mengobrol sampai kantuk menang.", effects: { mental: 5, happiness: 4, social: 3 }, mood: "warm" },
       ]},
       { id: "tulis", label: "Tulis di buku catatan. Nama itu, dan yang ingin kamu katakan", outcomes: [
         { weight: 8, text: "Kamu menulis sampai tidak ada lagi yang perlu ditulis. Buku itu kamu tutup dan taruh di tempat yang mudah dijangkau. Sebagai pengingat bahwa ada kata-kata yang masih layak diucapkan, selagi masih bisa.", effects: { mental: 5 }, mood: "melancholy" },
-        { weight: 8, text: "Kamu tulis namanya di halaman baru, lalu semua hal kecil yang dulu ingin kamu ceritakan padanya. Daftarnya lebih panjang dari dugaanmu. Ternyata kamu menyimpan banyak sekali untuknya. Untuk 'kapan saja' yang tidak pernah datang.", effects: { mental: 4 }, mood: "melancholy", memory: { text: "Daftar panjang hal-hal kecil yang ingin kamu ceritakan, terlambat.", tag: "regret", mood: "melancholy" } },
+        { weight: 8, text: "Kamu tulis namanya di halaman baru, lalu semua hal kecil yang dulu ingin kamu ceritakan padanya. Daftarnya lebih panjang dari dugaanmu. Semua untuk 'kapan saja' yang tidak pernah datang.", effects: { mental: 4 }, mood: "melancholy", memory: { text: "Daftar panjang hal-hal kecil yang ingin kamu ceritakan, terlambat.", tag: "regret", mood: "melancholy" } },
       ]},
     ],
   }),

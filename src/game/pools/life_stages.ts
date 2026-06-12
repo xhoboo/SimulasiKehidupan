@@ -258,7 +258,7 @@ export const LIFE_STAGES_POOL: LifeEvent[] = [
     prompt: "Senin, Kamis, Minggu. Sudah lama tidak penting. Hari-hari kehilangan namanya dan melebur jadi satu hal yang lembut. Kamu duduk di tempat yang sama saat matahari datang, lalu pindah pelan mengikuti ia berpindah, dan itu sudah cukup jadi seluruh agenda.",
     choices: [
       { id: "lingkaran", label: "Biarkan waktu jadi lingkaran, bukan garis", outcomes: [
-        { weight: 8, text: "Kamu berhenti mengejar dan mulai berputar pelan bersama hari. Pagi, terang, redup, gelap, lalu pagi lagi. Hidup yang dulu terasa seperti panah sekarang terasa seperti napas. Masuk, keluar, masuk, keluar.", effects: { mental: 6, happiness: 4 }, mood: "warm",
+        { weight: 8, text: "Kamu berhenti mengejar, mulai berputar pelan bersama hari. Hidup yang dulu terasa seperti panah sekarang terasa seperti napas. Masuk, keluar, masuk, keluar.", effects: { mental: 6, happiness: 4 }, mood: "warm",
           memory: { text: "Saat hidup berhenti terasa seperti panah dan mulai terasa seperti napas.", tag: "tenang", mood: "warm" } },
       ]},
       { id: "tandai", label: "Coba tetap menandai hari di kalender", outcomes: [

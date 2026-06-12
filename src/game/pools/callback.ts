@@ -97,7 +97,7 @@ export const CALLBACK_POOL: LifeEvent[] = [
       ]},
       { id: "simpan", label: "Letakkan kembali", outcomes: [
         { weight: 8, text: "Beberapa benda hanya ingin dilihat sekali tiap dekade.", effects: { mental: 1 }, mood: "melancholy" },
-        { weight: 8, text: "Kamu raut sedikit. Isi grafitnya masih hidup setelah puluhan tahun. Kamu pakai menulis satu kata di nota, lalu menyimpannya lagi. Sebagian benda menolak untuk benar-benar habis.", effects: { mental: 2 }, mood: "melancholy" },
+        { weight: 8, text: "Kamu raut sedikit; grafitnya masih hidup setelah puluhan tahun. Kamu tulis satu kata di nota, lalu menyimpannya lagi. Sebagian benda menolak benar-benar habis.", effects: { mental: 2 }, mood: "melancholy" },
       ]},
       { id: "cari", label: "Cari namanya di Facebook", outcomes: [
         { weight: 8, text: "Kamu menemukan akunnya. Foto profilnya seorang anak kecil. Bukan dia, tapi anaknya.", effects: { happiness: -3 }, mood: "melancholy" },
@@ -115,9 +115,9 @@ export const CALLBACK_POOL: LifeEvent[] = [
     prompt: "Sudah puluhan tahun, dan baru sekarang kamu sadar, kamu tidak pernah benar-benar mengantarnya pergi. Dia tidak hilang waktu kecil, kamu cuma berhenti menyebutnya.",
     choices: [
       { id: "antar", label: "Antar dia pergi, dengan benar", outcomes: [
-        { weight: 8, text: "Kamu ucapkan terima kasih yang dulu tidak sempat. Bukan ke udara kosong lagi, tapi ke sesuatu dalam dirimu, yang menjaga kursi itu tetap hangat sampai orang-orang sungguhan mendudukinya. Perpisahan yang harusnya kamu lakukan di umur sepuluh, akhirnya selesai. Telat, tapi sah.", effects: { mental: 4, intelligence: 1 }, mood: "melancholy", flag: "teman_khayalan_selesai", endsRelationship: "teman_khayalan",
+        { weight: 8, text: "Kamu ucapkan terima kasih yang dulu tak sempat — bukan ke udara kosong, tapi ke sesuatu dalam dirimu yang menjaga kursi itu tetap hangat. Perpisahan yang harusnya di umur sepuluh akhirnya selesai. Telat, tapi sah.", effects: { mental: 4, intelligence: 1 }, mood: "melancholy", flag: "teman_khayalan_selesai", endsRelationship: "teman_khayalan",
           memory: { text: "Perpisahan dengan teman khayalan, puluhan tahun yang terlambat.", tag: "teman_khayalan", mood: "melancholy" } },
-        { weight: 8, text: "Kamu antar dia ke pintu yang tidak ada, lalu menutupnya pelan-pelan. Konyol, di umur segini, di ruang tamu, sendirian. Tapi ada yang lega. Ternyata tidak ada yang terlalu terlambat untuk diberi akhir yang layak, bahkan teman yang tidak pernah ada sekalipun.", effects: { mental: 3, happiness: 1 }, mood: "melancholy", flag: "teman_khayalan_selesai", endsRelationship: "teman_khayalan",
+        { weight: 8, text: "Kamu antar dia ke pintu yang tidak ada, lalu menutupnya pelan. Konyol, di umur segini, sendirian di ruang tamu. Tapi ada yang lega — tidak ada yang terlalu terlambat untuk diberi akhir yang layak, bahkan teman yang tak pernah ada.", effects: { mental: 3, happiness: 1 }, mood: "melancholy", flag: "teman_khayalan_selesai", endsRelationship: "teman_khayalan",
           memory: { text: "Kamu antar teman yang tak pernah ada ke pintu yang tak pernah ada.", tag: "teman_khayalan", mood: "melancholy" } },
       ]},
       { id: "akui", label: "Akui, kamu menyimpannya terlalu lama", outcomes: [

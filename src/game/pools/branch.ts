@@ -158,17 +158,17 @@ export const BRANCH_POOL: LifeEvent[] = [
       let wirausaha: Choice;
       if (ctx.state.flags.tinggal_kos && !ctx.state.flags.punya_rumah) {
         wirausaha = { id: "wirausaha", label: "Mulai jualan online dari kamar kos", outcomes: [
-          { weight: 8, text: "Kamu tidur berdesakan dengan barang dagangan. Tiga bulan sepi. Bulan keempat satu pelanggan tetap. Bulan keenam jadi lima. Kamu tidak kaya, tapi kamu hidup.", effects: { wealth: 6, happiness: 5, discipline: 4 }, flag: "wirausaha" },
+          { weight: 8, text: "Kamu tidur berdesakan dengan barang dagangan. Tiga bulan sepi, bulan keempat satu pelanggan tetap, bulan keenam jadi lima. Kamu tidak kaya, tapi kamu hidup.", effects: { wealth: 6, happiness: 5, discipline: 4 }, flag: "wirausaha" },
           { weight: 6, text: "Gagal di tahun pertama. Modal habis, dan ibu kos menagih sewa yang telat dua bulan. Tapi kamu belajar lebih banyak tentang dirimu daripada 5 tahun di kantor itu.", effects: { wealth: -10, mental: 3 } },
         ]};
       } else if (ctx.state.flags.punya_rumah) {
         wirausaha = { id: "wirausaha", label: "Mulai jualan online dari rumah", outcomes: [
-          { weight: 8, text: "Satu sudut rumahmu berubah jadi gudang kecil. Tiga bulan sepi. Bulan keempat satu pelanggan tetap. Bulan keenam jadi lima. Untuk pertama kalinya, rumah yang kamu cicil itu ikut menafkahimu.", effects: { wealth: 6, happiness: 5, discipline: 4 }, flag: "wirausaha" },
+          { weight: 8, text: "Satu sudut rumahmu berubah jadi gudang kecil. Tiga bulan sepi, bulan keempat satu pelanggan tetap, bulan keenam jadi lima. Untuk pertama kalinya, rumah yang kamu cicil ikut menafkahimu.", effects: { wealth: 6, happiness: 5, discipline: 4 }, flag: "wirausaha" },
           { weight: 6, text: "Gagal di tahun pertama. Modal habis, satu kamar penuh stok yang tak laku. Tapi kamu belajar lebih banyak tentang dirimu daripada 5 tahun di kantor itu.", effects: { wealth: -10, mental: 3 } },
         ]};
       } else {
         wirausaha = { id: "wirausaha", label: "Mulai jualan online dari rumah", outcomes: [
-          { weight: 8, text: "Tiga bulan sepi. Bulan keempat satu pelanggan tetap. Bulan keenam jadi lima. Kamu tidak kaya, tapi kamu hidup.", effects: { wealth: 6, happiness: 5, discipline: 4 }, flag: "wirausaha" },
+          { weight: 8, text: "Tiga bulan sepi, bulan keempat satu pelanggan tetap, bulan keenam jadi lima. Kamu tidak kaya, tapi kamu hidup.", effects: { wealth: 6, happiness: 5, discipline: 4 }, flag: "wirausaha" },
           { weight: 6, text: "Gagal di tahun pertama. Modal habis. Tapi kamu belajar lebih banyak tentang dirimu daripada 5 tahun di kantor itu.", effects: { wealth: -10, mental: 3 } },
         ]};
       }
@@ -265,7 +265,7 @@ export const BRANCH_POOL: LifeEvent[] = [
       ]},
       { id: "resign", label: "Resign hari itu juga", outcomes: [
         { weight: 8, text: "Tidak ada rencana. Hanya tahu, ini bukan tempatnya. Tabungan cukup untuk 4 bulan rasa bingung.", effects: { wealth: -8, mental: 5, happiness: 5 }, flag: "resigner" },
-        { weight: 4, text: "Kamu kosongkan meja dalam sepuluh menit. Di lift, tanganmu gemetar. Bukan takut, tapi lega yang belum kamu percaya. Empat bulan bingung itu ternyata jadi empat bulan yang paling jujur.", effects: { wealth: -8, mental: 8, happiness: 4 }, flag: "resigner" },
+        { weight: 4, text: "Kamu kosongkan meja dalam sepuluh menit. Di lift, tanganmu gemetar — bukan takut, tapi lega yang belum kamu percaya. Empat bulan bingung itu jadi empat bulan paling jujur.", effects: { wealth: -8, mental: 8, happiness: 4 }, flag: "resigner" },
       ]},
     ],
   }),
@@ -280,7 +280,7 @@ export const BRANCH_POOL: LifeEvent[] = [
     choices: [
       { id: "abdi", label: "Beri semuanya untuk rumah sakit ini", outcomes: [
         { weight: 8, text: "Kamu ambil setiap jaga tambahan, setiap shift yang ditinggalkan orang lain. Pasien terlayani. Tapi sebagian hidupmu pelan-pelan pindah jadi milik bangsal itu.", effects: { wealth: 4, mental: -5, happiness: -3 }, flag: "loyal_pegawai" },
-        { weight: 8, text: "Dedikasimu dilihat. Suatu hari namamu ada di pintu sebuah ruangan. Kepala bagian termuda yang pernah ada di sana. Gelar itu terasa berat dan ringan pada saat bersamaan.", effects: { wealth: 9, social: 4, mental: -4, health: -3 }, flag: "loyal_pegawai", achievement: "Diberikan pada Bangsal" },
+        { weight: 8, text: "Dedikasimu dilihat. Suatu hari namamu ada di pintu sebuah ruangan, kepala bagian termuda yang pernah ada. Gelar itu terasa berat dan ringan sekaligus.", effects: { wealth: 9, social: 4, mental: -4, health: -3 }, flag: "loyal_pegawai", achievement: "Diberikan pada Bangsal" },
         { weight: 8, text: "Tubuhmu menagih lebih awal dari semestinya. Suatu pagi kamu pingsan di lorong yang kamu hafal baunya. Mereka memberimu cuti seminggu, dan melupakan sebabnya.", effects: { wealth: 3, health: -8, mental: -6 }, flag: "loyal_pegawai", mood: "tragic" },
       ]},
       { id: "batas", label: "Tetapkan batas. Pulang saat jadwalmu habis", outcomes: [
@@ -324,11 +324,11 @@ export const BRANCH_POOL: LifeEvent[] = [
       ]},
       { id: "pakai", label: "Pakai sendiri saja", outcomes: [
         { weight: 8, text: "Vitaminnya kamu minum 3 hari, lalu lupa. Sabunnya kamu pakai sampai habis. Krim wajahnya kamu kasih sepupu.", effects: { mental: 2, happiness: 1 } },
-        { weight: 4, text: "Krim wajahnya ternyata cocok. Selama setahun kamu punya rutinitas kecil. Penipuan yang menyisakan satu hal berguna. Lucu juga.", effects: { happiness: 2, health: 1 } },
+        { weight: 4, text: "Krim wajahnya ternyata cocok; setahun kamu punya rutinitas kecil. Penipuan yang menyisakan satu hal berguna. Lucu juga.", effects: { happiness: 2, health: 1 } },
       ]},
       { id: "balas", label: "Cari Andi, minta tanggung jawab", outcomes: [
         { weight: 8, text: "Nomornya tidak aktif. Akun sosialnya hilang. Kamu menghela napas, lalu merelakannya.", effects: { mental: -3 } },
-        { weight: 8, text: "Kamu temukan akun barunya. Nama lain, foto lain, janji yang sama persis ke orang-orang baru. Kamu screenshot, report, lalu menutup ponsel. Setidaknya bukan cuma kamu yang akan tahu.", effects: { mental: -1, social: 1 } },
+        { weight: 8, text: "Kamu temukan akun barunya: nama lain, foto lain, janji yang sama persis ke orang baru. Kamu screenshot, report, lalu menutup ponsel. Setidaknya bukan cuma kamu yang akan tahu.", effects: { mental: -1, social: 1 } },
       ]},
     ],
   }),
@@ -537,7 +537,7 @@ export const BRANCH_POOL: LifeEvent[] = [
         { id: "ajari", label: "Berbagi tempat dan ilmu pada yang muda", outcomes: [
           { weight: 8, text: "Kamu tunjukkan trik yang cuma bisa dipelajari dari pengalaman, bukan dari buku. Cara membaca cuaca, ramah tanpa rugi, bertahan saat sepi.", effects: { social: 5, happiness: 5, mental: 4 }, mood: "warm" as const,
             memory: { text: "Mengajari pedagang muda trik yang hanya bisa dipelajari dari pengalaman.", tag: "kerja", mood: "warm" as const } },
-          { weight: 6, text: "Kamu ajari dia sebisanya, dan dia mengangguk sambil sibuk sendiri. Tak apa. Kamu pun dulu keras kepala. Sebagian nasihat memang baru terasa benar setelah mengalaminya sendiri.", effects: { social: 3, mental: 3 }, mood: "melancholy" as const },
+          { weight: 6, text: "Kamu ajari dia sebisanya, dan dia mengangguk sambil sibuk sendiri. Tak apa, kamu pun dulu keras kepala. Sebagian nasihat memang baru terasa benar setelah dialami sendiri.", effects: { social: 3, mental: 3 }, mood: "melancholy" as const },
         ]},
         { id: "pandang", label: "Diam, pandangi trotoar yang menua bersamamu", outcomes: [
           { weight: 8, text: pandangText, effects: { mental: 5, happiness: 3 }, mood: "melancholy" as const,
@@ -567,7 +567,7 @@ export const BRANCH_POOL: LifeEvent[] = [
         ]};
       } else {
         wariskan = { id: "wariskan", label: "Latih pegawai muda memegang warung", outcomes: [
-          { weight: 8, text: "Anak muda yang kamu gaji sejak lima tahun lalu sekarang hafal pesanan langganan tanpa bertanya. Kamu ajari dia hal yang tak ada di buku resep. Pelanggan mana yang boleh ngutang, cara membuat yang datang tetap betah. Dapur yang kamu nyalakan sendiri pelan-pelan belajar menyala tanpamu.", effects: { social: 5, happiness: 4, mental: 4 }, mood: "warm" as const,
+          { weight: 8, text: "Anak muda yang kamu gaji lima tahun lalu kini hafal pesanan langganan tanpa bertanya. Kamu ajari dia hal yang tak ada di buku resep: pelanggan mana yang boleh ngutang, cara membuat yang datang tetap betah. Dapur yang kamu nyalakan sendiri pelan-pelan belajar menyala tanpamu.", effects: { social: 5, happiness: 4, mental: 4 }, mood: "warm" as const,
             memory: { text: "Melatih pegawai muda memegang dapur yang kamu bangun dari satu wajan.", tag: "kerja", mood: "warm" as const } },
           { weight: 8, text: "Kamu latih dia sebisanya, walau tahu suatu hari nanti dia akan pergi membuka warungnya sendiri. Tak apa. Sebagian dari resepmu akan ikut dengannya ke mana pun dia melangkah, dan itu sudah lebih dari cukup.", effects: { social: 3, mental: 3 }, mood: "melancholy" as const },
         ]};

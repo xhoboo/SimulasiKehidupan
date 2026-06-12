@@ -488,7 +488,7 @@ export const AGE_POOL: LifeEvent[] = [
     prompt: "Ular tangga di lantai, dan kamu baru paham bahwa ada aturan yang tidak boleh dilanggar. Saat seseorang melanggarnya, dadamu panas oleh rasa yang baru kamu tahu namanya: tidak adil.",
     choices: [
       { id: "protes", label: "Protes keras, hentikan permainan", outcomes: [
-        { weight: 8, text: "Permainan berhenti. Nanti kamu akan tahu, betapa banyak hal yang melanggar aturan tanpa ada yang menghentikannya. Tapi malam itu, kamu masih percaya protes bisa mengubah sesuatu. Dan sebaiknya tetap begitu", effects: { discipline: 2, social: 1 }, mood: "melancholy" },
+        { weight: 8, text: "Permainan berhenti. Nanti kamu tahu betapa banyak yang melanggar tanpa dihentikan, tapi malam itu kamu masih percaya protes bisa mengubah sesuatu. Sebaiknya tetap begitu.", effects: { discipline: 2, social: 1 }, mood: "melancholy" },
       ]},
       { id: "diam", label: "Diam saja, tetap ikut bermain", outcomes: [
         { weight: 8, text: "Kamu menelan rasa itu demi tidak merusak kebersamaan. Pertama kali kamu mengalah pada yang tidak adil, supaya tetap diajak. Dan sepertinya bukan yang terakhir.", effects: { mental: 1, social: 2 }, mood: "melancholy", memory: { text: "Menelan rasa tidak adil demi tetap ikut bermain.", tag: "teman_kecil", mood: "melancholy" } },

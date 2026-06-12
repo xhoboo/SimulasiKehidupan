@@ -9,7 +9,7 @@ export const RELATIONSHIP_POOL: LifeEvent[] = [
     prompt: "Anak yang duduk di sebelahmu membagi dua jajannya tanpa kamu minta, lalu mendorong setengahnya ke mejamu seolah itu hal paling biasa di dunia. Kalian belum hafal nama panjang masing-masing, tapi bel istirahat berbunyi terlalu cepat.",
     choices: [
       { id: "balas", label: "Besok, bawa jajan lebih untuk dibagi balik", outcomes: [
-        { weight: 8, text: "Besoknya kamu sengaja membawa lebih. Begitulah kalian mulai. Bukan dengan janji, hanya giliran membagi yang tidak pernah kalian hitung. Bertahun-tahun dia jadi orang pertama yang kamu cari setiap ada kabar, baik atau buruk.", effects: { social: 6, happiness: 6 }, mood: "warm", flag: "punya_sahabat", addsRelationship: { id: "sahabat", name: "Sahabat", role: "friend", closeness: 80, alive: true }, memory: { text: "Setengah jajan yang didorong ke mejamu, hari kalian jadi teman.", tag: "sahabat", mood: "warm" } },
+        { weight: 8, text: "Besoknya kamu sengaja membawa lebih. Begitulah kalian mulai — bukan dengan janji, hanya giliran membagi yang tak pernah dihitung. Bertahun-tahun dia jadi orang pertama yang kamu cari setiap ada kabar.", effects: { social: 6, happiness: 6 }, mood: "warm", flag: "punya_sahabat", addsRelationship: { id: "sahabat", name: "Sahabat", role: "friend", closeness: 80, alive: true }, memory: { text: "Setengah jajan yang didorong ke mejamu, hari kalian jadi teman.", tag: "sahabat", mood: "warm" } },
       ]},
       { id: "main", label: "Ajak main bareng sepulang sekolah", outcomes: [
         { weight: 8, text: "Sepulang sekolah kalian menghabiskan sore di tempat yang sekarang sudah kamu lupa namanya, tapi tidak rasanya. Dari hari itu kalian punya bahasa sendiri, lelucon yang cuma lucu buat kalian berdua.", effects: { social: 6, happiness: 5 }, mood: "warm", flag: "punya_sahabat", addsRelationship: { id: "sahabat", name: "Sahabat", role: "friend", closeness: 75, alive: true }, memory: { text: "Sore pertama main bersama sahabatmu. Tempatnya lupa, rasanya tidak.", tag: "sahabat", mood: "warm" } },
@@ -29,7 +29,7 @@ export const RELATIONSHIP_POOL: LifeEvent[] = [
     choices: [
       { id: "janji", label: "Saling janji hal-hal besar yang belum tentu ditepati", outcomes: [
         { weight: 8, text: "Kalian berjanji akan tinggal di kota yang sama, tua bersama di teras yang sama. Janji-janji yang kelak sebagian tidak tertepati. Tapi sore itu, kalian sungguh-sungguh mempercayainya.", effects: { social: 5, happiness: 5, mental: 3 }, mood: "warm", memory: { text: "Janji-janji di tangga belakang yang kalian percayai sepenuh hati.", tag: "sahabat", mood: "warm" } },
-        { weight: 8, text: "Dia menitipkan satu rahasia yang belum pernah dia ceritakan ke siapa pun, dan memilih kamu untuk mendengarnya pertama kali. Kamu tidak pernah membocorkannya, bahkan setelah bertahun-tahun, bahkan setelah tidak ada lagi alasan untuk menjaganya.", effects: { social: 5, mental: 4 }, mood: "melancholy", memory: { text: "Rahasia yang dia titipkan padamu pertama kali.", tag: "sahabat", mood: "melancholy" } },
+        { weight: 8, text: "Dia menitipkan rahasia yang belum pernah dia ceritakan ke siapa pun, dan memilih kamu mendengarnya pertama. Kamu tidak pernah membocorkannya, bahkan setelah tidak ada lagi alasan untuk menjaganya.", effects: { social: 5, mental: 4 }, mood: "melancholy", memory: { text: "Rahasia yang dia titipkan padamu pertama kali.", tag: "sahabat", mood: "melancholy" } },
       ]},
       { id: "diam", label: "Tidak bilang apa-apa, cukup duduk berdua", outcomes: [
         { weight: 8, text: "Kalian tidak banyak bicara sore itu. Tapi ada usia di mana ditemani saja sudah cukup, dan kamu beruntung punya seseorang yang mengerti itu tanpa harus dijelaskan.", effects: { social: 4, happiness: 4 }, mood: "warm" },
@@ -69,7 +69,7 @@ export const RELATIONSHIP_POOL: LifeEvent[] = [
     choices: [
       { id: "pura", label: "Pura-pura tidur", outcomes: [
         { weight: 8, text: "Pintu dibuka pelan. Ayahmu menatap sebentar, lalu menutup pintu lebih pelan lagi.", effects: { mental: -2 }, memory: { text: "Malam kamu pura-pura tidur, dan ayah pura-pura percaya.", tag: "ayah", mood: "melancholy" }, mood: "melancholy" },
-        { weight: 8, text: "Kamu menahan napas. Langkahnya berhenti lama di depan pintu. Terlalu lama, sebelum akhirnya menjauh. Kamu tidak pernah tahu apa yang dia pikirkan malam itu, dan kamu tidak pernah berani bertanya.", effects: { mental: -3 }, memory: { text: "Langkah ayah yang berhenti terlalu lama di depan pintu.", tag: "ayah", mood: "melancholy" }, mood: "melancholy" },
+        { weight: 8, text: "Kamu menahan napas. Langkahnya berhenti terlalu lama di depan pintu, sebelum akhirnya menjauh. Kamu tidak pernah tahu apa yang dia pikirkan, dan tidak pernah berani bertanya.", effects: { mental: -3 }, memory: { text: "Langkah ayah yang berhenti terlalu lama di depan pintu.", tag: "ayah", mood: "melancholy" }, mood: "melancholy" },
       ]},
       { id: "duduk", label: "Duduk, hadapi", outcomes: [
         { weight: 8, text: "Kalian bertengkar. Esoknya, sarapan canggung, tapi jujur.", effects: { social: 3, mental: 3 } },
@@ -93,7 +93,7 @@ export const RELATIONSHIP_POOL: LifeEvent[] = [
     prompt: "Perjalanan panjang, kereta malam, bus antarkota. Orang di sebelahmu mengajakmu bicara, dan entah kenapa kalian menceritakan hal-hal yang tidak kalian ceritakan ke orang yang kalian kenal.",
     choices: [
       { id: "cerita", label: "Buka diri pada orang asing ini", outcomes: [
-        { weight: 8, text: "Sampai tujuan, kalian berpisah tanpa bertukar nomor. Sengaja. Sebagian orang hadir hanya untuk satu perjalanan, dan justru itu yang membuatmu jujur. Wajahnya kamu lupa, tapi rasa ringan yang dia tinggalkan tidak.", effects: { social: 3, mental: 5 }, mood: "warm",
+        { weight: 8, text: "Sampai tujuan, kalian berpisah tanpa bertukar nomor. Sengaja — sebagian orang hadir hanya untuk satu perjalanan, dan justru itu yang membuatmu jujur. Wajahnya kamu lupa, rasa ringannya tidak.", effects: { social: 3, mental: 5 }, mood: "warm",
           addsRelationship: { id: "kawan_jalan", name: "Kawan Seperjalanan", role: "friend", closeness: 25, alive: false },
           memory: { text: "Orang asing di perjalanan jauh yang kamu ceritakan segalanya.", tag: "traveling", mood: "warm" } },
         { weight: 8, text: "Kalian bertukar nomor, tapi keduanya tahu tidak akan pernah dipakai. Beberapa pertemuan ditakdirkan utuh justru karena tidak dilanjutkan. Nomornya masih tersimpan, tidak pernah kamu hapus, tidak pernah kamu hubungi.", effects: { social: 2, mental: 4 }, mood: "melancholy",
@@ -136,11 +136,11 @@ export const RELATIONSHIP_POOL: LifeEvent[] = [
     prompt: "Malam terburukmu tahun itu, kamu tidak menelepon siapa-siapa. Tapi dia tetap datang, mengetuk pintu, membawa makanan yang tidak kamu pesan, lalu duduk tanpa banyak bertanya sampai pagi.",
     choices: [
       { id: "cerita", label: "Akhirnya cerita, sampai habis", outcomes: [
-        { weight: 8, text: "Kamu cerita sampai habis, dan dia hanya mendengar. Tidak menasihati, tidak memperbaiki, hanya hadir. Sebelum pulang dia bilang, 'kalau aku yang kena, kamu juga bakal datang, kan?' Kamu mengiyakan tanpa berpikir dua kali. Kamu belum tahu kalimat itu akan menagihmu suatu hari.", effects: { social: 6, happiness: 5, mental: 6 }, mood: "warm", memory: { text: "Malam dia datang tanpa diminta, dan kamu berjanji akan membalas.", tag: "sahabat", mood: "warm" } },
-        { weight: 8, text: "Kamu tidak banyak cerita, tapi kamu tidak mengusirnya juga. Dia mengerti kode itu. Menginap di sebelah kasurmu, dan paginya pergi seolah tidak ada yang perlu dibahas. Sebagian pertemanan diukur bukan dari kata-kata, tapi dari siapa yang tetap tinggal saat kamu paling tidak enak ditemani.", effects: { social: 5, mental: 5 }, mood: "melancholy", memory: { text: "Dia yang tetap tinggal di malam kamu paling tidak enak ditemani.", tag: "sahabat", mood: "melancholy" } },
+        { weight: 8, text: "Kamu cerita sampai habis; dia hanya mendengar, tidak menasihati, hanya hadir. Sebelum pulang dia bilang, 'kalau aku yang kena, kamu juga bakal datang, kan?' Kamu mengiyakan tanpa tahu kalimat itu akan menagihmu suatu hari.", effects: { social: 6, happiness: 5, mental: 6 }, mood: "warm", memory: { text: "Malam dia datang tanpa diminta, dan kamu berjanji akan membalas.", tag: "sahabat", mood: "warm" } },
+        { weight: 8, text: "Kamu tidak banyak cerita, tapi tidak mengusirnya juga; dia mengerti kode itu. Menginap di sebelah kasurmu, paginya pergi seolah tak ada yang perlu dibahas. Sebagian pertemanan diukur dari siapa yang tetap tinggal saat kamu paling tidak enak ditemani.", effects: { social: 5, mental: 5 }, mood: "melancholy", memory: { text: "Dia yang tetap tinggal di malam kamu paling tidak enak ditemani.", tag: "sahabat", mood: "melancholy" } },
       ]},
       { id: "syukur", label: "Tidak bisa bilang apa-apa selain terima kasih", outcomes: [
-        { weight: 8, text: "Kamu cuma bisa bilang terima kasih, dan dia menanggapinya dengan 'ya udah, gausah lebay.' Khas dia. Tapi kamu mengingat malam itu jauh lebih lama daripada dia, dan menyimpannya untuk dibalas suatu hari. Utang yang kamu niatkan, lalu lupa, lalu terlambat.", effects: { social: 5, happiness: 4, mental: 3 }, mood: "melancholy", memory: { text: "Utang kebaikan pada sahabat yang kamu niatkan membalas suatu hari.", tag: "sahabat", mood: "melancholy" } },
+        { weight: 8, text: "Kamu cuma bisa bilang terima kasih; dia menanggapinya, 'ya udah, gausah lebay.' Khas dia. Tapi kamu mengingat malam itu jauh lebih lama daripada dia — utang yang kamu niatkan, lalu lupa, lalu terlambat.", effects: { social: 5, happiness: 4, mental: 3 }, mood: "melancholy", memory: { text: "Utang kebaikan pada sahabat yang kamu niatkan membalas suatu hari.", tag: "sahabat", mood: "melancholy" } },
       ]},
     ],
   }),
@@ -284,7 +284,7 @@ export const RELATIONSHIP_POOL: LifeEvent[] = [
       ]},
       { id: "panik", label: "Panik secara internal", outcomes: [
         { weight: 8, text: "Kamu tersenyum di luar. Di dalam, kamu menghitung tabungan.", effects: { mental: -4 }, addsRelationship: { id: "anak1", name: "Anak", role: "child", closeness: 70, alive: true }, flag: "punya_anak", setAgeFlag: "child_birth_age" },
-        { weight: 8, text: "Senyummu meyakinkan, suaramu tidak. Pasanganmu menangkap getar itu dan menggenggam tanganmu. 'Kita cari tahu sambil jalan,' katanya. Kamu tidak percaya sepenuhnya, tapi cukup untuk mengangguk.", effects: { mental: -3, social: 2 }, addsRelationship: { id: "anak1", name: "Anak", role: "child", closeness: 72, alive: true }, flag: "punya_anak", setAgeFlag: "child_birth_age" },
+        { weight: 8, text: "Senyummu meyakinkan, suaramu tidak. Pasanganmu menangkap getar itu, menggenggam tanganmu: 'Kita cari tahu sambil jalan.' Kamu tidak percaya sepenuhnya, tapi cukup untuk mengangguk.", effects: { mental: -3, social: 2 }, addsRelationship: { id: "anak1", name: "Anak", role: "child", closeness: 72, alive: true }, flag: "punya_anak", setAgeFlag: "child_birth_age" },
       ]},
     ],
   }),
@@ -298,7 +298,7 @@ export const RELATIONSHIP_POOL: LifeEvent[] = [
     prompt: "Boksnya masih di sudut kamar. Baju-baju kecil masih terlipat menunggu ukuran yang tidak akan dia capai. Tidak ada yang lebih sunyi dari rumah yang sudah terlanjur disiapkan untuk sebuah tangis yang berhenti terlalu cepat.",
     choices: [
       { id: "simpan", label: "Simpan satu baju kecilnya", outcomes: [
-        { weight: 8, text: "Kamu menyimpan satu baju yang masih menyimpan baunya, di laci yang jarang kamu buka tapi tidak pernah bisa kamu kosongkan. Orang bilang waktu menyembuhkan. Yang tidak mereka bilang, waktu hanya mengajari kamu menggendong luka itu dengan lebih tenang.", effects: { mental: -14, happiness: -12 }, mood: "tragic",
+        { weight: 8, text: "Satu baju yang masih menyimpan baunya, di laci yang jarang kamu buka tapi tak pernah bisa kamu kosongkan. Orang bilang waktu menyembuhkan; yang tak mereka bilang, waktu hanya mengajarimu menggendong luka itu lebih tenang.", effects: { mental: -14, happiness: -12 }, mood: "tragic",
           flag: "anak_meninggal", killsRelationship: "anak1",
           memory: { text: "Baju kecil di laci yang tidak pernah bisa kamu kosongkan.", tag: "kehilangan", mood: "tragic" } },
       ]},
@@ -439,7 +439,7 @@ export const RELATIONSHIP_POOL: LifeEvent[] = [
     prompt: "Tasnya masih tergantung di balik pintu, dengan tugas yang belum selesai di dalamnya. Sepatunya masih di rak, ukuran yang terakhir. Seluruh dunia kecilnya, gambar di kulkas, mainan setengah dibongkar, lagu yang dia hafal, berhenti di tengah. Dan kamu harus terus hidup di tengah-tengah benda yang tidak tahu pemiliknya sudah tidak ada.",
     choices: [
       { id: "jaga", label: "Biarkan kamarnya seperti apa adanya, untuk sekarang", outcomes: [
-        { weight: 8, text: "Kamu tidak sanggup memindahkan apa pun. Selama berbulan-bulan kamar itu jadi ruang yang kamu lewati pelan-pelan, seperti takut membangunkan sesuatu. Lalu suatu hari kamu masuk, duduk di lantainya, dan untuk pertama kalinya menangis tanpa menahannya.", effects: { mental: -16, happiness: -13 }, mood: "tragic",
+        { weight: 8, text: "Kamu tidak sanggup memindahkan apa pun. Berbulan-bulan kamar itu kamu lewati pelan-pelan, seperti takut membangunkan sesuatu. Lalu suatu hari kamu masuk, duduk di lantainya, dan untuk pertama kalinya menangis tanpa menahan.", effects: { mental: -16, happiness: -13 }, mood: "tragic",
           flag: "anak_meninggal", killsRelationship: "anak1",
           memory: { text: "Lantai kamarnya, tempat kamu akhirnya menangis tanpa menahan.", tag: "kehilangan", mood: "tragic" } },
       ]},
@@ -528,8 +528,8 @@ export const RELATIONSHIP_POOL: LifeEvent[] = [
         { weight: 8, text: "Perdebatan. Tidak ada yang menang. Makan malam dalam diam.", effects: { social: -2, mental: -2 }, mood: "melancholy" },
       ]},
       { id: "ingat", label: "Ingat dirimu, bedanya hanya mediumnya", outcomes: [
-        { weight: 8, text: `Kamu dulu punya ${ctx.state.age > 45 ? "komik dan TV sampai dimarahi" : "game dan internet yang sama merusaknya"}. Mereka tidak jauh berbeda. Kamu duduk bersamanya, tanya apa yang dia tonton, dan kamu mendengarkan jawaban yang lebih panjang dari dugaanmu.`, effects: { social: 6, happiness: 4 }, mood: "warm" },
-        { weight: 8, text: "Kamu duduk di sampingnya tanpa berkata apa-apa soal HP, cuma bertanya 'lagi nonton apa?' Dia menoleh, kaget, lalu mulai menjelaskan dengan antusias yang sudah lama tidak kamu lihat. Layar itu ternyata pintu, bukan tembok, kalau kamu mau lewat.", effects: { social: 5, happiness: 4 }, mood: "warm" },
+        { weight: 8, text: `Kamu dulu punya ${ctx.state.age > 45 ? "komik dan TV sampai dimarahi" : "game dan internet yang sama merusaknya"}, tidak jauh berbeda. Kamu duduk bersamanya, tanya apa yang dia tonton, dan mendengar jawaban yang lebih panjang dari dugaanmu.`, effects: { social: 6, happiness: 4 }, mood: "warm" },
+        { weight: 8, text: "Kamu duduk di sampingnya, cuma bertanya 'lagi nonton apa?' Dia menoleh kaget, lalu menjelaskan dengan antusias yang sudah lama tidak kamu lihat. Layar itu ternyata pintu, bukan tembok, kalau kamu mau lewat.", effects: { social: 5, happiness: 4 }, mood: "warm" },
       ]},
       { id: "aturan", label: "Buat aturan screen time yang jelas", outcomes: [
         { weight: 8, text: "Aturannya dipatuhi dua minggu sebelum mulai licin batasannya. Tapi ada percakapan di prosesnya yang lebih berharga dari aturan itu sendiri.", effects: { social: 2, discipline: 3 } },
@@ -574,12 +574,12 @@ export const RELATIONSHIP_POOL: LifeEvent[] = [
     prompt: "Dia baru saja jadi orang asing yang manis. Pintu kamar lebih sering tertutup, playlist yang kamu tidak mengerti, kalimat yang berkurang, sesekali percikan dewasa yang membuatmu diam-diam bangga. Kamu kira kalian masih punya bertahun-tahun untuk kembali dekat setelah fase ini lewat. Fase itu tidak pernah sempat lewat.",
     choices: [
       { id: "kamar", label: "Masuk ke kamarnya yang sekarang sunyi", outcomes: [
-        { weight: 8, text: "Kamu masuk ke ruang yang dulu butuh izin untuk dimasuki. Poster yang tidak kamu kenali, buku setengah baca, bau parfum murah yang baru dia suka. Kamu duduk di kasurnya dan menyesali tiap kali kamu menganggap diamnya sebagai penolakan, padahal itu cuma anak yang sedang belajar jadi dirinya sendiri.", effects: { mental: -16, happiness: -13 }, mood: "tragic",
+        { weight: 8, text: "Kamu masuk ke ruang yang dulu butuh izin. Poster yang tak kamu kenali, buku setengah baca, bau parfum murah yang baru dia suka. Kamu duduk di kasurnya, menyesali tiap kali kamu mengira diamnya penolakan, padahal itu cuma anak yang sedang belajar jadi dirinya sendiri.", effects: { mental: -16, happiness: -13 }, mood: "tragic",
           flag: "anak_meninggal", killsRelationship: "anak1",
           memory: { text: "Kamarnya yang dulu butuh izin untuk dimasuki, kini sunyi tanpa syarat.", tag: "kehilangan", mood: "tragic" } },
       ]},
       { id: "playlist", label: "Putar playlist yang dulu tak kamu mengerti", outcomes: [
-        { weight: 8, text: "Kamu memutar lagu-lagu yang dulu cuma terdengar samar dari balik pintu. Kali ini kamu mendengarkannya sampai habis, mencoba mengenal anakmu lewat hal-hal yang dia cintai dan tidak sempat kamu tanyakan. Terlambat untuk berkenalan, tapi kamu lakukan saja, itu satu-satunya cara yang tersisa untuk dekat.", effects: { mental: -16, happiness: -13 }, mood: "tragic",
+        { weight: 8, text: "Kamu memutar lagu-lagu yang dulu cuma terdengar samar dari balik pintu. Kali ini kamu dengarkan sampai habis, mengenal anakmu lewat hal-hal yang dia cintai dan tak sempat kamu tanyakan. Terlambat untuk berkenalan, tapi itu satu-satunya cara yang tersisa untuk dekat.", effects: { mental: -16, happiness: -13 }, mood: "tragic",
           flag: "anak_meninggal", killsRelationship: "anak1",
           memory: { text: "Playlist anakmu yang akhirnya kamu dengarkan sampai habis, terlambat.", tag: "kehilangan", mood: "tragic" } },
       ]},
@@ -595,15 +595,15 @@ export const RELATIONSHIP_POOL: LifeEvent[] = [
     prompt: "Ada nama yang disebut terlalu sering. Cara anakmu bicara pun berubah. Kamu pernah di sana. Kamu tahu tanda-tandanya.",
     choices: [
       { id: "bicara", label: "Buka percakapan, tanya siapa dia", outcomes: [
-        { weight: 8, text: "Anakmu kaku sebentar, lalu perlahan bercerita. Kamu mendengarkan tanpa interupsi. Sesuatu yang butuh usaha lebih dari yang kamu bayangkan. Itu salah satu percakapan terbaik yang pernah kalian punya.", effects: { social: 6, happiness: 5, mental: 4 }, mood: "warm" },
+        { weight: 8, text: "Anakmu kaku sebentar, lalu perlahan bercerita. Kamu mendengarkan tanpa interupsi — sesuatu yang butuh usaha lebih dari dugaanmu. Itu salah satu percakapan terbaik yang pernah kalian punya.", effects: { social: 6, happiness: 5, mental: 4 }, mood: "warm" },
         { weight: 8, text: "Dia bercerita lebih sedikit dari yang kamu harap, tapi lebih dari yang dia rencanakan. Di akhir dia bilang 'jangan kasih tahu siapa-siapa ya.' Rahasia kecil yang kalian jaga berdua itu mengikat kalian dengan caranya sendiri.", effects: { social: 5, happiness: 4, mental: 3 }, mood: "warm" },
       ]},
       { id: "biarkan", label: "Biarkan. Dia akan cerita kalau mau.", outcomes: [
         { weight: 8, text: "Dua minggu kemudian dia cerita sendiri, dengan senyum kecil di ujung kalimat terakhirnya.", effects: { social: 3, happiness: 3 } },
-        { weight: 8, text: "Dia tidak pernah benar-benar cerita. Kamu tahu dari hal-hal kecil. Senyum ke layar, lagu baru yang diputar berulang. Kamu menghormati diamnya, meski sebagian dirimu rindu jadi orang pertama yang dia ceritai.", effects: { social: 2, mental: 1 }, mood: "melancholy" },
+        { weight: 8, text: "Dia tidak pernah benar-benar cerita; kamu tahu dari hal-hal kecil. Senyum ke layar, lagu baru yang diputar berulang. Kamu menghormati diamnya, meski sebagian dirimu rindu jadi orang pertama yang dia ceritai.", effects: { social: 2, mental: 1 }, mood: "melancholy" },
       ]},
       { id: "khawatir", label: "Pasang batas, mulai protektif", outcomes: [
-        { weight: 8, text: "Perdebatan. Anakmu merasa tidak dipercaya. Kamu merasa tidak didengar. Dua perspektif yang sama-sama valid, tidak ada yang mudah dikalahkan.", effects: { social: -4, mental: -3 }, mood: "melancholy" },
+        { weight: 8, text: "Perdebatan. Anakmu merasa tidak dipercaya, kamu merasa tidak didengar. Dua perspektif yang sama-sama valid, tidak ada yang mudah dikalahkan.", effects: { social: -4, mental: -3 }, mood: "melancholy" },
         { weight: 8, text: "Batas yang kamu pasang malah membuatnya lebih rapat menutup diri. Kamu sadar terlambat, melindungi dan mengurung kadang terlihat sama dari luar, tapi terasa sangat berbeda dari dalam.", effects: { social: -4, mental: -2 }, mood: "melancholy" },
       ]},
     ],
@@ -618,12 +618,12 @@ export const RELATIONSHIP_POOL: LifeEvent[] = [
     prompt: "Telepon itu datang di jam yang tidak pernah membawa kabar baik. Anakmu, yang baru saja mulai hidupnya sendiri di kota lain, yang minggu lalu masih mengeluh soal tugas lewat chat, tidak akan pulang di libur berikutnya. Kamu masih sempat membayangkan dia dewasa, mandiri. Bayangan itu berhenti di tengah kalimat.",
     choices: [
       { id: "kota", label: "Berangkat ke kota tempat dia merantau", outcomes: [
-        { weight: 8, text: "Kamu mengemasi kamar kos yang baru sempat dia tempati beberapa bulan. Tumpukan buku, mug, baju yang belum sempat dicuci. Kamu mencium baju itu sebelum melipatnya. Mengurus barang anak yang seharusnya hidup lebih lama darimu adalah pekerjaan yang tidak pernah disiapkan untuk siapa pun.", effects: { mental: -16, happiness: -13 }, mood: "tragic",
+        { weight: 8, text: "Kamu mengemasi kamar kos yang baru sempat dia tempati beberapa bulan: tumpukan buku, mug, baju yang belum dicuci. Kamu mencium baju itu sebelum melipatnya. Mengurus barang anak yang seharusnya hidup lebih lama darimu adalah pekerjaan yang tak pernah disiapkan untuk siapa pun.", effects: { mental: -16, happiness: -13 }, mood: "tragic",
           flag: "anak_meninggal", killsRelationship: "anak1",
           memory: { text: "Kamar kos yang baru beberapa bulan ia tempati, yang harus kamu kemasi sendiri.", tag: "kehilangan", mood: "tragic" } },
       ]},
       { id: "chat", label: "Buka chat terakhir kalian", outcomes: [
-        { weight: 8, text: "Pesan terakhirmu belum dibalas, dan tidak akan pernah. Kamu membaca ulang percakapan biasa yang dulu kamu pikir akan ada jutaan lagi sesudahnya. Bertahun kemudian kamu masih tidak tega menghapus kontaknya. Nomor mati yang kamu jaga seperti makam kecil di dalam ponsel.", effects: { mental: -16, happiness: -12 }, mood: "tragic",
+        { weight: 8, text: "Pesan terakhirmu belum dibalas, dan tidak akan pernah. Kamu baca ulang percakapan biasa yang dulu kamu pikir akan ada jutaan lagi sesudahnya. Bertahun kemudian kamu masih tak tega menghapus kontaknya — nomor mati yang kamu jaga seperti makam kecil di dalam ponsel.", effects: { mental: -16, happiness: -12 }, mood: "tragic",
           flag: "anak_meninggal", killsRelationship: "anak1",
           memory: { text: "Pesan terakhir yang tidak akan pernah dibalas.", tag: "kehilangan", mood: "tragic" } },
       ]},
@@ -661,12 +661,12 @@ export const RELATIONSHIP_POOL: LifeEvent[] = [
     prompt: "Ada urutan yang sudah disepakati semesta, orang tua pergi lebih dulu, anak yang mengantar. Hari ini urutan itu terbalik, dan tidak ada satu pun bagian dari dirimu yang siap. Anakmu sudah dewasa, mungkin sudah punya hidupnya sendiri, tapi di matamu, dia kembali jadi bayi yang dulu kamu gendong jam tiga pagi.",
     choices: [
       { id: "antar", label: "Antar dia, walau ini terbalik", outcomes: [
-        { weight: 8, text: "Kamu berdiri di tempat yang seharusnya tidak pernah kamu tempati. Tanganmu yang menua mengusap peti yang isinya pernah kamu ajari berjalan. Tidak ada kata untuk orang tua yang kehilangan anak, bahasa pun tahu, itu sesuatu yang seharusnya tidak perlu dinamai.", effects: { mental: -17, happiness: -14, health: -4 }, mood: "tragic",
+        { weight: 8, text: "Kamu berdiri di tempat yang seharusnya tidak pernah kamu tempati. Tanganmu yang menua mengusap peti berisi seseorang yang pernah kamu ajari berjalan. Tidak ada kata untuk orang tua yang kehilangan anak — bahasa pun tahu, itu sesuatu yang seharusnya tidak perlu dinamai.", effects: { mental: -17, happiness: -14, health: -4 }, mood: "tragic",
           flag: "anak_meninggal", killsRelationship: "anak1",
           memory: { text: "Berdiri sebagai orang tua yang menguburkan anaknya sendiri.", tag: "kehilangan", mood: "tragic" } },
       ]},
       { id: "bayi", label: "Ingat dia sebagai bayi yang dulu kamu gendong", outcomes: [
-        { weight: 8, text: "Di tengah semua urusan yang harus diurus, kepalamu malah memutar hal-hal paling tua. Berat kecilnya di lenganmu, kata pertamanya, hari pertamanya sekolah. Seolah dengan mengingat awalnya, kamu bisa menolak akhirnya. Kamu tidak bisa. Tapi ingatan itu tetap kamu peluk, satu-satunya yang tersisa untuk dipeluk.", effects: { mental: -16, happiness: -14, health: -3 }, mood: "tragic",
+        { weight: 8, text: "Di tengah semua urusan, kepalamu malah memutar hal-hal paling tua: berat kecilnya di lenganmu, kata pertamanya, hari pertamanya sekolah. Seolah dengan mengingat awalnya kamu bisa menolak akhirnya — kamu tidak bisa. Tapi ingatan itu tetap kamu peluk, satu-satunya yang tersisa untuk dipeluk.", effects: { mental: -16, happiness: -14, health: -3 }, mood: "tragic",
           flag: "anak_meninggal", killsRelationship: "anak1",
           memory: { text: "Berat kecilnya di lenganmu, ingatan yang kamu peluk saat tak ada lagi yang bisa dipeluk.", tag: "kehilangan", mood: "tragic" } },
       ]},
