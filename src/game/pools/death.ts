@@ -56,7 +56,7 @@ export const DEATH_POOL: LifeEvent[] = [
     ageMin: 0, ageMax: 12, mood: "tragic", weight: 8,
     ...dyingReq,
     title: "Tidak Ada Peringatan",
-    prompt: "Tidak ada peringatan. Tidak ada kalimat terakhir yang dipersiapkan. Hanya kilatan, lalu hening yang dalam.",
+    prompt: "Tidak ada peringatan. Tidak ada kalimat terakhir yang dipersiapkan. Hanya hening yang dalam.",
     choices: [
       { id: "pergi", label: "...", outcomes: [
         { weight: 8, text: "Hidupmu hanya selesai di bab pertama.",
@@ -102,7 +102,7 @@ export const DEATH_POOL: LifeEvent[] = [
     prompt: "Di ruang yang mulai mengabur, ada sosok yang sudah lama sekali tidak kamu pikirkan. Teman yang dulu hanya kamu yang bisa melihatnya, yang kursinya pernah kamu siapkan. Dia tidak terlihat tua sedikit pun.",
     choices: [
       { id: "ikut", label: "Ulurkan tangan, seperti dulu", outcomes: [
-        { weight: 8, text: "Ternyata dia menunggu di tempat yang sama, di sudut sepi yang dulu, untuk mengantarmu kali ini. Hal pertama yang kamu ciptakan, menjadi hal terakhir yang menemanimu. Ada simetri yang aneh dan menenangkan di situ.",
+        { weight: 8, text: "Ternyata dia menunggu di tempat yang sama, untuk mengantarmu kali ini. Hal pertama yang kamu ciptakan, menjadi hal terakhir yang menemanimu. Ada simetri yang aneh dan menenangkan di situ.",
           flag: "dead", mood: "melancholy" },
       ]},
     ],
@@ -118,19 +118,19 @@ export const DEATH_POOL: LifeEvent[] = [
     prompt: (ctx) => {
       const s = ctx.state;
       if (narasiMuda(s, 11) === "teman") {
-        return "Besok ada ulangan yang tidak akan kamu kerjakan. Ada bangku di barisan tengah yang besok pagi akan ditatap teman-temanmu dengan cara yang belum mereka mengerti. Grup chat kelas masih ramai membahas tugas, belum tahu.";
+        return "Besok ada ulangan yang tidak akan kamu kerjakan. Ada bangku di barisan tengah yang besok pagi akan ditatap teman-temanmu dengan cara yang belum mereka mengerti.";
       }
-      return `${subjekOrtu(s)} akan mengingat hal-hal kecil yang tak masuk akal untuk dikenang: caramu tertidur di mobil waktu kecil lalu pura-pura masih tidur supaya digendong, suaramu memanggil dari kamar, bekas tinggi badan di kusen pintu yang berhenti bertambah. ${dukaSendiriClause(s)} Tidak ada orang tua yang pernah menyiapkan diri mengucapkan selamat tinggal pada anak yang seharusnya hidup lebih lama dari mereka.`.replace(/\s+/g, " ").trim();
+      return `${subjekOrtu(s)} akan mengingat hal-hal kecil yang tak masuk akal untuk dikenang. Caramu pura-pura tertidur di sofa supaya digendong, suaramu memanggil dari kamar, bekas tinggi badan di kusen pintu yang berhenti bertambah. Tidak ada orang tua yang pernah menyiapkan diri untuk mengucapkan selamat tinggal pada anak yang seharusnya hidup lebih lama dari mereka.`.replace(/\s+/g, " ").trim();
     },
     choices: (ctx) => {
       if (narasiMuda(ctx.state, 11) === "teman") {
-        return [{ id: "pergi", label: "Tutup mata di tengah hari biasa", outcomes: [
-          { weight: 8, text: "Beberapa dari mereka akan mengingatmu seumur hidup. Sebagian akan lupa pelan-pelan. Dua-duanya tidak apa-apa — kamu hanya tidak sempat tahu jadi yang mana.",
+        return [{ id: "pergi", label: "Tutup mata di tengah hari yang biasa", outcomes: [
+          { weight: 8, text: "Beberapa dari mereka akan mengingatmu seumur hidup. Sebagian akan lupa pelan-pelan. Dua-duanya tidak apa-apa, kamu hanya tidak sempat tahu, siapa akan jadi yang mana.",
             flag: "dead", mood: "tragic" },
         ]}];
       }
       return [{ id: "titip", label: "Titipkan maaf untuk yang kamu tinggalkan", outcomes: [
-        { weight: 8, text: "Yang paling berat dari pergi terlalu cepat bukan untukmu, tapi untuk mereka yang harus belajar hidup di rumah yang salah satu suaranya tiba-tiba hilang. Kamu berharap, dari tempat mana pun nanti, mereka bisa merasa kamu masih menjaga.",
+        { weight: 8, text: "Yang paling berat dari pergi terlalu cepat bukan kamu, tapi untuk mereka yang harus belajar hidup di rumah yang salah satu suaranya tiba-tiba hilang. Kamu berharap, dari tempat mana pun nanti, mereka bisa merasa kamu masih menjaga.",
           flag: "dead", mood: "tragic" },
       ]}];
     },
@@ -148,29 +148,29 @@ export const DEATH_POOL: LifeEvent[] = [
     prompt: (ctx) => {
       const s = ctx.state;
       if (narasiMuda(s, 23) === "ortu") {
-        return `${subjekOrtu(s)} masih menyimpan kebiasaan menunggumu — menyisakan lampu teras, menanyakan kabar lewat pesan yang jarang kamu balas cepat, membayangkanmu pulang membawa cerita. ${dukaSendiriClause(s)} Yang sampai justru kabar yang tidak pernah mereka siapkan telinganya untuk mendengar.`.replace(/\s+/g, " ").trim();
+        return `${subjekOrtu(s)} masih menyimpan kebiasaan menunggumu. Menyisakan lampu teras, menanyakan kabar lewat pesan yang jarang kamu balas cepat, membayangkanmu pulang membawa cerita. Yang sampai justru kabar yang tidak pernah telinga mereka siapkan untuk dengar.`.replace(/\s+/g, " ").trim();
       }
       if (jalurKuliah(s)) {
-        return "Di kamar kos yang berantakan, ada tugas yang belum selesai, draf yang baru setengah jalan, dan janji-janji 'minggu depan' pada diri sendiri. Kamu kira semester ini akan seperti semester lain — capek, lalu lewat. Ternyata ini yang tidak akan pernah kamu selesaikan.";
+        return "Di kamar kos yang berantakan, ada tugas yang belum selesai, draf yang baru setengah jalan, dan janji-janji 'minggu depan' pada diri sendiri. Kamu kira semester ini akan seperti semester lain. Capek, lalu lewat. Ternyata ini yang tidak akan pernah kamu selesaikan.";
       }
-      return "Kamu masih di usia mencari arah — pindah-pindah rencana, kerja serabutan, mencoba beberapa versi diri sambil belum yakin yang mana. Belum ada yang menyebutmu 'sudah jadi'. Justru di tengah pencarian itulah semuanya berhenti.";
+      return "Kamu masih di usia mencari arah. Pindah-pindah rencana, kerja serabutan, mencoba beberapa versi diri sambil belum yakin yang mana. Belum ada yang menyebutmu 'sudah jadi'. Justru di tengah pencarian itulah semuanya berhenti.";
     },
     choices: (ctx) => {
       const s = ctx.state;
       if (narasiMuda(s, 23) === "ortu") {
         return [{ id: "balas", label: "Maafkan diri atas yang belum sempat dibalas", outcomes: [
-          { weight: 8, text: "Yang paling berat bukan untukmu, tapi untuk telepon yang harus diterima di rumah. Kamu pergi sebelum sempat membalas apa pun dari yang mereka tanam — dan itu, di usia ini, terasa seperti hutang yang tidak akan pernah lunas.",
+          { weight: 8, text: "Kamu pergi sebelum sempat membalas apa pun dari yang mereka tanam, dan itu, di usia ini, terasa seperti hutang yang tidak akan pernah lunas.",
             flag: "dead", mood: "tragic" },
         ]}];
       }
       if (jalurKuliah(s)) {
         return [{ id: "tutup", label: "Tutup laptop yang tugasnya tak akan selesai", outcomes: [
-          { weight: 8, text: "Draf itu akan ditemukan seseorang, separuh jadi, dengan kursor berhenti di tengah kalimat. Begitu juga hidupmu — berhenti tepat saat kamu mengira masih punya banyak waktu untuk merapikannya nanti.",
+          { weight: 8, text: "Draf itu akan ditemukan seseorang, separuh jadi, dengan kursor berhenti di tengah kalimat. Begitu juga hidupmu, berhenti tepat saat kamu mengira masih punya banyak waktu untuk merapikannya nanti.",
             flag: "dead", mood: "tragic" },
         ]}];
       }
       return [{ id: "lepas", label: "Pergi sebelum tahu akan jadi siapa", outcomes: [
-        { weight: 8, text: "Kamu tidak pernah tahu kamu akan jadi apa. Mungkin tidak ada yang tahu, sebenarnya — hanya saja kebanyakan orang diberi waktu lebih lama untuk berpura-pura tahu.",
+        { weight: 8, text: "Kamu tidak pernah tahu kamu akan jadi apa. Mungkin tidak ada yang tahu, seperti semua orang. Hanya saja, kebanyakan orang diberi waktu lebih lama untuk berpura-pura tahu.",
           flag: "dead", mood: "melancholy" },
       ]}];
     },
@@ -184,7 +184,7 @@ export const DEATH_POOL: LifeEvent[] = [
     prompt: "Ini bukan usia untuk pamit. Masih ada janji di kalender, pesan yang belum dibalas, hal-hal yang kamu kira punya waktu nanti. Tubuhmu memutuskan lain, lebih cepat dari semua rencana itu.",
     choices: [
       { id: "lepas", label: "Lepaskan yang belum selesai", outcomes: [
-        { weight: 8, text: "Tidak semua kalimat sempat ditutup. Hidupmu berhenti di tengah, dan dunia melanjutkannya tanpa tahu di mana titikmu seharusnya berada.",
+        { weight: 8, text: "Tidak semua kalimat sempat ditutup. Hidupmu berhenti di tengah, dan dunia melanjutkannya tanpa mengetahui apa-apa tentangmu.",
           flag: "dead", mood: "tragic" },
       ]},
     ],
@@ -195,7 +195,7 @@ export const DEATH_POOL: LifeEvent[] = [
     ageMin: 25, ageMax: 54, mood: "tragic", weight: 8,
     ...dyingReq,
     title: "Tanpa Sempat Pamit",
-    prompt: "Tidak ada sakit berkepanjangan, tidak ada perpisahan. Pagi tadi kamu masih membalas pesan, masih berencana makan malam. Lalu satu detik yang lupa caranya berdetak, dan selesai. Orang-orang akan tahu lewat telepon yang tidak kamu angkat, lalu telepon kedua, lalu seseorang yang datang mengetuk.",
+    prompt: "Tidak ada sakit berkepanjangan, tidak ada perpisahan. Pagi tadi kamu masih membalas pesan, masih berencana makan malam. Lalu selesai. Orang-orang akan tahu lewat telepon yang tidak kamu angkat, lalu telepon kedua, lalu seseorang yang datang mengetuk.",
     choices: [
       { id: "pergi", label: "Pergi di tengah hari yang biasa", outcomes: [
         { weight: 8, text: "Ponselmu masih akan berdering beberapa kali. Notifikasi masih masuk ke akun yang pemiliknya sudah tidak ada. Butuh cukup waktu sebelum dunia menyadari bahwa salah satu detiknya sudah berhenti berdetak.",
@@ -209,7 +209,7 @@ export const DEATH_POOL: LifeEvent[] = [
     ageMin: 25, ageMax: 54, mood: "melancholy", weight: 8,
     ...dyingReq,
     title: "Mesin yang Aus Sebelum Waktunya",
-    prompt: "Bukan satu hal besar yang membunuhmu, tapi penjumlahan dari banyak hal kecil: tidur yang kurang, makan yang asal, cemas yang tak pernah benar-benar reda, tahun-tahun yang kamu pinjam dari tubuhmu dan lupa kamu kembalikan. Tubuhmu mengirim tagihan terakhirnya lebih cepat dari yang seharusnya.",
+    prompt: "Bukan satu hal besar yang membunuhmu, tapi penjumlahan dari banyak hal kecil. Tidur yang kurang, makan yang asal, cemas yang tak pernah reda, tahun-tahun yang kamu pinjam dari tubuhmu dan lupa kamu kembalikan. Tubuhmu mengirim tagihan terakhirnya lebih cepat dari yang seharusnya.",
     choices: [
       { id: "lepas", label: "Berhenti, akhirnya", outcomes: [
         { weight: 8, text: "Untuk pertama kalinya dalam waktu yang lama, tidak ada yang harus kamu kejar besok pagi. Lelah yang kamu tunda bertahun-tahun akhirnya kamu izinkan datang sepenuhnya, dan ternyata ia berbentuk seperti istirahat.",
@@ -223,7 +223,7 @@ export const DEATH_POOL: LifeEvent[] = [
     ageMin: 25, ageMax: 54, mood: "hope", weight: 8,
     ...dyingReq,
     title: "Singkat, Tapi Sempat",
-    prompt: "Hidupmu tidak panjang. Tapi saat kamu menghitungnya sekarang, kamu sadar kamu sempat: mencintai seseorang, tertawa sampai sakit perut, melihat beberapa tempat, menjadi penting bagi setidaknya satu orang. Tidak semua yang singkat berarti belum selesai.",
+    prompt: "Hidupmu tidak panjang. Tapi saat kamu menghitungnya, kamu sadar kamu sempat mencintai seseorang, tertawa sampai sakit perut, melihat beberapa tempat, menjadi penting bagi setidaknya satu orang. Tidak semua yang singkat berarti belum selesai.",
     choices: [
       { id: "syukur", label: "Selesai. Hitung yang sempat, bukan yang tidak", outcomes: [
         { weight: 8, text: "Ada orang yang hidup lebih lama tapi tidak sempat sebanyak ini. Kamu pergi tanpa daftar panjang soal penyesalan. Hanya rasa terima kasih yang aneh, datang justru di saat paling tidak terduga.",
@@ -271,15 +271,15 @@ export const DEATH_POOL: LifeEvent[] = [
     prompt: (ctx) => {
       const hidup = ctx.state.relationships.find((r) => r.id === "pasangan")?.alive;
       if (hidup === false) {
-        return "Sisi ranjang yang sebelah sudah lama kosong. Kamu membayangkan wajahnya di sisi itu, dan anehnya kamu tidak takut.";
+        return "Sisi ranjang sebelah yang sudah lama kosong. Kamu membayangkan wajahnya di sisi itu, dan anehnya kamu tidak takut.";
       }
-      return "Ada tangan yang sudah puluhan tahun kamu kenal lekuknya, menggenggammu sekarang dengan cara yang sama seperti dulu. Tidak ada yang perlu diucapkan. Semua kalimat, penting dan tidak, sudah pernah kalian katakan.";
+      return "Ada tangan yang sudah puluhan tahun kamu kenal lekuknya, sekarang menggenggammu dengan cara yang sama seperti dulu. Tidak ada yang perlu diucapkan. Semua kalimat, penting dan tidak, sudah pernah kalian katakan.";
     },
     choices: (ctx) => {
       const hidup = ctx.state.relationships.find((r) => r.id === "pasangan")?.alive;
       return hidup === false
         ? [{ id: "menyusul", label: "Pergi ke arah yang sudah dia tunjukkan", outcomes: [
-            { weight: 8, text: "Kamu pergi ke arah yang sudah pernah ditunjukkan mereka yang berjalan lebih dulu. Kalau ada yang menunggu di sana, kamu tahu persis siapa dia. Atau mereka?",
+            { weight: 8, text: "Kamu pergi ke arah yang sudah pernah ditunjukkan mereka yang berjalan lebih dulu. Kalau ada yang menunggu di sana, kamu tahu persis siapa dia.",
               flag: "dead", mood: "warm" },
           ]}]
         : [{ id: "genggam", label: "Genggam tangan itu sekali lagi", outcomes: [
@@ -308,9 +308,9 @@ export const DEATH_POOL: LifeEvent[] = [
     ageMin: 40, ageMax: 120, mood: "hope", weight: 8,
     ...dyingReq, requireAnyFlag: ["jurusan_seni", "seniman_naik"],
     title: "Yang Tertinggal Setelah Tanganmu Berhenti",
-    prompt: "Tanganmu tidak akan membuat apa pun lagi. Tapi yang sudah terlanjur kamu buat akan tetap ada, setelah kamu tidak ada. Seseorang, suatu hari, mungkin berhenti di depan salah satu buatanmu dan merasakan sesuatu yang tidak bisa dia jelaskan.",
+    prompt: "Tanganmu tidak akan membuat apa pun lagi. Tapi yang sudah terlanjur kamu buat akan tetap ada, jauh setelah kamu tidak ada. Seseorang, suatu hari, mungkin berhenti di depan salah satu karyamu dan merasakan hal yang tidak bisa dia jelaskan.",
     choices: [
-      { id: "lepas", label: "Lepaskan, biarkan karyanya melanjutkan", outcomes: [
+      { id: "lepas", label: "Lepaskan, biarkan karyamu melanjutkan dirinya sendiri", outcomes: [
         { weight: 8, text: "Itu sebentuk hidup yang lebih panjang dari tubuh. Bukan kamu yang bertahan, tapi yang sempat kamu pindahkan dari dalam kepala ke luar sana. Tidak semua orang sempat meninggalkan jejak yang bisa disentuh orang asing.",
           flag: "dead", mood: "hope" },
       ]},
@@ -400,7 +400,7 @@ export const DEATH_POOL: LifeEvent[] = [
     prompt: "Hasil lab dengan angka kuning yang dulu kamu masukkan ke laci, akhirnya menepati janjinya. Bertahun-tahun ia menunggu dengan sabar.",
     choices: [
       { id: "akui", label: "Akui, dengan tenang", outcomes: [
-        { weight: 8, text: "Tubuhmu memberi tahu sejak awal. Kamu hanya tidak siap mendengar.",
+        { weight: 8, text: "Tubuhmu memberi tahu sejak awal. Kamu hanya tidak siap mendengarkan.",
           flag: "dead", mood: "melancholy" },
       ]},
     ],

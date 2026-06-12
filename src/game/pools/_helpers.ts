@@ -35,6 +35,17 @@ export interface KerjaCtx {
   atasan: string;       // "kepala bagian" | "creative director" | "atasan"
 }
 
+// Flag-flag jalur "mandiri" (berdiri sendiri, bukan pegawai berstruktur kantor):
+// wirausaha, pedagang kaki lima, dokter praktik sendiri, atau freelancer. Dipakai
+// untuk menutup event/pilihan yang mengasumsikan ada atasan/HR/rapat kantor
+// (mis. promosi dari HR, "minta naik gaji ke bos"). Kalau menambah jalur mandiri
+// baru, daftarkan flag-nya di sini agar semua gating ikut konsisten.
+export const FLAG_MANDIRI = ["wirausaha", "pedagang_kaki_lima", "praktik_sendiri", "freelancer"] as const;
+
+export function isMandiri(state: GameState): boolean {
+  return FLAG_MANDIRI.some((flag) => state.flags[flag]);
+}
+
 export function kerjaCtx(state: GameState): KerjaCtx {
   switch (karirOf(state)) {
     case "dokter":

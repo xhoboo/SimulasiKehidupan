@@ -378,19 +378,19 @@ export const BRANCH_POOL: LifeEvent[] = [
     id: "br_pkl_kerajinan", category: "pekerjaan", pool: "economic", rarity: "uncommon",
     ageMin: 29, ageMax: 35, requireFlag: "pedagang_kaki_lima", deferrable: true, mood: "melancholy",
     title: "Trotoar yang Hafal Namamu",
-    prompt: "Beberapa tahun di gerobak yang dulu kamu malu mendorongnya. Sekarang pelanggan datang bukan cuma untuk dagangan, tapi karena kamu. Kamu hafal jam mereka lewat, mereka hafal harga yang tak pernah diam-diam kamu naikkan.",
+    prompt: "Beberapa tahun lalu, kamu malu mendorong gerobak itu. Sekarang pelanggan datang bukan cuma untuk dagangan, tapi karena kamu. Kamu hafal jam mereka lewat, mereka hafal harga yang tak pernah diam-diam kamu naikkan.",
     choices: [
       { id: "naik", label: "Kumpulkan modal, buka warung tetap", outcomes: [
-        { weight: 8, text: "Dari gerobak ke kios kecil beratap. Tak perlu lagi menganggap hujan sebagai musuh. Kamu pandangi papan nama sederhana itu, milik orang yang dulu tak punya apa-apa selain berani menanggung malu.", effects: { wealth: 5, happiness: 6, discipline: 4 }, flag: "wirausaha", extraFlags: ["pkl_toko"],
+        { weight: 8, text: "Tak perlu lagi menganggap hujan sebagai musuh. Kamu pandangi papan nama sederhana itu, milik orang yang dulu tak punya apa-apa selain berani menanggung malu.", effects: { wealth: 5, happiness: 6, discipline: 4 }, flag: "wirausaha", extraFlags: ["pkl_toko"],
           memory: { text: "Papan nama warung pertamamu, setelah bertahun-tahun mendorong gerobak.", tag: "bebas", mood: "warm" } },
-        { weight: 6, text: "Kamu buka warung tetap, tapi ramainya tak sebesar harapan. Tetap saja, malammu tak lagi habis untuk memikirkan ke mana harus mendorong gerobak besok. Sedikit lebih tenang.", effects: { wealth: 2, happiness: 4, mental: 3 }, flag: "wirausaha", extraFlags: ["pkl_toko"], mood: "melancholy" },
+        { weight: 6, text: "Ramainya tak sebesar harapan. Tapi malammu tak lagi habis untuk memikirkan ke mana harus mendorong gerobak besok. Sedikit lebih tenang.", effects: { wealth: 2, happiness: 4, mental: 3 }, flag: "wirausaha", extraFlags: ["pkl_toko"], mood: "melancholy" },
       ]},
       { id: "bertahan", label: "Tetap di trotoar, di sinilah tempatmu", outcomes: [
         { weight: 8, text: "Kamu tak mau atap dan sewa yang mengikat. Hidupmu kamu ukur bukan dari besarnya tempat, tapi dari pelanggan yang menanyakanmu kalau kamu absen sehari.", effects: { social: 5, happiness: 4, discipline: 2 }, extraFlags: ["pkl_jalan"],
           memory: { text: "Pelanggan yang menanyakanmu saat sehari kamu tak mendorong gerobak.", tag: "kerja", mood: "warm" } },
       ]},
       { id: "berhenti", label: "Cukup. Cari kerja yang lebih pasti", outcomes: [
-        { weight: 6, text: "Kamu titipkan gerobak ke orang lain dan masuk kerja bergaji tetap. Lebih aman, lebih sepi. Sesekali kamu lewat trotoar lamamu, melihat orang lain berdiri di tempatmu dulu. Ada yang ngilu, kecil, di dada.", effects: { wealth: 5, mental: -1, happiness: -1 }, mood: "melancholy" },
+        { weight: 8, text: "Kamu titipkan gerobak ke orang lain dan masuk kerja bergaji tetap. Sesekali kamu lewat trotoar lamamu, melihat orang lain berdiri di tempatmu dulu. Ada yang ngilu, kecil, di dada.", effects: { wealth: 5, mental: -1, happiness: -1 }, mood: "melancholy" },
       ]},
     ],
   }),
@@ -399,19 +399,19 @@ export const BRANCH_POOL: LifeEvent[] = [
     id: "br_barista_kerajinan", category: "pekerjaan", pool: "economic", rarity: "uncommon",
     ageMin: 30, ageMax: 34, requireFlag: "barista", deferrable: true, mood: "melancholy",
     title: "Pekerjaan yang Katanya Sementara",
-    prompt: "Beberapa tahun bertahan di pekerjaan yang dulu kamu sebut 'sementara'. Tanganmu hafal takaran tanpa timbangan, pelanggan tetap memanggil namamu. Sesuatu yang sederhana, diam-diam, sudah jadi milikmu.",
+    prompt: "Beberapa tahun bertahan di pekerjaan yang dulu kamu sebut 'sementara'. Tanganmu hafal takaran tanpa perlu timbangan, pelanggan tetap memanggil namamu. Sesuatu yang sederhana, diam-diam, sudah jadi milikmu.",
     choices: [
       { id: "kedai", label: "Buka kedai kecil sendiri", outcomes: [
-        { weight: 8, text: "Sewa tempat sempit, satu mesin bekas, namamu di papan yang kamu cat sendiri. Tahun pertama menakutkan. Tapi tiap pagi kamu membuka pintu di tempat yang benar-benar milikmu.", effects: { wealth: 4, happiness: 6, discipline: 4 }, flag: "wirausaha", extraFlags: ["barista_jalan"],
+        { weight: 8, text: "Ruangan sempit, satu mesin bekas, papan yang kamu cat sendiri. Tahun pertama menakutkan. Tapi tiap pagi, kamu membuka pintu di tempat yang benar-benar milikmu.", effects: { wealth: 4, happiness: 6, discipline: 4 }, flag: "wirausaha", extraFlags: ["barista_jalan"],
           memory: { text: "Pagi pertama membuka pintu kedai yang namanya kamu cat sendiri.", tag: "bebas", mood: "warm" } },
-        { weight: 6, text: "Kedaimu tidak pernah ramai betul, tapi punya beberapa pelanggan yang datang justru karena sepi. Kamu tidak kaya, tapi kamu memutuskan sendiri jam berapa kopi pertama diseduh.", effects: { wealth: 1, happiness: 5, mental: 3 }, flag: "wirausaha", extraFlags: ["barista_jalan"], mood: "melancholy" },
+        { weight: 6, text: "Kedaimu tidak pernah ramai, tapi punya beberapa pelanggan yang datang justru karena sepi. Kamu tidak kaya, tapi kamu memutuskan sendiri jam berapa kopi pertama diseduh.", effects: { wealth: 1, happiness: 5, mental: 3 }, flag: "wirausaha", extraFlags: ["barista_jalan"], mood: "melancholy" },
       ]},
       { id: "jiwa", label: "Tetap bertahan", outcomes: [
-        { weight: 8, text: "Tempat ini tidak sama tanpamu. Pemiliknya berganti dua kali, kamu yang tetap. Ada yang mengukur hidup dengan jabatan, kamu mengukurnya dengan wajah yang kamu hafal.", effects: { social: 5, happiness: 4, mental: 2 }, extraFlags: ["barista_jalan"],
+        { weight: 8, text: "Tempat ini tidak sama tanpamu. Pemiliknya berganti dua kali, kamu tidak. Ada yang mengukur hidup dengan jabatan, kamu mengukurnya dengan wajah yang kamu hafal.", effects: { social: 5, happiness: 4, mental: 2 }, extraFlags: ["barista_jalan"],
           memory: { text: "Jadi satu hal yang tidak terganti di tempat yang pemiliknya berganti-ganti.", tag: "kerja", mood: "warm" } },
       ]},
       { id: "keluar", label: "Cukup. Cari kerja yang 'benar'", outcomes: [
-        { weight: 6, text: "Kamu gantung celemek dan masuk ke kantor ber-AC. Gajinya lebih pasti. Tapi sesekali, di antrean kopi, tanganmu gatal ingin membetulkan cara barista muda itu memadatkan kopi.", effects: { wealth: 5, mental: -1, happiness: -1 }, mood: "melancholy" },
+        { weight: 6, text: "Kamu gantung apron dan masuk ke kantor ber-AC. Gajinya lebih pasti. Tapi sesekali, di antrean kopi, tanganmu gatal ingin membetulkan cara barista muda itu memadatkan kopi.", effects: { wealth: 5, mental: -1, happiness: -1 }, mood: "melancholy" },
       ]},
     ],
   }),
@@ -421,14 +421,14 @@ export const BRANCH_POOL: LifeEvent[] = [
     ageMin: 32, ageMax: 45, requireRelationship: "sahabat_bolos", mood: "warm",
     forceCallbackTag: "sahabat_bolos",
     title: "Pesan dari Sahabat SD",
-    prompt: "Sahabat bolosmu dulu, sekarang tinggal di kota lain, mengirim foto: lapangan kosong yang dulu kalian datangi sore itu. 'Masih ingat?'",
+    prompt: "Sahabat bolosmu dulu, sekarang tinggal di kota lain, mengirim foto lapangan kosong yang dulu kalian datangi saat sore. 'Masih ingat?'",
     choices: [
       { id: "datang", label: "Naik kereta minggu depan, datangi lapangan itu bersama", outcomes: [
-        { weight: 8, text: "Lapangan jauh lebih kecil dari yang kamu ingat. Tapi tawamu sama besarnya.", effects: { social: 6, happiness: 8, mental: 6 }, mood: "warm", memory: { text: "Reuni di lapangan kosong masa kecil.", tag: "sahabat_bolos", mood: "warm" } },
+        { weight: 8, text: "Lapangannya jauh lebih kecil dari yang kamu ingat. Tapi tawamu sama besarnya.", effects: { social: 6, happiness: 8, mental: 6 }, mood: "warm", memory: { text: "Reuni di lapangan kosong masa kecil.", tag: "sahabat_bolos", mood: "warm" } },
         { weight: 8, text: "Lapangan itu sudah jadi ruko. Kalian berdiri di parkiran yang dulunya garis tengah, dan tertawa getir. Yang kalian datangi ternyata bukan tempat, tapi satu sama lain.", effects: { social: 6, happiness: 6, mental: 4 }, mood: "melancholy", memory: { text: "Lapangan masa kecil yang kini jadi ruko.", tag: "sahabat_bolos", mood: "melancholy" } },
       ]},
       { id: "balas", label: "'Ingat banget. Ayo kita ke sana.'", outcomes: [
-        { weight: 8, text: "Janji yang tulus, tapi tidak tertepati. Kalian sama-sama tahu, dan itu tidak apa-apa.", effects: { mental: 3 } },
+        { weight: 8, text: "Janji yang tulus, tapi tidak akan tertepati. Kalian sama-sama tahu, dan itu tidak apa-apa.", effects: { mental: 3 } },
         { weight: 8, text: "Kalian mengobrol sampai larut malam itu, lalu pelan-pelan kembali ke diam yang nyaman. Persahabatan yang tidak butuh sering bertemu untuk tetap ada.", effects: { mental: 4, social: 2 }, mood: "warm" },
       ]},
     ],
@@ -437,20 +437,20 @@ export const BRANCH_POOL: LifeEvent[] = [
   e({
     id: "br_psikologi_praktik", category: "pekerjaan", pool: "age", rarity: "uncommon",
     ageMin: 34, ageMax: 50, requireFlag: "psikolog_praktik", deferrable: true, mood: "melancholy",
-    title: "Ruang yang Tak Pernah Lama Sepi",
-    prompt: "Bertahun-tahun kursi di seberangmu jarang kosong lama. Kamu hafal cara orang menahan tangis sebelum akhirnya menyerah pada tangis itu. Pekerjaan ini sudah jadi seluruh isi harimu, dan kamu mesti memutuskan mau membawanya ke mana.",
+    title: "Ruang yang Tak Pernah Sepi",
+    prompt: "Kursi di seberangmu jarang kosong. Kamu hafal cara orang menahan tangis, sebelum akhirnya menyerah pada tangis itu. Pekerjaan ini sudah jadi seluruh isi harimu, dan kamu mesti memutuskan mau membawanya ke mana.",
     choices: [
       { id: "praktik_sendiri", label: "Buka praktik sendiri", outcomes: [
         { weight: 8, text: "Satu ruang kecil, dua kursi, dan jam yang kamu tentukan sendiri. Tak ada lagi atasan yang mengukurmu dari jumlah pasien per hari. Sekarang orang datang karena namamu.", effects: { wealth: 4, happiness: 4, discipline: 3, mental: -1 }, flag: "wirausaha",
           memory: { text: "Membuka pintu ruang praktik yang akhirnya benar-benar milikmu.", tag: "bebas", mood: "warm" } },
-        { weight: 8, text: "Praktikmu jalan, tapi tiap kursi yang terisi berarti satu beban lagi yang ikut pulang ke rumahmu.", effects: { wealth: 3, mental: -4, social: 3 }, mood: "melancholy" },
+        { weight: 8, text: "Praktikmu jalan, tapi tiap kursi yang terisi berarti satu beban lagi yang ikut pulang bersamamu.", effects: { wealth: 3, mental: -4, social: 3 }, mood: "melancholy" },
       ]},
       { id: "satu_hilang", label: "Lanjutkan saja", outcomes: [
-        { weight: 8, text: "Dari ratusan yang pulih, satu tidak. Kamu ulang percakapan terakhir kalian berkali-kali, mencari kalimat yang seharusnya kamu ucapkan. Dengan pahit kamu belajar bahwa mendengar pun bisa punya kesalahan.", effects: { mental: -6, happiness: -2 }, mood: "tragic",
+        { weight: 8, text: "Dari ratusan yang pulih, satu tidak. Kamu ulangi terus percakapan terakhir kalian di kepalamu, mencari kalimat yang seharusnya kamu ucapkan. Dengan pahit kamu belajar bahwa, mendengar pun bisa punya kesalahan.", effects: { mental: -6, happiness: -2 }, mood: "tragic",
           memory: { text: "Satu yang tak sempat kamu tahan, dan percakapan terakhir yang kamu ulang terus.", tag: "luka", mood: "melancholy" } },
       ]},
       { id: "didik", label: "Didik calon psikolog", outcomes: [
-        { weight: 8, text: "Kamu ajari yang muda hal yang tak ada di buku: kapan diam lebih menyembuhkan daripada nasihat. Sebagian beban kini berpindah ke tangan-tangan baru.", effects: { social: 4, happiness: 4, mental: 2, intelligence: 2 }, mood: "warm",
+        { weight: 8, text: "Kamu ajari yang muda hal yang tak ada di buku, kapan diam lebih menyembuhkan daripada nasihat. Sebagian beban kini berpindah ke tangan-tangan baru.", effects: { social: 4, happiness: 4, mental: 2, intelligence: 2 }, mood: "warm",
           memory: { text: "Mengajari yang muda kapan diam lebih menyembuhkan daripada nasihat.", tag: "kerja", mood: "warm" } },
       ]},
     ],
@@ -460,7 +460,7 @@ export const BRANCH_POOL: LifeEvent[] = [
     id: "br_psikologi_riset", category: "pekerjaan", pool: "age", rarity: "uncommon",
     ageMin: 34, ageMax: 50, requireFlag: "psikolog_riset", deferrable: true, mood: "melancholy",
     title: "Di Balik Angka, Manusia",
-    prompt: "Bertahun-tahun kamu mengejar pola yang orang lain tak sempat lihat. Tak ada yang pulih di depan matamu, hanya data yang pelan-pelan membentuk satu kalimat yang lebih jujur, 'untuk apa, dan untuk siapa semua ini?'",
+    prompt: "Bertahun-tahun kamu mengejar pola yang tidak orang awam lihat. Tak ada yang pulih di depan matamu, hanya data yang pelan-pelan membentuk satu kalimat yang lebih jujur, 'untuk apa dan untuk siapa semua ini?'",
     choices: [
       { id: "kejar", label: "Kejar temuan besar, buktikan namamu layak dikenang", outcomes: [
         { weight: 8, text: "Satu temuan akhirnya tembus, dikutip banyak orang yang tak pernah kamu temui. Namamu kecil di pojok jurnal. Untuk sesuatu yang tak kasat mata, kamu menancapkan satu paku.", effects: { intelligence: 5, wealth: 2, happiness: 3 }, mood: "melancholy",
@@ -472,7 +472,7 @@ export const BRANCH_POOL: LifeEvent[] = [
           memory: { text: "Mahasiswa yang membawa caramu bertanya ke tempat yang tak bisa kamu jangkau.", tag: "kerja", mood: "warm" } },
       ]},
       { id: "terapan", label: "Bawa risetmu turun ke orang sungguhan", outcomes: [
-        { weight: 8, text: "Kamu bosan menulis untuk segelintir orang. Temuanmu kamu bawa ke ruang yang nyata: pelatihan, kebijakan, program yang menyentuh orang yang tak pernah buka jurnal. Lebih lambat, lebih berisik, tapi terasa sampai.", effects: { intelligence: 3, social: 4, happiness: 3, wealth: 1 }, mood: "melancholy",
+        { weight: 8, text: "Temuanmu kamu bawa ke ruang yang nyata. Pelatihan, kebijakan, program yang menyentuh orang yang tak pernah buka jurnal. Lebih lambat, lebih berisik, tapi terasa sampai.", effects: { intelligence: 3, social: 4, happiness: 3, wealth: 1 }, mood: "melancholy",
           memory: { text: "Membawa temuanmu turun ke orang yang tak pernah buka jurnal.", tag: "kerja", mood: "warm" } },
       ]},
     ],
@@ -486,11 +486,11 @@ export const BRANCH_POOL: LifeEvent[] = [
     prompt: "Saat membersihkan gudang, kamu menemukan robot mainan kecil yang dulu entah datang dari mana. Anakmu mengambilnya dari tanganmu, matanya berbinar.",
     choices: [
       { id: "berikan", label: "Berikan padanya. Ceritakan kisahnya.", outcomes: [
-        { weight: 8, text: "Dia memeluk robot itu seperti kamu dulu. Sebuah lingkaran kecil dalam hidup yang menutup tanpa upacara.", effects: { mental: 8, happiness: 8 }, mood: "warm", memory: { text: "Anakmu memeluk robot kecil yang sama.", tag: "robot_kecil", mood: "warm" }, achievement: "Estafet Tanpa Nama" },
+        { weight: 6, text: "Dia memeluk robot itu seperti kamu dulu. Sebuah lingkaran kecil dalam hidup yang menutup tanpa upacara.", effects: { mental: 8, happiness: 8 }, mood: "warm", memory: { text: "Anakmu memeluk robot kecil yang sama.", tag: "robot_kecil", mood: "warm" }, achievement: "Estafet Tanpa Nama" },
         { weight: 8, text: "Kamu ceritakan asal-usulnya, yang sebenarnya kamu sendiri tidak tahu. Anakmu mendengar dengan serius, lalu memberi robot itu nama.", effects: { mental: 7, happiness: 7 }, mood: "warm", memory: { text: "Anakmu memberi nama pada robot kecil itu.", tag: "robot_kecil", mood: "warm" } },
       ]},
       { id: "simpan", label: "Simpan kembali. Belum waktunya.", outcomes: [
-        { weight: 8, text: "Kamu menaruhnya di kotak khusus. 'Suatu hari nanti.' Gumammu.", effects: { mental: 3 } },
+        { weight: 8, text: "Kamu menaruhnya di kotak khusus. 'Suatu hari nanti' gumammu.", effects: { mental: 3 } },
         { weight: 8, text: "Kamu taruh kembali. Tapi malam itu, kamu sendiri yang memegangnya sebelum tidur. Ada hal-hal yang kita simpan bukan untuk diberikan, tapi untuk diingat.", effects: { mental: 4, happiness: 2 }, mood: "melancholy" },
       ]},
     ],
@@ -500,12 +500,12 @@ export const BRANCH_POOL: LifeEvent[] = [
     id: "br_barista_warisan", category: "pekerjaan", pool: "economic", rarity: "uncommon",
     ageMin: 54, ageMax: 74, requireFlag: "barista_jalan", deferrable: true, mood: "melancholy",
     title: "Pelanggan yang Ikut Menua",
-    prompt: "Wajah-wajah yang dulu datang muda, sekarang datang pelan-pelan Dengan tongkat, dengan cucu, atau tidak datang lagi. Seorang anak baru, secanggung dirimu dulu, salah grinding kopi di belakang meja. Kopinya sama, tahunnya yang berbeda.",
+    prompt: "Wajah-wajah muda yang dulu datang, sekarang datang pelan-pelan Dengan tongkat, dengan cucu, atau tidak datang lagi. Seorang anak baru, secanggung dirimu dulu, salah grinding kopi di belakang meja. Kopinya sama, tahunnya yang berbeda.",
     choices: [
       { id: "ajari", label: "Ajari dia, seperti dulu kamu diajari", outcomes: [
         { weight: 8, text: "Kamu tunjukkan caranya tanpa banyak kata, persis seperti yang dulu kamu terima dari seseorang yang sudah lama pergi. Sesuatu yang kecil diteruskan.", effects: { social: 5, happiness: 5, mental: 4 }, mood: "warm",
           memory: { text: "Mengajari barista muda, persis seperti kamu dulu diajari.", tag: "kerja", mood: "warm" } },
-        { weight: 6, text: "Kamu ajari dia, dan dia mendengarkan setengah, sibuk dengan ponselnya. Tidak apa-apa, kamu pun dulu begitu. Sebagian pelajaran memang baru nyangkut bertahun-tahun setelah diberikan.", effects: { social: 3, mental: 3 }, mood: "melancholy" },
+        { weight: 6, text: "Kamu ajari dia, dan dia mendengarkan setengah, lalu sibuk dengan ponselnya. Tidak apa-apa, kamu pun dulu begitu. Sebagian pelajaran memang baru nyangkut bertahun-tahun setelah diberikan.", effects: { social: 3, mental: 3 }, mood: "melancholy" },
       ]},
       { id: "pandang", label: "Diam, pandangi tempat yang menua bersamamu", outcomes: [
         { weight: 8, text: "Kamu hitung berapa cangkir yang sudah lewat dari tanganmu seumur hidup, dan menyerah di angka yang sudah tidak masuk akal. Pekerjaan yang dulu kamu kira sementara ternyata jadi bentuk seluruh hidupmu. Dan kamu tidak menyesalinya.", effects: { mental: 5, happiness: 3 }, mood: "melancholy",
@@ -518,26 +518,26 @@ export const BRANCH_POOL: LifeEvent[] = [
     id: "br_pkl_warisan", category: "pekerjaan", pool: "economic", rarity: "uncommon",
     ageMin: 54, ageMax: 75, requireFlag: "pkl_jalan", deferrable: true, mood: "melancholy",
     title: "Tangan yang Mulai Gemetar di Atas Wajan",
-    prompt: "Pelanggan yang dulu anak kecil sekarang datang membawa anak mereka sendiri. Tanganmu mulai gemetar di atas wajan, punggungmu protes tiap pagi. Di sebelah, seorang anak muda baru membuka gerobak. Gugup, kikuk, dengan mata yang sama takutnya seperti kamu berpuluh tahun lalu.",
+    prompt: "Tanganmu mulai gemetar di atas wajan, punggungmu protes tiap pagi. Di sebelah, seorang anak muda baru membuka gerobak. Gugup, kikuk, dengan mata yang sama takutnya seperti kamu berpuluh tahun lalu.",
     choices: (ctx) => {
       const punyaAnak = !!ctx.state.flags.punya_anak;
       let pandangText: string;
       let pandangMem: string;
       if (punyaAnak) {
-        pandangText = "Kamu pandangi trotoar yang dulu terasa asing, kini hafal sampai tiap retaknya. Pekerjaan yang dulu kamu malu mengakuinya ternyata yang membesarkan anak-anakmu, menyekolahkan mereka, membawamu sampai sejauh ini. Bukan pekerjaan kecil. Tidak pernah kecil.";
-        pandangMem = "Menyadari gerobak di pinggir jalan itu yang membesarkan seluruh keluargamu.";
+        pandangText = "Kamu pandangi trotoar yang dulu terasa asing, kini hafal sampai tiap retaknya. Pekerjaan yang dulu kamu malu mengakuinya ternyata yang membesarkan anak-anakmu. Bukan pekerjaan kecil. Tidak pernah kecil.";
+        pandangMem = "Menyadari gerobak itu yang membesarkan seluruh keluargamu.";
       } else if (ctx.state.flags.menikah) {
-        pandangText = "Kamu pandangi trotoar yang dulu terasa asing, kini hafal sampai tiap retaknya. Pekerjaan yang dulu kamu malu mengakuinya ternyata yang menghidupimu berdua dengan orang yang kamu nikahi, mengisi meja makan kalian tiap malam, membawamu sampai sejauh ini. Bukan pekerjaan kecil. Tidak pernah kecil.";
-        pandangMem = "Menyadari gerobak di pinggir jalan itu yang menghidupimu berdua sepanjang pernikahan.";
+        pandangText = "Kamu pandangi trotoar yang dulu terasa asing, kini hafal sampai tiap retaknya. Pekerjaan yang dulu kamu malu mengakuinya ternyata yang menghidupimu dan orang yang kamu nikahi, mengisi meja makan kalian tiap malam. Bukan pekerjaan kecil. Tidak pernah kecil.";
+        pandangMem = "Menyadari gerobak itu yang menghidupimu berdua sepanjang pernikahan.";
       } else {
-        pandangText = "Kamu pandangi trotoar yang dulu terasa asing, kini hafal sampai tiap retaknya. Pekerjaan yang dulu kamu malu mengakuinya ternyata yang menghidupimu seorang diri selama ini, membayar tiap kontrakan dan tiap obat, membawamu sampai sejauh ini. Bukan pekerjaan kecil. Tidak pernah kecil.";
-        pandangMem = "Menyadari gerobak di pinggir jalan itu yang menghidupimu seorang diri sampai setua ini.";
+        pandangText = "Kamu pandangi trotoar yang dulu terasa asing, kini hafal sampai tiap retaknya. Pekerjaan yang dulu kamu malu mengakuinya ternyata yang menghidupimu, membayar tiap tagihan dan tiap obat. Bukan pekerjaan kecil. Tidak pernah kecil.";
+        pandangMem = "Menyadari gerobak itu yang menghidupimu sampai setua ini.";
       }
       return [
-        { id: "ajari", label: "Bagi tempat dan ilmu pada yang muda", outcomes: [
-          { weight: 8, text: "Kamu tunjukkan trik yang cuma bisa dipelajari dari pengalaman, bukan dari buku: cara membaca cuaca, ramah tanpa rugi, bertahan saat sepi.", effects: { social: 5, happiness: 5, mental: 4 }, mood: "warm" as const,
+        { id: "ajari", label: "Berbagi tempat dan ilmu pada yang muda", outcomes: [
+          { weight: 8, text: "Kamu tunjukkan trik yang cuma bisa dipelajari dari pengalaman, bukan dari buku. Cara membaca cuaca, ramah tanpa rugi, bertahan saat sepi.", effects: { social: 5, happiness: 5, mental: 4 }, mood: "warm" as const,
             memory: { text: "Mengajari pedagang muda trik yang hanya bisa dipelajari dari pengalaman.", tag: "kerja", mood: "warm" as const } },
-          { weight: 6, text: "Kamu ajari dia sebisanya, dan dia mengangguk-angguk sambil sibuk sendiri. Tak apa. Kamu pun dulu keras kepala. Sebagian nasihat memang baru terasa benar setelah orang yang memberikannya tak ada lagi.", effects: { social: 3, mental: 3 }, mood: "melancholy" as const },
+          { weight: 6, text: "Kamu ajari dia sebisanya, dan dia mengangguk sambil sibuk sendiri. Tak apa. Kamu pun dulu keras kepala. Sebagian nasihat memang baru terasa benar setelah mengalaminya sendiri.", effects: { social: 3, mental: 3 }, mood: "melancholy" as const },
         ]},
         { id: "pandang", label: "Diam, pandangi trotoar yang menua bersamamu", outcomes: [
           { weight: 8, text: pandangText, effects: { mental: 5, happiness: 3 }, mood: "melancholy" as const,
@@ -551,7 +551,7 @@ export const BRANCH_POOL: LifeEvent[] = [
     id: "br_pkl_toko", category: "pekerjaan", pool: "economic", rarity: "uncommon",
     ageMin: 54, ageMax: 75, requireFlag: "pkl_toko", deferrable: true, mood: "melancholy",
     title: "Dapur yang Tak Pernah Dingin",
-    prompt: "Warung yang dulu kamu cat sendiri sekarang catnya mengelupas di tiap sudut. Pelanggan yang dulu remaja, kini datang membawa anak mereka, memesan menu yang sama. Dapur kecil ini sudah menghidupi lebih banyak orang daripada yang sempat kamu hitung.",
+    prompt: "Warung yang dulu kamu cat sendiri sekarang catnya mengelupas di tiap sudut. Pelanggan yang dulu remaja, kini datang membawa anak mereka. Dapur kecil ini sudah menghidupi lebih banyak orang daripada yang sempat kamu hitung.",
     choices: (ctx) => {
       const punyaAnak = !!ctx.state.flags.punya_anak;
       const childBirthAge = typeof ctx.state.flags.child_birth_age === "number"
@@ -561,13 +561,13 @@ export const BRANCH_POOL: LifeEvent[] = [
       let wariskan: Choice;
       if (anakDewasa) {
         wariskan = { id: "wariskan", label: "Mulai serahkan dapur pada anakmu", outcomes: [
-          { weight: 8, text: "Anakmu yang dulu main di kolong meja warung sekarang berdiri di depan kompor, tangannya luwes meracik bumbu yang dulu kamu ajarkan diam-diam. Kamu serahkan dapur pelan-pelan, masih sambil mengoreksi takaran garamnya.", effects: { social: 5, happiness: 5, mental: 4 }, mood: "warm" as const,
-            memory: { text: "Menyerahkan dapur warung pada anak yang dulu main di kolong mejanya.", tag: "kerja", mood: "warm" as const } },
+          { weight: 8, text: "Anakmu yang dulu main di kolong meja sekarang berdiri di depan kompor, tangannya luwes meracik bumbu yang dulu kamu ajarkan diam-diam. Kamu serahkan dapur pelan-pelan, masih sambil mengoreksi takaran garamnya.", effects: { social: 5, happiness: 5, mental: 4 }, mood: "warm" as const,
+            memory: { text: "Menyerahkan dapur pada anak yang dulu main di kolong meja.", tag: "kerja", mood: "warm" as const } },
           { weight: 8, text: "Anakmu mau melanjutkan, tapi racikannya tak sama dengan tanganmu, dan kamu belajar diam. Rasa warung ini akan berubah sesudah kamu, dan mungkin memang harus. Kamu cuma berharap pelanggan lama tetap datang, walau nanti kamu tak sempat lihat.", effects: { social: 3, mental: 3 }, mood: "melancholy" as const },
         ]};
       } else {
         wariskan = { id: "wariskan", label: "Latih pegawai muda memegang warung", outcomes: [
-          { weight: 8, text: "Anak muda yang kamu gaji sejak lima tahun lalu sekarang hafal pesanan langganan tanpa bertanya. Kamu ajari dia hal yang tak ada di buku resep: pelanggan mana yang boleh ngutang, cara membuat yang datang tetap betah. Dapur yang kamu nyalakan sendiri pelan-pelan belajar menyala tanpamu.", effects: { social: 5, happiness: 4, mental: 4 }, mood: "warm" as const,
+          { weight: 8, text: "Anak muda yang kamu gaji sejak lima tahun lalu sekarang hafal pesanan langganan tanpa bertanya. Kamu ajari dia hal yang tak ada di buku resep. Pelanggan mana yang boleh ngutang, cara membuat yang datang tetap betah. Dapur yang kamu nyalakan sendiri pelan-pelan belajar menyala tanpamu.", effects: { social: 5, happiness: 4, mental: 4 }, mood: "warm" as const,
             memory: { text: "Melatih pegawai muda memegang dapur yang kamu bangun dari satu wajan.", tag: "kerja", mood: "warm" as const } },
           { weight: 8, text: "Kamu latih dia sebisanya, walau tahu suatu hari nanti dia akan pergi membuka warungnya sendiri. Tak apa. Sebagian dari resepmu akan ikut dengannya ke mana pun dia melangkah, dan itu sudah lebih dari cukup.", effects: { social: 3, mental: 3 }, mood: "melancholy" as const },
         ]};
@@ -576,14 +576,14 @@ export const BRANCH_POOL: LifeEvent[] = [
       let pandangText: string;
       let pandangMem: string;
       if (punyaAnak) {
-        pandangText = "Kamu pandangi meja-meja yang dulu cuma dua, kini penuh tiap jam makan. Gerobak yang dulu kamu malu mendorongnya, ternyata yang membesarkan anak-anakmu, menyekolahkan mereka, mengantarmu sampai sejauh ini.";
+        pandangText = "Kamu pandangi meja-meja yang dulu cuma dua, kini penuh tiap jam makan. Gerobak yang dulu kamu malu mendorongnya, ternyata yang membesarkan anak-anakmu, mengantarmu sampai sejauh ini.";
         pandangMem = "Menyadari warung kecil itu yang membesarkan seluruh keluargamu, dari gerobak ke dapur sendiri.";
       } else if (ctx.state.flags.menikah) {
-        pandangText = "Kamu pandangi meja-meja yang dulu cuma dua, kini penuh tiap jam makan. Gerobak yang dulu kamu malu mendorongnya, ternyata yang menghidupimu berdua dengan orang yang kamu nikahi, mengisi piring kalian dari piring yang kamu masak untuk orang lain.";
+        pandangText = "Kamu pandangi meja-meja yang dulu cuma dua, kini penuh tiap jam makan. Gerobak yang dulu kamu malu mendorongnya, ternyata yang menghidupimu dan orang yang kamu nikahi, mengisi piring kalian dari piring yang kamu masak untuk orang lain.";
         pandangMem = "Menyadari warung kecil itu yang menghidupimu berdua sepanjang pernikahan, dari gerobak ke dapur sendiri.";
       } else {
-        pandangText = "Kamu pandangi meja-meja yang dulu cuma dua, kini penuh tiap jam makan. Gerobak yang dulu kamu malu mendorongnya, ternyata yang menghidupimu seorang diri selama ini, membayar tiap tagihan dan tiap obat, mengantarmu sampai sejauh ini.";
-        pandangMem = "Menyadari warung kecil itu yang menghidupimu seorang diri sampai setua ini, dari gerobak ke dapur sendiri.";
+        pandangText = "Kamu pandangi meja-meja yang dulu cuma dua, kini penuh tiap jam makan. Gerobak yang dulu kamu malu mendorongnya, ternyata yang menghidupimu selama ini, membayar tiap tagihan dan tiap obat, mengantarmu sampai sejauh ini.";
+        pandangMem = "Menyadari warung kecil itu yang menghidupimu sampai setua ini, dari gerobak ke dapur sendiri.";
       }
 
       return [
@@ -601,8 +601,8 @@ export const BRANCH_POOL: LifeEvent[] = [
     ageMin: 54, ageMax: 76, requireFlag: "jurusan_psikologi", deferrable: true, mood: "melancholy",
     title: (ctx) => ctx.state.flags.psikolog_riset ? "Seumur Hidup Bertanya" : "Penampung yang Lupa Dikosongkan",
     prompt: (ctx) => ctx.state.flags.psikolog_riset
-      ? "Seumur hidup kamu menyusun pertanyaan tentang manusia, dan belum sempat mengarahkannya ke dalam dirimu sendiri. Sekarang, di usia ini, kamu menghitung dua hal: seberapa jauh kamu menambah pengetahuan baru, dan seberapa lama kamu menunda mengenal dirimu sendiri."
-      : "Sepanjang hidup kamu jadi tempat orang menaruh beban mereka. Sekarang, di usia ini, kamu menghitung dua hal: berapa banyak yang kamu bantu bertahan, dan berapa lama kamu menunda menengok lukamu sendiri.",
+      ? "Seumur hidup kamu menyusun pertanyaan tentang manusia, dan belum sempat mengarahkannya ke dalam dirimu sendiri. Sekarang, di usia ini, kamu menghitung dua hal, seberapa jauh kamu menambah pengetahuan baru, dan seberapa lama kamu menunda mengenal dirimu sendiri."
+      : "Sepanjang hidup kamu jadi tempat orang menaruh beban mereka. Sekarang, di usia ini, kamu menghitung dua hal, berapa banyak yang kamu bantu bertahan, dan berapa lama kamu menunda menengok lukamu sendiri.",
     choices: (ctx) => ctx.state.flags.psikolog_riset
       ? [
           { id: "tengok", label: "Akhirnya, arahkan pertanyaanmu ke dalam", outcomes: [
@@ -629,8 +629,8 @@ export const BRANCH_POOL: LifeEvent[] = [
   e({
     id: "br_filsafat_tua", category: "eksistensial", pool: "age", rarity: "uncommon",
     ageMin: 60, ageMax: 74, requireFlag: "jurusan_filsafat", deferrable: true, mood: "melancholy",
-    title: "Pertanyaan yang Tidak Pernah Lulus",
-    prompt: "Lebih dari setengah abad kamu memutar pertanyaan yang sama, yang dulu pernah membuat satu ruang kelas terdiam: untuk apa semua ini, dan ke mana kita sesudahnya. Kamu tidak lebih dekat ke jawaban. Hanya lebih akrab dengan pertanyaannya.",
+    title: "Pertanyaan yang Tidak Pernah Terjawab",
+    prompt: "Lebih dari setengah abad kamu memutar pertanyaan yang sama, yang dulu pernah membuat satu ruang kelas terdiam. Untuk apa semua ini? Dan ke mana kita sesudahnya? Kamu tidak lebih dekat ke jawaban, hanya lebih akrab dengan pertanyaan.",
     choices: [
       { id: "damai", label: "Berdamai. Mungkin hidup bersama pertanyaan itu sudah jawabannya", outcomes: [
         { weight: 8, text: "Kamu berhenti menuntut kepastian dari hidup, dan anehnya hidup terasa lebih ringan sesudahnya.", effects: { mental: 7, happiness: 5 }, mood: "warm",

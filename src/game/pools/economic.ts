@@ -1,5 +1,5 @@
-import { LifeEvent } from "../types";
-import { e } from "./_helpers";
+import { Choice, LifeEvent } from "../types";
+import { e, FLAG_MANDIRI, isMandiri } from "./_helpers";
 
 export const ECONOMIC_POOL: LifeEvent[] = [
   e({
@@ -7,42 +7,53 @@ export const ECONOMIC_POOL: LifeEvent[] = [
     ageMin: 25, ageMax: 42, requireWealthMax: 20, requireFlag: "akhir_bulan_1", mood: "melancholy",
     title: "Tanggal 25, Lagi",
     prompt: "Rekening yang kamu hafal angkanya sebelum dicek. Sudah beberapa kali seperti ini. Kamu tahu cara bertahan, yang kamu tidak tahu adalah 'kenapa masih harus?'",
-    choices: [
-      { id: "sistem", label: "Coba buat anggaran yang lebih ketat", outcomes: [
-        { weight: 8, text: "Spreadsheet terbuka. Angkanya tidak bohong. Kamu menyadari bukan pengeluaranmu yang masalah. Pendapatannya.", effects: { intelligence: 3, mental: -2, discipline: 4 }, extraFlags: ["akhir_bulan_2"] },
-        { weight: 8, text: "Kamu pasang aplikasi pencatat, rajin seminggu, lalu lupa. Tapi satu hal menetap, kamu jadi tahu persis ke mana uangmu lari. Pengetahuan yang tidak menyenangkan, tapi berguna.", effects: { intelligence: 3, discipline: 2 }, extraFlags: ["akhir_bulan_2"] },
-      ]},
-      { id: "kerja_sampingan", label: "Cari kerja sampingan", outcomes: [
-        { weight: 8, text: "Driver ojol dua hari seminggu. Kelelahan jenis baru, tapi juga rasa kendali yang lebih.", effects: { wealth: 4, health: -3, mental: 2 }, extraFlags: ["akhir_bulan_2"] },
-        { weight: 8, text: "Freelance desain. Tiga klien pertama ghosting. Yang keempat bayar, terlambat dua minggu.", effects: { wealth: 3, mental: -3 }, extraFlags: ["akhir_bulan_2"] },
-      ]},
-      { id: "terima", label: "Terima ini sebagai kondisi hidup sekarang", outcomes: [
-        { weight: 8, text: "Ada ketenangan aneh saat tidak melawan sesuatu yang belum bisa diubah. Atau mungkin itu hanya kelelahan yang menyamar.", effects: { mental: 2, happiness: -3 }, extraFlags: ["akhir_bulan_2"] },
-        { weight: 8, text: "Kamu berhenti memarahi diri sendiri tiap akhir bulan. Bukan menyerah, hanya berhenti menambah luka di atas luka. Itu ternyata, juga sejenis kekuatan.", effects: { mental: 3, happiness: -2 }, extraFlags: ["akhir_bulan_2"] },
-      ]},
-      { id: "minta_naik", label: "Minta naik gaji", outcomes: [
-        { weight: 8, text: "Bos bilang 'nanti review dulu ya'. Kalimat itu sudah kamu hafal intonasinya.", effects: { mental: -3 }, extraFlags: ["akhir_bulan_2"] },
-        { weight: 8, text: "Naik 8%. Tidak cukup, tapi lebih baik dari nol.", effects: { wealth: 5, mental: 3 }, extraFlags: ["akhir_bulan_2"] },
-      ]},
-    ],
+    choices: (ctx) => {
+      const choices: Choice[] = [
+        { id: "sistem", label: "Coba buat anggaran yang lebih ketat", outcomes: [
+          { weight: 8, text: "Spreadsheet terbuka. Angkanya tidak bohong. Kamu menyadari bukan pengeluaranmu yang masalah. Pendapatannya.", effects: { intelligence: 3, mental: -2, discipline: 4 }, extraFlags: ["akhir_bulan_2"] },
+          { weight: 6, text: "Kamu pasang aplikasi pencatat. Rajin seminggu, lalu lupa. Tapi satu hal menetap, kamu jadi tahu persis ke mana uangmu lari. Pengetahuan yang tidak menyenangkan, tapi berguna.", effects: { intelligence: 3, discipline: 2 }, extraFlags: ["akhir_bulan_2"] },
+        ]},
+        { id: "kerja_sampingan", label: "Cari kerja sampingan", outcomes: [
+          { weight: 8, text: "Driver ojol dua hari seminggu. Kelelahan jenis baru, tapi juga rasa kendali yang lebih.", effects: { wealth: 4, health: -3, mental: 2 }, extraFlags: ["akhir_bulan_2"] },
+          { weight: 8, text: "Freelance desain. Tiga klien pertama ghosting. Yang keempat bayar, terlambat dua minggu.", effects: { wealth: 3, mental: -3 }, extraFlags: ["akhir_bulan_2"] },
+        ]},
+        { id: "terima", label: "Terima ini sebagai kondisi hidup sekarang", outcomes: [
+          { weight: 8, text: "Ada ketenangan aneh saat tidak melawan sesuatu yang belum bisa diubah. Atau mungkin itu hanya kelelahan yang menyamar.", effects: { mental: 2, happiness: -3 }, extraFlags: ["akhir_bulan_2"] },
+          { weight: 8, text: "Kamu berhenti memarahi diri sendiri tiap akhir bulan. Bukan menyerah, hanya berhenti menambah luka di atas luka. Itu ternyata, juga sejenis kekuatan.", effects: { mental: 3, happiness: -2 }, extraFlags: ["akhir_bulan_2"] },
+        ]},
+      ];
+      // "Minta naik gaji" → "Bos bilang…" mengandaikan ada atasan; hanya tawarkan
+      // ke pegawai, bukan pemain berjalur sendiri (lihat isMandiri).
+      if (!isMandiri(ctx.state)) {
+        choices.push({ id: "minta_naik", label: "Minta naik gaji", outcomes: [
+          { weight: 8, text: "Bos bilang 'nanti review dulu ya'. Kalimat itu sudah kamu hafal intonasinya.", effects: { mental: -3 }, extraFlags: ["akhir_bulan_2"] },
+          { weight: 8, text: "Naik 8%. Tidak cukup, tapi lebih baik dari nol.", effects: { wealth: 5, mental: 3 }, extraFlags: ["akhir_bulan_2"] },
+        ]});
+      }
+      return choices;
+    },
   }),
 
   e({
     id: "akhir_bulan_susah", category: "pekerjaan", pool: "economic", rarity: "common",
+    // Outcome "pening di tengah rapat" mengasumsikan pemain pekerja kantoran —
+    // tutup untuk yang berjalur sendiri (wirausaha/pedagang/praktik/freelance)
+    // yang tidak punya rapat kantor.
     ageMin: 24, ageMax: 40, requireWealthMax: 25, deferrable: true, mood: "melancholy",
+    forbidAnyFlag: [...FLAG_MANDIRI],
     title: "Tanggal 27",
     prompt: "Saldo tinggal cukup untuk satu galon dan satu kotak indomie. Tanggal gajian masih jauh.",
     choices: [
       { id: "pinjol", label: "Buka aplikasi pinjol", outcomes: [
         { weight: 8, text: "Cair dalam 4 menit. Bunga 38%. Tidur? Tentu tidak nyenyak.", effects: { wealth: 5, mental: -5 }, flag: "ada_pinjol", extraFlags: ["akhir_bulan_1"] },
-        { weight: 8, text: "Cair lagi, semudah pertama. Itu yang menakutkan. kamu hafal jadwal penagih lebih baik daripada jadwal kerjamu.", effects: { wealth: 4, mental: -7 }, flag: "ada_pinjol", extraFlags: ["akhir_bulan_1"], mood: "tragic" },
+        { weight: 8, text: "Cair lagi, semudah yang pertama dulu. Itu yang menakutkan. kamu hafal jadwal penagih lebih baik daripada jadwal kerjamu.", effects: { wealth: 4, mental: -7 }, flag: "ada_pinjol", extraFlags: ["akhir_bulan_1"], mood: "tragic" },
       ]},
       { id: "pinjam_teman", label: "Pinjam teman", outcomes: [
         { weight: 8, text: "Dia transfer tanpa banyak tanya. Kamu menulis catatan untuk membalas suatu hari, dengan yakin.", effects: { wealth: 3, social: -2, mental: 2 }, extraFlags: ["akhir_bulan_1"] },
         { weight: 8, text: "Dia berkata 'aku juga lagi susah'. Kamu mengangguk, mengerti. Atau berpura-pura mengerti?", effects: { social: -3, mental: -3 }, extraFlags: ["akhir_bulan_1"] },
       ]},
       { id: "puasa", label: "Puasa diam-diam sampai gajian", outcomes: [
-        { weight: 8, text: "Tubuhmu ringan. Pikiranmu lebih ringan. Atau hanya kelaparan.", effects: { health: -3, discipline: 3 }, extraFlags: ["akhir_bulan_1"] },
+        { weight: 8, text: "Tubuhmu ringan. Pikiranmu lebih ringan. Atau hanya kelaparan?", effects: { health: -3, discipline: 3 }, extraFlags: ["akhir_bulan_1"] },
         { weight: 8, text: "Hari ketiga, kepalamu pening di tengah rapat. Kamu tersenyum, menjawab pertanyaan, lalu duduk lagi dengan kepala yang terlalu ringan dan badan yang gemetar.", effects: { health: -5, mental: -2, discipline: 2 }, extraFlags: ["akhir_bulan_1"], mood: "melancholy" },
       ]},
       { id: "jual", label: "Jual barang di marketplace", outcomes: [
@@ -99,7 +110,9 @@ export const ECONOMIC_POOL: LifeEvent[] = [
 
   e({
     id: "promosi", category: "pekerjaan", pool: "economic", rarity: "uncommon",
-    ageMin: 26, ageMax: 45, requireWealthMin: 30, title: "Email dari HR",
+    // Promosi dari HR mengandaikan pemain pegawai berstruktur kantor — tidak relevan
+    // bagi yang berjalur sendiri (wirausaha/pedagang/praktik/freelance).
+    ageMin: 26, ageMax: 45, requireWealthMin: 30, forbidAnyFlag: [...FLAG_MANDIRI], title: "Email dari HR",
     prompt: "Subjek: 'Perubahan Posisi'. Hatimu loncat sebentar. Promosi!",
     choices: [
       { id: "ambil", label: "Ambil tantangan baru.", outcomes: [
