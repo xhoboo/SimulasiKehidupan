@@ -19,7 +19,7 @@ export const ECONOMIC_POOL: LifeEvent[] = [
         ]},
         { id: "terima", label: "Terima ini sebagai kondisi hidup sekarang", outcomes: [
           { weight: 8, text: "Ada ketenangan aneh saat tidak melawan sesuatu yang belum bisa diubah. Atau mungkin itu hanya kelelahan yang menyamar.", effects: { mental: 2, happiness: -3 }, extraFlags: ["akhir_bulan_2"] },
-          { weight: 8, text: "Kamu berhenti memarahi diri sendiri tiap akhir bulan. Bukan menyerah, hanya berhenti menambah luka di atas luka. Itu ternyata, juga sejenis kekuatan.", effects: { mental: 3, happiness: -2 }, extraFlags: ["akhir_bulan_2"] },
+          { weight: 6, text: "Kamu berhenti memarahi diri sendiri tiap akhir bulan. Bukan menyerah, hanya berhenti menambah luka di atas luka. Itu ternyata, juga sejenis kekuatan.", effects: { mental: 3, happiness: -2 }, extraFlags: ["akhir_bulan_2"] },
         ]},
       ];
       // "Minta naik gaji" → "Bos bilang…" mengandaikan ada atasan; hanya tawarkan
@@ -54,11 +54,11 @@ export const ECONOMIC_POOL: LifeEvent[] = [
       ]},
       { id: "puasa", label: "Puasa diam-diam sampai gajian", outcomes: [
         { weight: 8, text: "Tubuhmu ringan. Pikiranmu lebih ringan. Atau hanya kelaparan?", effects: { health: -3, discipline: 3 }, extraFlags: ["akhir_bulan_1"] },
-        { weight: 8, text: "Hari ketiga, kepalamu pening di tengah rapat. Kamu tersenyum, menjawab pertanyaan, lalu duduk lagi dengan kepala yang terlalu ringan dan badan yang gemetar.", effects: { health: -5, mental: -2, discipline: 2 }, extraFlags: ["akhir_bulan_1"], mood: "melancholy" },
+        { weight: 6, text: "Hari ketiga, kepalamu pening di tengah rapat. Kamu tersenyum, menjawab pertanyaan, lalu duduk lagi dengan kepala yang terlalu ringan dan badan yang gemetar.", effects: { health: -5, mental: -2, discipline: 2 }, extraFlags: ["akhir_bulan_1"], mood: "melancholy" },
       ]},
       { id: "jual", label: "Jual barang di marketplace", outcomes: [
         { weight: 8, text: "Kamera lamamu laku. Jarimu menggantung sebentar, lalu klik 'kirim'.", effects: { wealth: 6, happiness: -2 }, extraFlags: ["akhir_bulan_1"] },
-        { weight: 8, text: "Yang laku justru jam tangan pemberian ayahmu. Pembelinya menawar tega, kamu terima karena tidak punya pilihan. Uangnya bertahan dua minggu. Rasa kehilangannya jauh lebih panjang.", effects: { wealth: 7, happiness: -4, mental: -2 }, extraFlags: ["akhir_bulan_1"], mood: "melancholy" },
+        { weight: 6, text: "Yang laku justru jam tangan pemberian ayahmu. Pembelinya menawar tega, kamu terima karena tidak punya pilihan. Uangnya bertahan dua minggu. Rasa kehilangannya jauh lebih panjang.", effects: { wealth: 7, happiness: -4, mental: -2 }, extraFlags: ["akhir_bulan_1"], mood: "melancholy" },
       ]},
     ],
   }),
@@ -67,18 +67,18 @@ export const ECONOMIC_POOL: LifeEvent[] = [
     id: "akhir_bulan_3", category: "pekerjaan", pool: "economic", rarity: "uncommon",
     ageMin: 26, ageMax: 45, requireWealthMax: 15, requireFlag: "akhir_bulan_2", mood: "melancholy",
     title: "Siklus",
-    prompt: "Kamu tahu ini akan terjadi lagi. Setiap bulan, ritme yang sama: harap-cemas-bertahan-gajian. Kamu tidak lagi kaget, hanya lelah yang berbeda dari kelelahan biasa.",
+    prompt: "Kamu tahu ini akan terjadi lagi. Setiap bulan, ritme yang sama. Harap-cemas-bertahan-gajian. Kamu tidak lagi kaget, hanya lelah yang berbeda dari kelelahan biasa.",
     choices: [
       { id: "putus_siklus", label: "Putuskan, ubah sesuatu yang struktural", outcomes: [
-        { weight: 8, text: "Pindah kerja, kurangi hutang, atau mulai menabung sekecil apapun. Kamu pilih salah satu. Bukan solusi ajaib seketika, tapi jalan perlahan di arah yang tepat.", effects: { mental: 6, wealth: 3, discipline: 5 } },
+        { weight: 8, text: "Pindah kerja, kurangi hutang, atau mulai menabung sekecil apapun. Kamu pilih salah satu. Bukan solusi ajaib seketika, tapi jalan perlahan ke arah yang tepat.", effects: { mental: 6, wealth: 3, discipline: 5 } },
         { weight: 8, text: "Resolusinya kuat. Pelaksanaannya kurang. Tapi setidaknya kali ini kamu sadar ada yang perlu diubah.", effects: { mental: 3, discipline: 2 } },
       ]},
       { id: "filosofis", label: "Sadari, banyak orang hidup seperti ini seumur hidup", outcomes: [
         { weight: 8, text: "Bukan penghiburan yang berguna, tapi entah kenapa sedikit membantu. Kamu tidak sendirian dalam siklus ini.", effects: { mental: 3, happiness: -2 } },
-        { weight: 8, text: "Kamu memikirkan orang-orang di angkot, di warung, di halte. Masing-masing memikul siklus yang sama, diam-diam. Anehnya itu membuatmu merasa lebih terhubung, bukan lebih kalah.", effects: { mental: 3, social: 1, happiness: -1 } },
+        { weight: 8, text: "Kamu memikirkan orang-orang di angkot, di warung, di halte. Masing-masing memikul siklus yang mungkin sama, diam-diam. Anehnya itu membuatmu merasa lebih terhubung, bukan lebih kalah.", effects: { mental: 3, social: 1, happiness: -1 } },
       ]},
       { id: "minta_tolong", label: "Ceritakan ke keluarga, minta bantuan sementara", outcomes: [
-        { weight: 8, text: "Lebih susah dari yang kamu kira. Tapi mereka ada. Dan untuk malam ini, sepertinya cukup.", effects: { wealth: 5, mental: 4, happiness: 3 }, mood: "warm" },
+        { weight: 8, text: "Lebih sulit dari yang kamu kira. Tapi mereka ada. Dan untuk malam ini, sepertinya cukup.", effects: { wealth: 5, mental: 4, happiness: 3 }, mood: "warm" },
         { weight: 8, text: "Mereka membantu dengan ikhlas tapi dengan tatapan yang sulit untuk tidak dibaca. Kamu berterima kasih sambil menelan sesuatu.", effects: { wealth: 5, mental: -3 } },
       ]},
     ],
@@ -90,15 +90,15 @@ export const ECONOMIC_POOL: LifeEvent[] = [
     prompt: "Saldo bertambah 8 digit. Investasi lama yang kamu lupa, tiba-tiba berbuah.",
     choices: [
       { id: "rumah", label: "Beli rumah cash", outcomes: [
-        { weight: 8, text: "Rumah besar, kamar terlalu banyak. Kamu sering tidur di sofa ruang tamu.", effects: { wealth: 25, mental: -3, happiness: 4 }, mood: "melancholy", flag: "rumah_besar" },
-        { weight: 8, text: "Rumah besar yang akhirnya kamu isi dengan orang-orang. Keluarga yang menumpang, teman yang singgah. Ternyata ruang kosong hanya menakutkan kalau kamu mengisinya sendirian.", effects: { wealth: 22, happiness: 8, social: 5 }, mood: "warm" },
+        { weight: 8, text: "Rumah besar, kamar terlalu banyak. Kamu lebih sering tidur di sofa ruang tamu.", effects: { wealth: 25, mental: -3, happiness: 4 }, mood: "melancholy", flag: "rumah_besar" },
+        { weight: 4, text: "Rumah besar yang akhirnya kamu isi dengan orang-orang. Keluarga, teman yang singgah. Ternyata ruang kosong hanya menakutkan kalau kamu sendirian.", effects: { wealth: 22, happiness: 8, social: 5 }, mood: "warm" },
       ]},
       { id: "bagi", label: "Bagikan ke keluarga", outcomes: [
         { weight: 8, text: "Mereka menangis. Lalu berhenti bicara denganmu setelahnya. Uang itu aneh.", effects: { wealth: 5, social: -3, mental: 4 } },
-        { weight: 8, text: "Kamu bagikan rata, dengan niat tulus. Sebagian berterima kasih seumur hidup. Sebagian merasa kurang, lalu menjauh. Uang tidak mengubah orang, hanya memperjelas siapa mereka sejak awal.", effects: { wealth: 4, social: -2, mental: 3 }, mood: "melancholy" },
+        { weight: 6, text: "Kamu bagikan rata, dengan niat tulus. Sebagian berterima kasih seumur hidup. Sebagian merasa kurang, lalu menjauh. Uang tidak mengubah orang, hanya memperjelas siapa mereka sejak awal.", effects: { wealth: 4, social: -2, mental: 3 }, mood: "melancholy" },
       ]},
       { id: "donasi", label: "Donasikan setengah", outcomes: [
-        { weight: 8, text: "Tidak ada yang tahu. Kamu tidur lebih nyenyak, dan lega yang kamu tidak tahu namanya.", effects: { wealth: 10, mental: 8, happiness: 6 }, achievement: "Diam-diam Murah Hati" },
+        { weight: 6, text: "Tidak ada yang tahu. Kamu tidur lebih nyenyak, dan lega yang kamu tidak tahu namanya.", effects: { wealth: 10, mental: 8, happiness: 6 }, achievement: "Diam-diam Murah Hati" },
         { weight: 8, text: "Kamu salurkan diam-diam, tanpa plakat, tanpa foto. Bertahun kemudian kamu bertemu seseorang yang hidupnya berubah karenamu, dan dia tidak tahu itu. Kamu simpan rahasia itu seperti harta.", effects: { wealth: 9, mental: 9, happiness: 5 }, achievement: "Diam-diam Murah Hati", mood: "warm" },
       ]},
       { id: "investasi", label: "Investasi ulang", outcomes: [
@@ -117,14 +117,14 @@ export const ECONOMIC_POOL: LifeEvent[] = [
     choices: [
       { id: "ambil", label: "Ambil tantangan baru.", outcomes: [
         { weight: 8, text: "Gajimu naik 30%. Jam tidurmu turun 30%. Pertukaran yang adil, katamu pada cermin.", effects: { wealth: 12, mental: -5, social: 3 }, flag: "manajer" },
-        { weight: 8, text: "Dan ternyata kamu pandai. Orang mulai mencari pendapatmu. Bebannya nyata, tapi untuk pertama kali kamu merasa dilihat, bukan sekadar pengisi kursi.", effects: { wealth: 12, social: 5, mental: -3 }, flag: "manajer" },
+        { weight: 6, text: "Dan ternyata kamu pandai. Orang mulai mencari pendapatmu. Bebannya nyata, tapi untuk pertama kali ini kamu merasa dilihat, bukan sekadar pengisi kursi.", effects: { wealth: 12, social: 5, mental: -3 }, flag: "manajer" },
       ]},
       { id: "tolak", label: "Tolak. Kamu suka posisi sekarang.", outcomes: [
         { weight: 8, text: "Bos kecewa, tapi menghormati. Rekan kerjamu diam-diam lega.", effects: { mental: 5, happiness: 4 } },
         { weight: 8, text: "Untuk beberapa bulan kamu bertanya-tanya apakah itu pengecut atau bijak. Lalu kamu melihat manajer baru itu pulang jam sebelas malam terus-menerus, dan pertanyaanmu terjawab dengan sendirinya.", effects: { mental: 4, happiness: 3 } },
       ]},
       { id: "negosiasi", label: "Negosiasi gaji lebih tinggi", outcomes: [
-        { weight: 8, text: "Mereka setuju. Kamu sadar kamu seharusnya minta lebih dari awal.", effects: { wealth: 18, mental: -3 }, flag: "manajer" },
+        { weight: 8, text: "Mereka setuju. Kamu sadar kamu seharusnya minta lebih sejak awal.", effects: { wealth: 18, mental: -3 }, flag: "manajer" },
         { weight: 8, text: "Tawaran ditarik. Posisi diberikan ke yang lain. Kamu pulang dengan harga diri yang utuh dan saldo yang tidak.", effects: { mental: -4, social: -2 } },
       ]},
     ],
